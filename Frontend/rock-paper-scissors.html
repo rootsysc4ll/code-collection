@@ -9,15 +9,17 @@
     <body>
         <div>
             <p style="font-size: 30px;"><b>Rock Paper Scissors</b></p>
-            <button onclick="manageScore(playGame(moveStrings.rock));" class="playButton">✊</button>
-            <button onclick="manageScore(playGame(moveStrings.paper));" class="playButton">🖐️</button>
-            <button onclick="manageScore(playGame(moveStrings.scissors));" class="playButton">✌️</button>
+            <button onclick="playGame(moveStrings.rock);" class="playButton">✊</button>
+            <button onclick="playGame(moveStrings.paper);" class="playButton">🖐️</button>
+            <button onclick="playGame(moveStrings.scissors);" class="playButton">✌️</button>
         </div>
         <div>
             <p class="resultDisplay"></p>
             <p class="movesDisplay"></p>
             <p id="scoreDisplay"></p>
-            <button class="resetButton" onclick="resetScore();">Reset score</button>
+            <button class="resetButton">Reset score</button>
+            <button class="js-autoplay">Auto play</button>
+            <p class="js-reset-message"></p>
         </div>
 
         <script src="scripts/rock-paper-scissors.js"></script>

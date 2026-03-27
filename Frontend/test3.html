@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Moggers</title>
+        <link rel="icon" type="image/png" href="images/icon.png">
+    </head>
+
+    <body>
+        <button class="js-timeout-button" onclick="startTimeout()" style="font-size: large;">Start</button><br><br>
+
+        <div class="js-cart-section">
+            <button class="js-cart-button" onclick="popMessage()" style="font-size: large;">Add to cart</button>      
+        </div><br>
+
+        <button class="js-add-button" style="font-size: large;">Add</button>
+        <button class="js-remove-button" style="font-size: large;">Remove</button>
+
+        
+        <script>
+            let v = function f() {
+                console.log(2+3);
+            };
+
+            v();
+
+            function runtwice(fun) {
+                fun();
+                fun();
+            };
+
+            runtwice(function() {
+                console.log('runtwice');
+            })
+
+            function startTimeout() {
+                const button = document.querySelector('.js-timeout-button');
+
+                button.innerHTML = 'Loading...';
+
+                setTimeout(function() {
+                    button.innerHTML = 'Finished!';
+                }, 2000);
+
+                console.log("gsga");
+            }
+
+            let timeoutID;
+            const cartSectionHTML = document.querySelector('.js-cart-section');
+            const before = cartSectionHTML.innerHTML;
+            function popMessage() {
+                clearTimeout(timeoutID);
+
+                cartSectionHTML.innerHTML = before;
+                cartSectionHTML.innerHTML += '<p>Added!<\p>'
+                timeoutID = setTimeout(function() {
+                    cartSectionHTML.innerHTML = before;
+                }, 2000);
+            }
+
+            let messageQuantity = 0;
+            let messageIsDisplaying = false;
+            const titleBefore = document.title;
+            let intervalID = undefined;
+
+            function startMessageInterval() {
+                intervalID = setInterval(function() {
+                    if (messageQuantity === 0) {
+                        document.title = titleBefore;
+
+                        clearInterval(intervalID);
+                        intervalID = undefined;
+                        return;
+                    }
+
+                    if (messageIsDisplaying) {
+                        document.title = titleBefore;
+                        messageIsDisplaying = false;
+                    } else {
+                        document.title = `(${messageQuantity}) New messages`;
+                        messageIsDisplaying = true;
+                    }
+                }, 1000);
+            }
+
+            function addMessage() {
+                messageQuantity++;
+
+                if (!intervalID) {
+                    startMessageInterval();
+                }
+            }
+            function removeMessage() {
+                if (messageQuantity !== 0) {
+                    messageQuantity--;  
+                }
+            }
+
+            startMessageInterval();
+
+            const multiply = (num1, num2) => num1 * num2;
+
+            function countPositive(array) {
+                let count = 0;
+
+                array.forEach(element => {
+                    if (element >= 0) {
+                        count++;
+                    }
+                });
+
+                return count;
+            }
+
+            console.log(countPositive([1, 2, -3, 1, -10]));
+
+            function addNum(array, num) {
+                return array.map(value => value * num);
+            }
+
+            console.log(addNum([1, 2, 3], 2));
+
+            function removeEgg(foods) {
+                let eggCount = 0;
+                return foods.filter(value => {
+                    if (value === 'egg' && eggCount !== 2) {
+                        eggCount++;
+                        return false;
+                    } else {
+                        return true;
+                    }
+                });
+            }
+
+            console.log(removeEgg(['apple', 'tomatoes', 'egg', 'egg', 'milk', 'egg']));
+
+            document.querySelector('.js-add-button').addEventListener('click', addMessage);
+            document.querySelector('.js-remove-button').addEventListener('click', removeMessage);
+        </script>
+    </body>
+</html>

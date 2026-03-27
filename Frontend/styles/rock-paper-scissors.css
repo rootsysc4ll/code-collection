@@ -13,11 +13,13 @@ button:hover{
     opacity: 0.7;
 }
 
-.resetButton{
+.resetButton, .js-autoplay, .reset-yes, .reset-no{
+    background-color: white;
+
     font-size: 20px;
 
     border: 0px none black;
-    border-radius: 5px;
+    border-radius: 3px;
 
     padding: 3px 15px;
 }

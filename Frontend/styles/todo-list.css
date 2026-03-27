@@ -29,6 +29,7 @@ input {
 }
 
 .todo-input-grid {
+    margin-bottom: 10px;
     align-items: stretch;
 }
 

@@ -8,7 +8,7 @@ function addTodo() {
     const dateElement = document.querySelector('.js-date-input');
     const todoElement  = document.querySelector('.js-todo-list');
 
-    if (inputElement.value || dateElement.value) {
+    if (inputElement.value && dateElement.value) {
         const todoObject = {
             name: inputElement.value,
             dueDate: dateElement.value
@@ -33,13 +33,12 @@ function handleAddOnKey(event) {
 function renderTodoList() {
     let todoListHTML = '';
 
-    for (let i = 0; i < todoList.length; i++) {
-        const todoObject = todoList[i];
+    todoList.forEach((todoObject, i) => {
         todoListHTML += `
         <div>${todoObject.name}</div>
         <div>${todoObject.dueDate}</div>
         <button class="delete-button" onclick="deleteTodo(${i});">Delete</button>`;
-    }
+    });
 
     document.querySelector('.js-todo-list').innerHTML = todoListHTML;
 }
