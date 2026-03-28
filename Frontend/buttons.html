@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Buttons practice</title>
+
+        <style>
+            button {
+                margin-right: 8px;
+                margin-bottom: 8px;
+                margin-left: 8px;
+            }
+            button:hover {
+                cursor: pointer;
+            }
+
+            .subscribe-button {
+                background-color: rgb(180, 1, 1);
+                color: white;
+                border: none;
+                height: 30px;
+                width: 105px;
+                border-radius: 2px;
+                transition: opacity 0.3s;
+            }
+            .subscribe-button:hover {
+                opacity: 0.6;
+            }
+
+            .join-button {
+                background-color: white;
+                color: rgb(0, 121, 202);
+                border: 1px solid rgb(0, 121, 202);
+                height: 30px;
+                width: 55px;
+                transition: background-color 0.15s, color 0.15s;
+            }
+            .join-button:hover {
+                background-color: rgb(0, 121, 202);
+                color: white;
+            }
+            .join-button:active {
+                opacity: 0.6;
+            }
+
+            .tweet-button {
+                background-color: rgb(0, 149, 255);
+                color: white;
+                border: none;
+                height: 30px;
+                width: 70px;
+                border-radius: 15px;
+                font-weight: bold;
+                transition: box-shadow 0.15s;
+            }
+            .tweet-button:hover {
+                box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+            }
+            .tweet-button:active {
+               opacity: 0.6;
+            }
+
+            .uber-button {
+                background-color: black;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+            }
+
+            .amazon-button {
+                background-color: rgb(255, 216, 20);
+                color: black;
+                border: none;
+                padding: 7px 50px;
+                border-radius: 15px;
+            }
+
+            .github-button {
+                background-color: rgb(46, 164, 79);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+            .start-bootstrap-button {
+                background-color: rgb(121, 82, 179);
+                color: white;
+                padding: 8px 18px;
+                border: none;
+                border-radius: 3px;
+            }
+
+            .download-bootstrap-button {
+                background-color: white;
+                color: rgb(108, 117, 125);
+                border: 1px solid rgb(108, 117, 125);
+                padding: 8px 18px;
+                border-radius: 3px;
+            }
+
+            .apply-linkedin-button {
+                background-color: rgb(10, 102,194);
+                color: white;
+                border: none;
+                font-weight: bold;
+                padding: 8px 18px;
+                border-radius: 15px;
+            }
+
+            .save-linkedin-button {
+                background-color: white;
+                color: rgb(10, 102,194);
+                border: 1px solid rgb(10, 102,194);
+                padding: 8px 18px;
+                border-radius: 15px;
+            }
+
+            .add-button {
+                background-color: rgb(255, 216, 20);
+                color: black;
+                border: none;
+                padding: 5px 15px;
+                border-radius: 15px;
+            }
+
+            .buy-button {
+                background-color: rgb(255, 164, 28);
+                color: black;
+                border: none;
+                padding: 5px 20px;
+                border-radius: 15px;
+            }
+
+            .stretch-button {
+                background-color: green;
+                color: white;
+                border: none;
+                padding: 5px 15px;
+                transition: padding 0.3s;
+            }
+            .stretch-button:hover {
+                padding: 15px 25px;
+            }
+
+            .shadow-button {
+                background-color: green;
+                color: white;
+                border: none;
+                padding: 5px 15px;
+                box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+            }
+            .shadow-button:active {
+                box-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
+            }
+
+            .mp-button {
+                background-color: green;
+                color: white;
+                border: none;
+                padding: 5px 15px;
+                transition: padding-left 0.15s, padding-right 0.15s, margin-left 0.15s, margin-right 0.15s;
+            }
+            .mp-button:hover {
+                padding-left: 20px;
+                padding-right: 20px;
+
+                margin-right: 3px;
+                margin-left: 3px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <a href="https://www.amazon.com" target="_blank" style="color: rgb(0, 113, 133);">Back to Amazon</a>
+        <p style="font-size: large; font-weight: bold;">Nike Black Running Shoes</p>
+        <p style="color: rgb(0, 118, 0); font-weight: bold;">$39 - in stock.</p>
+        <p>Free delivery tomorrow.</p>
+        <button class="add-button">Add to Cart</button><button class="buy-button">Buy Now</button><br><br>
+
+        <button class="subscribe-button">SUBSCRIBE</button>
+        <button class="join-button">JOIN</button>
+        <button class="tweet-button">Tweet</button><br><br>
+
+        <button class="uber-button">Request now</button>
+        <button class="amazon-button">Add to Cart</button>
+        <button class="github-button">Sign up</button><br>
+        <button class="start-bootstrap-button">Get started</button><button class="download-bootstrap-button">Download</button><br>
+        <button class="apply-linkedin-button">Apply on company website</button><button class="save-linkedin-button">Save</button><br><br>
+
+        <button>Back</button>
+        <a href="">1</a> <a href="">2</a> <a href="">3</a> <a href="">4</a> <a href="">5</a>
+        <button>Next</button><br>
+
+        <button class="stretch-button">Stretch</button>
+        <button class="shadow-button">Shadow</button><br>
+
+        <button class="mp-button" id="1">One</button>
+        <button class="mp-button" id="2">Two</button>
+        <button class="mp-button" id="3">Three</button>Q/
+    </body>
+</html>
