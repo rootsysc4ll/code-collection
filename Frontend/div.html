@@ -102,6 +102,61 @@
                 box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
                 padding: 10px 10px;
                 border-radius: 5px;
+                margin-bottom: 20px;
+            }
+
+            .profile-container {
+                font-family: Arial, Helvetica, sans-serif;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+                width: fit-content;
+                display: inline-block;
+                margin-right: 10px;
+            }
+
+            .cat-image {
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+            }
+
+            .name-text {
+                font-weight: bold;
+            }
+
+            .friend-button {
+                margin-top: 6px;
+                background-color: rgb(53, 100, 254);
+                color: white;
+                border: none;
+                padding: 5px 15px;
+                border-radius: 5px;
+                font-size: small;
+            }
+
+            .google-container {
+                text-align: center;
+            }   
+
+            .google-textbox {
+                display: inline-block;
+                width: 400px;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 15px;
+                box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+                margin-bottom: 20px;
+            }
+
+            .google-image {
+                display: inline-block;
+                width: 200px;
+                margin-bottom: 5px;
+            }
+
+            .google-button {
+                border: none;
+                padding: 10px 15px;
+                margin-right: 5px;
             }
         </style>
     </head>
@@ -129,6 +184,42 @@
             <img src="images/cat.jpg" class="twitter-image">
             <input type="text" placeholder="What's happening?" class="twitter-text">
             <button class="twitter-button">Tweet</button>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div class="profile-container">
+                <img src="images/cat.jpg" class="cat-image">
+                <div style="padding: 6px 5px;">
+                    <p class="name-text">Oliver</p>
+                    <p style="font-size: small; color: gray;">2 mutual friends</p>
+                    <button class="friend-button">Add Friend</button>
+                </div>
+            </div>
+            <div class="profile-container">
+                <img src="images/cat-2.jpg" class="cat-image">
+                <div style="padding: 6px 5px;">
+                    <p class="name-text">Mimi</p>
+                    <p style="font-size: small; color: gray;">3 mutual friends</p>
+                    <button class="friend-button">Add Friend</button>
+                </div>
+            </div>
+            <div class="profile-container">
+                <img src="images/cat-3.jpg" class="cat-image">
+                <div style="padding: 6px 5px;">
+                    <p class="name-text">Rex</p>
+                    <p style="font-size: small; color: gray;">4 mutual friends</p>
+                    <button class="friend-button">Add Friend</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="google-container">
+            <img src="images/google-logo.png" class="google-image">
+            <input type="text" placeholder="Search Google or type a URL" class="google-textbox">
+            <div>
+                <button class="google-button">Google Search</button>
+                <button class="google-button">I'm feeling lucky</button>
+            </div>
         </div>
     </body>
 </html>
