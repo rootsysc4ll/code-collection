@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image practice</title>
+        
+        <style>
+            button:hover {
+                opacity: 0.8;
+            }
+
+            p {
+                font-family: Arial, Helvetica, sans-serif;
+                margin-top: 0;
+            }
+
+            img, input {
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            .cat-image {
+                width: 200px;
+                height: 200px;
+                border-radius: 100px;
+                object-fit: cover;
+            }
+
+            .search-textbox {
+                width: 130px;
+                padding: 8px 8px;
+                border: 1px solid rgb(181, 181, 181);
+                border-radius: 8px;
+            }
+
+            .google-textbox {
+                width: 400px;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 15px;
+                box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .email-textbox {
+                margin-bottom: 16px;
+                width: 320px;
+                border: 1px solid black;
+                height: 25px;
+                border-radius: 3px;
+                box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .agree-join-button {
+                padding: 10px 120px; 
+                background-color: rgb(11, 104, 255);
+                color: white;
+                border: none;
+                border-radius: 20px;
+                font-size: medium;
+                margin-bottom: 20px;
+                display: block;
+            }
+
+            .twitter-image {
+                width: 60px; 
+                height: 60px;
+                object-fit: cover;
+                border-radius: 100px;         
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .twitter-text {
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: 5px;
+                border: none;
+                font-size: medium;
+                padding-right: 50px;
+            }
+
+            .twitter-button {
+                background-color: rgb(78, 146, 255);
+                color: white;
+                border: none;
+                display: inline-block;
+                vertical-align: middle;
+                margin-bottom: 20px;
+                padding: 8px 12px;
+                font-weight: bold;
+                border-radius: 15px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <img class="cat-image" src="images/cat.jpg">
+                     
+        <input type="text" placeholder="Search" class="search-textbox">
+
+        <input type="text" placeholder="Search Google or type a URL" class="google-textbox">
+
+        <p style="margin-bottom: 5px; font-size: small; color: grey;">Email</p>
+        <input type="text" placeholder="" class="email-textbox">
+        <p style="font-size: small; color: grey;">By clicking Agree & Join, you agree to the Privacy Policy.</p>
+        <button class="agree-join-button">Agree & Join</button>
+    
+        <img src="images/cat.jpg" class="twitter-image">
+        <input type="text" placeholder="What's happening?" class="twitter-text">
+        <button class="twitter-button">Tweet</button>
+    </body>
+    
+</html>

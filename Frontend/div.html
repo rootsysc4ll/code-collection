@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Div practice</title>
+
+        <style>
+            p, button {
+                margin: 0;
+            }
+
+            .filled-square {
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .filled-circle {
+                width: 100px;
+                height: 100px;
+                background-color: green;
+                border-radius: 100px;
+                display: inline-block;
+            }
+
+            .blank-square {
+                width: 100px;
+                height: 100px;
+                border: 1px solid red;
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .blank-circle {
+                width: 100px;
+                height: 100px;
+                border: 1px solid green;
+                border-radius: 100px;
+                display: inline-block;
+            }
+
+            .survey-container {
+                width: 250px;
+                border: 1px solid gray;
+                padding-bottom: 20px;
+                padding: 15px 10px;
+                margin-bottom: 20px;
+            }
+
+            .yt-container {
+                width: 350px;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: rgb(41, 41, 41);
+                padding: 15px 10px;
+                margin-bottom: 20px;
+            }
+
+            .install-text {
+                color: white;
+                font-weight: bold;
+                font-size: large;
+                margin-bottom: 0px;
+                margin-bottom: 5px;
+            }
+
+            .add-text {
+                color: rgb(143, 143, 143);
+                font-size: small;
+            }
+
+            .twitter-image {
+                width: 50px; 
+                height: 50px;
+                object-fit: cover;
+                border-radius: 100px;         
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .twitter-text {
+                display: inline-block;
+                vertical-align: middle;
+                border: none;
+                font-size: medium;
+                padding: 0 90px 0 10px;
+            }
+
+            .twitter-button {
+                background-color: rgb(78, 146, 255);
+                color: white;
+                border: none;
+                display: inline-block;
+                vertical-align: middle;
+                padding: 8px 12px;
+                font-weight: bold;
+                border-radius: 15px;
+            }
+
+            .twitter-container {
+                width: fit-content;
+                box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+                padding: 10px 10px;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="filled-square"></div>
+        <div class="blank-square"></div>
+        <div style="display: block; margin-bottom: 20px;">
+            <div class="filled-circle"></div>
+            <div class="blank-circle"></div>
+        </div>
+
+        <div class="survey-container">
+            <p style="font-family: Arial, Helvetica, sans-serif; margin-bottom: 15px;">Satisfied with our service?</p>
+            <button>Yes</button>
+            <button>No</button>
+        </div>
+
+        <div class="yt-container">
+            <p class="install-text">Install Youtube Music</p>
+            <p class="add-text">Add Youtube Music to your desktop for quick and easy access</p>
+        </div>
+
+        <div class="twitter-container">
+            <img src="images/cat.jpg" class="twitter-image">
+            <input type="text" placeholder="What's happening?" class="twitter-text">
+            <button class="twitter-button">Tweet</button>
+        </div>
+    </body>
+</html>

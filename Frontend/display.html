@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Display practice</title>
+
+        <style>
+            .text-boxes-input {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .survey-button {
+                vertical-align: middle;
+            }
+
+            .google-textbox {
+                display: block;
+                width: 400px;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 15px;
+                box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+                margin-bottom: 20px;
+            }
+
+            .google-image {
+                display: block;
+                width: 200px;
+                margin-bottom: 10px;
+                margin-left: 110px;
+            }
+
+            .signup-top-textbox {
+                display: inline-block;
+                width: 85px;
+                margin-bottom: 5px;
+                padding: 5px 10px;
+                border: 1px solid gray;
+                border-radius: 5px;
+            }
+            
+            .signup-bottom-textbox {
+                display: block;
+                width: 195px;
+                margin-bottom: 5px;
+                padding: 5px 10px;
+                border: 1px solid gray;
+                border-radius: 5px;
+            }
+
+            .signup-button {
+                background-color: rgb(54, 115, 255);
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-weight: bold;
+                width: 218px;
+                padding: 10px 15px;
+                margin-bottom: 20px;
+            }
+
+            .request-text {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: x-large;
+            }
+
+            .uber-textbox {
+                display: block;
+                margin-bottom: 5px;
+                width: 250px;
+                padding: 10px 15px;
+                font-size: small;
+                background-color: rgb(235, 235, 235);
+                color: gray;
+                border: none;
+            }
+
+            .request-button {
+                margin-top: 20px;
+                margin-right: 10px;
+                background-color: black;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+            }
+
+            .schedule-button {
+                background-color: rgb(235, 235, 235);
+                border: none;
+                padding: 10px 15px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <input type="text" placeholder="Name" class="text-boxes-input">
+        <input type="text" placeholder="Name" class="text-boxes-input">
+
+        <p style="display: inline-block; width: 200px; vertical-align: middle; margin-bottom: 20px;">Thanks for chatting with our customer support. Would you like to take our quick survey?</p>
+        <button class="survey-button">Yes</button>
+        <button class="survey-button">No</button>
+
+        <img src="images/google-logo.png" class="google-image">
+        <input type="text" placeholder="Search Google or type a URL" class="google-textbox">
+
+        <input type="text" class="signup-top-textbox" placeholder="First Name">
+        <input type="text" class="signup-top-textbox" style="display: inline-block;" placeholder="Second Name">
+        <input type="text" class="signup-bottom-textbox" placeholder="Email">
+        <button class="signup-button">Sign up</button> 
+
+        <p class="request-text">Request a ride now</p>
+        <input type="text" placeholder="Enter pickup location" class="uber-textbox">
+        <input type="text" placeholder="Enter destination" class="uber-textbox">
+        <button class="request-button">Request now</button>
+        <button class="schedule-button">Schedule for later</button>
+    </body>
+</html>
