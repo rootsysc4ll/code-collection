@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Textbox practice</title>
+
+        <style>
+            p, button {
+                margin: 0;
+            }
+
+            .startup-info-flexbox {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                width: 250px;
+                font-family: Arial, Helvetica, sans-serif;
+                border: 1px solid rgb(186, 186, 186);
+                border-radius: 5px;
+            }
+
+            .info-element-flexbox {
+                display: flex;
+                justify-content: space-between;
+                padding: 6px 12px;
+            }   
+
+            .quantity-indicator {
+                background-color: rgb(23, 85, 255);
+                color: white;
+                border: none;
+                border-radius: 10px;
+                padding: 2px 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="
+            display: flex;
+            margin-bottom: 20px;
+            flex-direction: row;
+        ">
+            <p style="
+                background-color: lightblue;
+                width: 200px;
+            ">200px</p>
+            <p style="
+                background-color: lightpink;
+                width: 75px;
+            ">75px</p>
+        </div>
+
+        <div style="
+            display: flex;
+            margin-bottom: 20px;
+            flex-direction: row;
+        ">
+            <p style="
+                background-color: lightblue;
+                width: 50px;
+            ">item1</p>
+            <p style="
+                background-color: lightpink;
+                flex: 1;
+            ">item2</p>
+            <p style="
+                background-color: lightblue;
+                width: 75px;
+            ">item3</p>
+        </div>
+
+        <div style="
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: space-between;
+            flex-direction: row;
+        ">
+            <p style="background-color: lightpink;">item1</p>
+            <p style="background-color: lightpink;">item2</p>
+            <p style="background-color: lightpink;">item3</p>
+            <p style="background-color: lightpink;">item4</p>
+        </div>
+
+        <div style="
+            display: flex;
+            margin-bottom: 20px;
+            border: 1px solid gray;
+            height: 50px;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        ">
+            <p style="background-color: lightpink;">item1</p>
+            <p style="background-color: lightpink;">item2</p>
+        </div>
+
+        <div class="startup-info-flexbox">
+            <div class="info-element-flexbox">
+                <p>Home</p>
+                <button class="quantity-indicator">14</button>
+            </div>
+            <div class="info-element-flexbox">
+                <p>Notifications</p>
+                <button class="quantity-indicator">3</button>
+            </div>
+            <div class="info-element-flexbox">
+                <p>Messages</p>
+                <button class="quantity-indicator">5</button>
+            </div>
+        </div>
+    </body>
+</html>
