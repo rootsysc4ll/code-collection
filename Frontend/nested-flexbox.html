@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nested Flexbox practice</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <style>
+            p, button {
+                margin: 0;
+            }
+
+            .inbox-container {
+                display: flex;
+                flex-direction: column;
+                width: fit-content;
+                font-family: Arial, Helvetica, sans-serif;
+                box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+                border-radius: 5px;
+                padding: 10px 15px;
+                margin-bottom: 20px;
+            }
+
+            .inbox-text {
+                padding-bottom: 20px;
+            }
+
+            .inboxes-flexbox {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .content-container {
+                display: flex;
+                margin-bottom: 10px;
+            }
+
+            .sender-image {
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+                border-radius: 25px;
+            }
+
+            .text-content-container {
+                padding-left: 10px;
+                flex: 1;
+            }
+
+            .top-text-flexbox {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .top-text {
+                font-size: large;
+                font-weight: bold;
+            }
+
+            .mid-text {
+                font-size: 16px;
+                font-weight: bold;
+                padding-bottom: 3px;
+            }
+
+            .low-text {
+                font-size: small;
+                color: gray;
+            }
+
+            .twitter-post-flexbox {
+                display: flex;
+                font-family: Arial, Helvetica, sans-serif;
+                width: 400px;
+            }
+
+            .post-content-flex {
+                display: flex;
+                flex-direction: column;
+                padding-left: 10px;
+            }
+
+            .post-sender-text {
+                display: flex;
+                margin-bottom: 5px;
+            }
+
+            .link-flex {
+                display: flex;
+                border: 1px solid rgb(198, 198, 198);
+                border-radius: 15px;
+            }
+
+            .link-blank {
+                background-color: rgb(198, 198, 198);
+                width: 150px;
+                border-top-left-radius: 15px;
+                border-bottom-left-radius: 15px;
+            }
+
+            .link-content-text {
+                display: flex;
+                flex-direction: column;
+                padding: 15px 10px;
+                justify-content: start;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="
+            display: flex;
+            margin-bottom: 20px;
+            height: 50px;
+            ">
+            <div style="
+                display: flex;
+                background-color: lightpink;
+                width: 100px;
+                align-items: center;
+                justify-content: center;
+            ">
+                <p>item1</p>
+            </div>
+            <div style="
+                background-color: lightblue;
+                width: 200px;
+            "></div>
+        </div>
+
+        <div style="
+            display: flex;
+            height: 50px;
+            margin-bottom: 20px;
+            ">
+            <div style="
+                background-color: lightpink;
+                width: 100px;
+            ">
+            </div>
+            <div style="
+                background-color: lightblue;
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+            ">
+                <p>row1</p>
+                <div style="
+                    display: flex;
+                    justify-content: space-between;
+                ">
+                    <p>row2</p>
+                    <p>row2</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="inbox-container">
+            <p class="low-text inbox-text">ALL INBOXES</p>
+            <div class="inboxes-flexbox">
+                <div class="content-container">
+                    <img src="images/cat.jpg" alt="err" class="sender-image">
+                    <div class="text-content-container">
+                        <div class="top-text-flexbox">
+                            <p class="top-text">Chewy Promotions</p>
+                            <p class="low-text">4:58 PM</p>
+                        </div>
+                        <p class="mid-text">Biggest sales of the year!</p>
+                        <p  class="low-text">Hey there! We're wrtiting to tell you about our...</p>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <img src="images/dog.jpg" alt="err" class="sender-image">
+                    <div class="text-content-container">
+                        <div class="top-text-flexbox">
+                            <p class="top-text">Best Buy</p>
+                            <p class="low-text">12:32 PM</p>
+                        </div>
+                        <p class="mid-text">Your Best Buy eReceipt</p>
+                        <p  class="low-text">Thank you for shopping at Best Buy, here is...</p>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <img src="images/cat-3.jpg" alt="err" class="sender-image">
+                    <div class="text-content-container">
+                        <div class="top-text-flexbox">
+                            <p class="top-text">Netflix</p>
+                            <p class="low-text">9:00 PM</p>
+                        </div>
+                        <p class="mid-text">Here's what's coming soon to Netflix</p>
+                        <p  class="low-text">Brand new movies and shows, old favorites</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="twitter-post-flexbox">
+            <img src="images/cat.jpg" alt="err" class="sender-image">
+            <div class="post-content-flex">
+                <div class="post-sender-text"">
+                    <p style="font-weight: bold;">supersimple.dev</p><p style="color: rgb(198, 198, 198);">@SuperSimpleDev</p>
+                </div>
+                <p style="margin-bottom: 10px;">What is backend web development? A complete overview. New video is up!</p>
+                <div class="link-flex">
+                    <div class="link-blank"></div>
+                    <div class="link-content-text">
+                        <p style="color: rgb(198, 198, 198);">youtube.com</p>
+                        <p>Backend web development - a complete overview (2021)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
