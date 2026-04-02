@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS position practice</title>
+
+        <style>
+            body {
+                height: 3000px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="
+            background-color: black;
+            color: white;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            ">bottom-left</div>
+
+            <nav style="
+                background-color: green;
+                color: white;
+                position: fixed;
+                right: 0;
+                top: 0;
+                bottom: 0px;
+                width: 100px;
+            ">right sidebar</nav>
+
+            <div style="
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, Helvetica, sans-serif;
+            ">
+                <div style="
+                    background-color: white;
+                    color: black;
+                    height: fit-content;
+                    width: 350px;
+                    padding: 15px 15px;
+                    border-radius: 10px;
+                ">
+                    <div style="
+                        font-size: xx-large;
+                        font-weight: bold;
+                    ">Modal title</div>
+                    <div style="
+                        margin-top: 5px;
+                        margin-bottom: 10px;
+                    ">This is a modal</div>
+                    <button>Close</button>
+                </div>
+            </div>
+    </body>
+</html>
