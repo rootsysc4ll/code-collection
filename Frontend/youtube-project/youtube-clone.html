@@ -1,0 +1,470 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <title>Youtube Clone</title>
+    <link rel="icon" type="image/png" href="images/icons/favicon.png">
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/video-grid.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/chip-filter.css">
+    <link rel="stylesheet" href="styles/sidebar.css">
+</head>
+<body>
+    <header class="header">
+        <div class="left-section">
+            <button class="menu-button">
+                <img src="images/icons/header/menu.svg" alt="error" class="menu-icon">
+            </button>
+
+            <img src="images/icons/header/youtube.svg" alt="error" class="youtube-image">
+        </div>
+
+        <div class="mid-section">
+            <input type="text" placeholder="Search" class="searchbox">
+
+            <div class="search-button">
+                <img src="images/icons/header/lens.svg" alt="error" class="lens-icon">
+            </div>
+
+            <div class="audio-search-button">
+                <img src="images/icons/header/mic.svg" alt="error" class="mic-icon">
+            </div>
+        </div>
+
+        <div class="right-section">
+            <button class="create-button">
+                <img src="images/icons/header/plus.svg" alt="err" class="plus-icon">
+
+                <div class="create-text">Create</div>
+            </button>
+
+            <div class="notifications-button">
+                <img src="images/icons/header/bell.svg" alt="err" class="bell-icon">
+            </div>
+
+            <div class="user-image-container">
+                <img src="images/user-profile.jpg" alt="err" class="user-image">
+            </div>
+        </div>
+    </header>
+
+    <div class="chip-filter">
+        <div class="all-filter">All</div>
+        <div class="filter"> Music</div>
+        <div class="filter">Source code</div>
+        <div class="filter">Algorithms</div>
+        <div class="filter">Computer Hardware</div>
+        <div class="filter">Gaming</div>
+        <div class="filter">Mixes</div>
+        <div class="filter">Intelligent Drum & Bass</div>
+        <div class="filter">3D modeling</div>
+        <div class="filter">Techno</div>
+        <div class="filter">Animated films</div>
+        <div class="filter">Recently updated</div>
+        <div class="filter">Watched</div>
+        <div class="filter">New to you</div>
+
+        <div class="move-chip-button">&gt;</div>
+    </div>
+
+    <nav class="sidebar">
+        <div class="sidebar-section">
+            <div class="nav-button">
+                <img src="images/icons/sidebar/home.svg" alt="err" class="icon">
+
+                <div class="button-text">Home</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/shorts.svg" alt="err" class="icon">
+
+                <div class="button-text">Shorts</div>
+            </div>
+        </div>
+
+        <div class="subscriptions-section">
+            <div class="section-title-text">Subscriptions &gt;</div>
+
+            <div class="channel-container">
+                <img src="images/channel-profiles/subscriptions.jpg" alt="err" class="subscribed-channel-image">
+
+                <div class="button-text">Core Dumped</div>
+            </div>
+        </div>
+        
+        <div class="sidebar-section">
+            <div class="section-title-text">You &gt;</div>
+            
+            <div class="nav-button">
+                <img src="images/icons/sidebar/history.svg" alt="err" class="icon">
+
+                <div class="button-text">History</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/playlists.svg" alt="err" class="icon">
+
+                <div class="button-text">Playlists</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/watch-later.svg" alt="err" class="icon">
+
+                <div class="button-text">Watch later</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/liked-videos.svg" alt="err" class="icon">
+
+                <div class="button-text">Liked videos</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/your-videos.svg" alt="err" class="icon">
+
+                <div class="button-text">Your videos</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/downloads.svg" alt="err" class="icon">
+
+                <div class="button-text">Downloads</div>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-explore-text">Explore</div>
+            
+            <div class="nav-button">
+                <img src="images/icons/sidebar/music.svg" alt="err" class="icon">
+
+                <div class="button-text">Music</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/movies.svg" alt="err" class="icon">
+
+                <div class="button-text">Movies</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/live.svg" alt="err" class="icon">
+
+                <div class="button-text">Live</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/show-more.svg" alt="err" class="icon">
+
+                <div class="button-text">Show more</div>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="section-more-text">More from Youtube</div>
+            
+            <div class="nav-button">
+                <img src="images/icons/sidebar/premium.svg" alt="err" class="icon">
+
+                <div class="button-text">Youtube Premium</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/youtube-music.svg" alt="err" class="icon">
+
+                <div class="button-text">Youtube Music</div>
+            </div>
+
+            <div class="nav-button">
+                <img src="images/icons/sidebar/kids.svg" alt="err" class="icon">
+
+                <div class="button-text">Youtube Kids</div>
+            </div>
+        </div>
+
+        <div class="sidebar-section">            
+            <div class="nav-button">
+                <img src="images/icons/sidebar/report.svg" alt="err" class="icon">
+
+                <div class="button-text">Report History</div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="video-grid">
+            <div class="video-preview-container">
+                <div class="thumbnail-container">
+                    <img src="images/thumbnails/thumbnail-1.webp" alt="error getting image path" class="thumbnail">
+
+                    <div class="video-duration-text">22:15:57</div>
+                </div>
+
+                <div class="video-info-container">
+                    <img src="images/channel-profiles/1.jpg" alt="error getting image path" class="channel-profile-image">
+
+                    <div class="info-text-container">
+                        <div class="title-container">
+                            <div class="video-title">JavaScript Tutorial Full Course - Beginner to Pro</div>
+
+                            <div class="three-dots-container">
+                                <img src="images/icons/three-dots.svg" alt="error getting image path" class="three-dots-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="misc-info">
+                            <div class="channel-name-text">SuperSimpleDev</div>
+                            <img src="images/icons/verified.svg" alt="error getting image path" class="verified-channel-icon">
+                            <img src="images/icons/right-triangle.svg" alt="error getting image path" class="right-triangle-icon">
+                            <div class="views-text">14K</div>
+                            <div class="uptime-text">1y ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-preview-container">
+                <div class="thumbnail-container">
+                    <img src="images/thumbnails/thumbnail-2.webp" alt="error getting image path" class="thumbnail">
+
+                    <div class="video-duration-text">51:15</div>
+                </div>
+
+                <div class="video-info-container">
+                    <img src="images/channel-profiles/2.jpg" alt="error getting image path" class="channel-profile-image">
+
+                    <div class="info-text-container">
+                        <div class="title-container">
+                            <div class="video-title">Architect of the Apocalypse | An Analysis of the Works of Tsutomo Nihei</div>
+
+                            <div class="three-dots-container">
+                                <img src="images/icons/three-dots.svg" alt="error getting image path" class="three-dots-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="misc-info">
+                            <div class="channel-name-text">Saviour</div>
+                            <img src="images/icons/right-triangle.svg" alt="error getting image path" class="right-triangle-icon">
+                            <div class="views-text">233K</div>
+                            <div class="uptime-text">3mo ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-preview-container">
+                <div class="thumbnail-container">
+                    <img src="images/thumbnails/thumbnail-3.webp" alt="error getting image path" class="thumbnail">
+
+                    <div class="video-duration-text">6:42:01</div>
+                </div>
+
+                <div class="video-info-container">
+                    <img src="images/channel-profiles/3.jpg" alt="error getting image path" class="channel-profile-image">
+
+                    <div class="info-text-container">
+                        <div class="title-container">
+                            <div class="video-title">[C & OpenGL Space Sim Dev] More Terrain & LODs (10)</div>
+
+                            <div class="three-dots-container">
+                                <img src="images/icons/three-dots.svg" alt="error getting image path" class="three-dots-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="misc-info">
+                            <div class="channel-name-text">dustmime</div>
+                            <img src="images/icons/right-triangle.svg" alt="error getting image path" class="right-triangle-icon">
+                            <div class="views-text">14K</div>
+                            <div class="uptime-text">Streamed 3d ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-preview-container">
+                <div class="thumbnail-container">
+                    <img src="images/thumbnails/thumbnail-4.webp" alt="error getting image path" class="thumbnail">
+
+                    <div class="video-duration-text">1:11:26</div>
+                </div>
+
+                <div class="video-info-container">
+                    <img src="images/channel-profiles/4.jpg" alt="error getting image path" class="channel-profile-image">
+
+                    <div class="info-text-container">
+                        <div class="title-container">
+                            <div class="video-title">Prof. Judy Fan: Cognitive Tools for Making the Invisible Visible</div>
+
+                            <div class="three-dots-container">
+                                <img src="images/icons/three-dots.svg" alt="error getting image path" class="three-dots-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="misc-info">
+                            <div class="channel-name-text">MIT Siegel Family Quest for Intelligence</div>
+                            <img src="images/icons/verified.svg" alt="error getting image path" class="verified-channel-icon">
+                            <img src="images/icons/right-triangle.svg" alt="error getting image path" class="right-triangle-icon">
+                            <div class="views-text">1M</div>
+                            <div class="uptime-text">11mo ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-preview-container">
+                <div class="thumbnail-container">
+                    <img src="images/thumbnails/thumbnail-5.webp" alt="error getting image path" class="thumbnail">
+
+                    <div class="video-duration-text">16:48</div>
+                </div>
+
+                <div class="video-info-container">
+                    <img src="images/channel-profiles/5.jpg" alt="error getting image path" class="channel-profile-image">
+
+                    <div class="info-text-container">
+                        <div class="title-container">
+                            <div class="video-title">This is what a Master's Degree in Robotics Engineering Looks like</div>
+
+                            <div class="three-dots-container">
+                                <img src="images/icons/three-dots.svg" alt="error getting image path" class="three-dots-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="misc-info">
+                            <div class="channel-name-text">Tazer Technical</div>
+                            <img src="images/icons/right-triangle.svg" alt="error getting image path" class="right-triangle-icon">
+                            <div class="views-text">83K</div>
+                            <div class="uptime-text">3w ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-preview-container">
+                <div class="thumbnail-container">
+                    <img src="images/thumbnails/thumbnail-6.webp" alt="error getting image path" class="thumbnail">
+
+                    <div class="video-duration-text">28:47</div>
+                </div>
+
+                <div class="video-info-container">
+                    <img src="images/channel-profiles/6.jpg" alt="error getting image path" class="channel-profile-image">
+
+                    <div class="info-text-container">
+                        <div class="title-container">
+                            <div class="video-title">Someone improved my code by 40,832,277,770%</div>
+
+                            <div class="three-dots-container">
+                                <img src="images/icons/three-dots.svg" alt="error getting image path" class="three-dots-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="misc-info">
+                            <div class="channel-name-text">Stand-up Maths</div>
+                            <img src="images/icons/verified.svg" alt="error getting image path" class="verified-channel-icon">
+                            <img src="images/icons/right-triangle.svg" alt="error getting image path" class="right-triangle-icon">
+                            <div class="views-text">2.9M</div>
+                            <div class="uptime-text">3y ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-preview-container">
+                <div class="thumbnail-container">
+                    <img src="images/thumbnails/thumbnail-7.webp" alt="error getting image path" class="thumbnail">
+
+                    <div class="video-duration-text">29:17</div>
+                </div>
+
+                <div class="video-info-container">
+                    <img src="images/channel-profiles/7.jpg" alt="error getting image path" class="channel-profile-image">
+
+                    <div class="info-text-container">
+                        <div class="title-container">
+                            <div class="video-title">So Claude Code's Source Code Was Just Leaked...</div>
+
+                            <div class="three-dots-container">
+                                <img src="images/icons/three-dots.svg" alt="error getting image path" class="three-dots-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="misc-info">
+                            <div class="channel-name-text">ForrestKnight</div>
+                            <img src="images/icons/verified.svg" alt="error getting image path" class="verified-channel-icon">
+                            <img src="images/icons/right-triangle.svg" alt="error getting image path" class="right-triangle-icon">
+                            <div class="views-text">69K</div>
+                            <div class="uptime-text">3d ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-preview-container">
+                <div class="thumbnail-container">
+                    <img src="images/thumbnails/thumbnail-8.webp" alt="error getting image path" class="thumbnail">
+
+                    <div class="video-duration-text">43:22</div>
+                </div>
+
+                <div class="video-info-container">
+                    <img src="images/channel-profiles/8.jpg" alt="error getting image path" class="channel-profile-image">
+
+                    <div class="info-text-container">
+                        <div class="title-container">
+                            <div class="video-title">Lecture 1: Introducing to Power Eletronics</div>
+
+                            <div class="three-dots-container">
+                                <img src="images/icons/three-dots.svg" alt="error getting image path" class="three-dots-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="misc-info">
+                            <div class="channel-name-text">MIT OpenCourseWare</div>
+                            <img src="images/icons/verified.svg" alt="error getting image path" class="verified-channel-icon">
+                            <img src="images/icons/right-triangle.svg" alt="error getting image path" class="right-triangle-icon">
+                            <div class="views-text">2.1M</div>
+                            <div class="uptime-text">1y ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-preview-container">
+                <div class="thumbnail-container">
+                    <img src="images/thumbnails/thumbnail-9.webp" alt="error getting image path" class="thumbnail">
+
+                    <div class="video-duration-text">4:03</div>
+                </div>
+
+                <div class="video-info-container">
+                    <img src="images/channel-profiles/9.jpg" alt="error getting image path" class="channel-profile-image">
+
+                    <div class="info-text-container">
+                        <div class="title-container">
+                            <div class="video-title">Anthropic just bought your favorite JS runtime...</div>
+
+                            <div class="three-dots-container">
+                                <img src="images/icons/three-dots.svg" alt="error getting image path" class="three-dots-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="misc-info">
+                            <div class="channel-name-text">Fireship</div>
+                            <img src="images/icons/verified.svg" alt="error getting image path" class="verified-channel-icon">
+                            <img src="images/icons/right-triangle.svg" alt="error getting image path" class="right-triangle-icon">
+                            <div class="views-text">410K</div>
+                            <div class="uptime-text">3mo ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,122 @@
+.header {
+    height: 56px;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    background-color: rgba(255, 255, 255, 1);
+    padding-left: 10px;
+    padding-right: 15px;
+    justify-content: space-between;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.menu-button {
+    /* display: flex;
+    align-items: center; */
+    padding: 0;
+    padding: 8px;
+    border: none;
+    border-radius: 100%;
+    background-color: white;
+}
+
+.youtube-image {
+    height: 20px;
+    margin-left: 15px;
+}
+
+.mid-section {
+    display: flex;
+    flex: 1;
+    /* max-width: 600px; */
+    /* min-width: 50px; */
+    align-items: center;
+    justify-content: center;
+}
+
+.searchbox {
+    font-size: 16px;
+    padding: 10px 20px;
+    flex: 1;
+    max-width: 500px;
+    min-width: none;
+    border: 1px solid rgb(196, 196, 196);
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+.search-button {
+    background-color: rgb(244, 244, 244);
+    padding: 7px 20px 7px 20px;
+    border: 1px solid rgb(196, 196, 196);
+    margin-left: -1px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.audio-search-button {
+    width: fit-content;
+    padding: 10px;
+    border-radius: 100%;
+    background-color: rgb(244, 244, 244);
+    margin-left: 8px;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+}
+
+.create-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 0;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(244, 244, 244);
+}
+
+.create-button:hover, .search-button:hover {
+    background-color: rgb(240, 240, 240);    
+}
+
+.create-text {
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.notifications-button {
+    width: fit-content;
+    padding: 10px;
+    border-radius: 100%;
+    background-color: white;
+    margin-left: 8px;
+}
+
+.user-image-container {
+    margin-left: 20px;
+}
+
+.user-image {
+    width: 32px;
+    border-radius: 50px;
+}
+
+.menu-icon, .lens-icon, .mic-icon, .plus-icon, .bell-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.menu-button:hover, .notifications-button:hover, .audio-search-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}

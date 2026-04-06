@@ -1,0 +1,79 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 240px;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    overflow: scroll;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 1px;
+}
+.sidebar:hover::-webkit-scrollbar {
+    width: 3px;
+}
+
+.sidebar::-webkit-scrollbar-button {
+    display: none;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 6px;
+}
+
+.sidebar .sidebar-section, .subscriptions-section  {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+    padding: 10px;
+}
+
+.sidebar .section-title-text, .section-explore-text, .section-more-text {
+    display: flex;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.sidebar .nav-button, .channel-container {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 12px;
+}
+
+.sidebar .button-text {
+    margin-left: 25px;
+}
+
+.sidebar .channel-container {
+    display: flex;
+}
+
+.subscribed-channel-image {
+    width: 24px;
+    border-radius: 100%;
+}
+
+.sidebar .icon {
+    width: 24px;
+}
+
+.sidebar .nav-button:hover, .section-title-text:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
