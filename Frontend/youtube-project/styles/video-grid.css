@@ -5,31 +5,31 @@
     align-items: top;
 }
 
-.video-preview-container {
+.video-grid .video-preview-container {
     display: flex;
     flex-direction: column;
-    width: 496px;
+    width: 486px;
     background-color: white;
     padding: 10px;
     border-radius: 10px;
     transition: background-color 0.5s;
 }
 
-.video-preview-container:hover {
+.video-grid .video-preview-container:hover {
     cursor: pointer;
     background-color: rgb(235, 235, 235);
 }
 
-.thumbnail-container {
+.video-grid .thumbnail-container {
     position: relative;
 }
 
-.thumbnail {
+.video-grid .thumbnail {
     border-radius: 10px;
-    width: 496px;
+    width: 486px;
 }
 
-.video-duration-text {
+.video-grid .video-duration-text {
     position: absolute;
     display: inline-block;
     font-size: 9px;
@@ -41,19 +41,19 @@
     bottom: 5px;
 }
 
-.video-info-container {
+.video-grid .video-info-container {
     display: flex;
     align-items: top;
 }
 
-.channel-profile-image {
+.video-grid .channel-profile-image {
     width: 36px;
     height: 36px;
     border-radius: 60px;
     margin: 13px 13px 8px 0;
 }
 
-.info-text-container {
+.video-grid .info-text-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,11 +61,11 @@
     flex: 1;
 }
 
-.title-container {
+.video-grid .title-container {
     display: flex;
 }
 
-.video-title {
+.video-grid .video-title {
     font-weight: bold;
     font-size: 16px;
     margin-bottom: 3px;
@@ -73,7 +73,7 @@
     flex: 1;
 }
 
-.three-dots-container {
+.video-grid .three-dots-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,26 +84,26 @@
     margin-top: 5px;
 }
 
-.three-dots-container:hover {
+.video-grid .three-dots-container:hover {
     background-color: rgba(0, 0, 0, 0.18);
 }
 
-.three-dots-icon {
+.video-grid .three-dots-icon {
     width: 20px;
 }
 
-.misc-info {
+.video-grid .misc-info {
     display: flex;
     align-items: center;
 }
 
-.channel-name-text, .views-text, .uptime-text {
+.video-grid .channel-name-text, .views-text, .uptime-text {
     font-size: 14px;
     color: gray;
     margin-right: 3px;
 }
 
-.verified-channel-icon, .right-triangle-icon{
+.video-grid .verified-channel-icon, .right-triangle-icon{
     height: 10px;
     margin-right: 5px;
 }
@@ -116,6 +116,14 @@
 
 @media (max-width: 1300px) {
     .video-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .video-grid .video-preview-container {
+        width: 356px;
+    }
+
+    .video-grid .thumbnail {
+        width: 356px;
     }
 }

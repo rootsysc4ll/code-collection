@@ -67,6 +67,10 @@
     border-radius: 100%;
     background-color: rgb(244, 244, 244);
     margin-left: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: none;
 }
 
 .right-section {
@@ -96,11 +100,15 @@
 }
 
 .notifications-button {
+    overflow: none;
     width: fit-content;
     padding: 10px;
     border-radius: 100%;
     background-color: white;
     margin-left: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .user-image-container {
@@ -119,4 +127,32 @@
 
 .menu-button:hover, .notifications-button:hover, .audio-search-button:hover {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menu-button:hover, .notifications-button:hover, .audio-search-button:hover, .search-button:hover, .youtube-image:hover, .create-button:hover, .user-image-container:hover {
+    cursor: pointer;
+}
+
+.header .youtube-image-container {
+    position: relative;
+    display: flex;
+}
+
+.header .youtube-image-container:hover .tooltip,
+.header .audio-search-button:hover .tooltip,
+.header .notifications-button:hover .tooltip {
+  opacity: 1;
+}
+
+.header .tooltip {
+    position: absolute;
+    bottom: -55px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 100;
 }

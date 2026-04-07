@@ -30,7 +30,7 @@
     border-radius: 6px;
 }
 
-.sidebar .sidebar-section, .subscriptions-section  {
+.sidebar .sidebar-section, .subscriptions-section, .report-sidebar-section, .explore-sidebar-section, .more-sidebar-section  {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -74,6 +74,26 @@
     width: 24px;
 }
 
-.sidebar .nav-button:hover, .section-title-text:hover {
+.sidebar .nav-button:hover, .section-explore-text:hover, .section-more-text:hover, .section-title-text:hover, .channel-container:hover {
     background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+    .sidebar {
+        width: 72px;
+    }
+
+    .sidebar .button-text {
+        display: none;
+    }
+
+    .sidebar .section-title-text {
+        font-size: 16px;
+        padding: 0;
+    }
+
+    .sidebar .explore-sidebar-section, .report-sidebar-section, .more-sidebar-section, .subscriptions-section {
+        display: none;
+    }
 }

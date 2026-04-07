@@ -5,3 +5,8 @@ body {
     padding-left: 245px;
 }
 
+@media (max-width: 1300px) {
+    body {
+        padding-left: 85px;
+    }
+}

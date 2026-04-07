@@ -4,7 +4,7 @@
     top: 56px;
     right: 0;
     left: 240px;
-    z-index: 100;
+    z-index: 50;
     background-color: rgba(255, 255, 255, 1);
     align-items: center;
     padding-top: 10px;
@@ -44,4 +44,15 @@
 
 .move-chip-button:hover {
     background-color: rgb(244, 244, 244);
+    cursor: pointer;
+}
+
+.chip-filter .filter:hover, .all-filter:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+    .chip-filter {
+        left: 72px;
+    }
 }
