@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../../images/icon.png">
+    <title>Document</title>
+    
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button:hover {
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .title {
+            font-size: 30px;
+        }
+
+        .todo-grid, .todo-input-grid {
+            display: grid;
+            grid-template-columns: 300px 150px 100px;
+            column-gap: 10px;
+            row-gap: 5px;
+            align-items: top;
+            margin-top: 10px;
+        }
+
+        .todo-name-input {
+            font-size: 18px;
+            padding-left: 10px;
+            border: 1px solid gray;
+        }
+
+        .todo-date-input {
+            padding-left: 10px;
+            padding-right: 5px;
+            font-size: 16px;
+        }
+
+        .add-button {
+            font-size: 18px;
+            background-color: green;
+            color: white;
+            border: none;
+            height: 40px;
+        }
+
+        .todo-grid {
+            align-items: center;   
+        }
+
+        .todo-name, .todo-date {
+            font-size: 18px;
+        }
+
+        .delete-button {
+            font-size: 18px;
+            background-color: rgb(222, 0, 0);
+            color: white;
+            border: none;
+            height: 40px;
+        }
+
+        .error-message-display {
+            margin-top: 10px;
+        }
+    </style>
+    <script type="module" src="dist/main.js" defer></script>
+</head>
+<body>
+    <p class="title">Todo List</p>
+
+    <div class="todo-input-grid ts-todo-input-grid">
+        <input type="text" placeholder="Todo name" class="todo-name-input ts-todo-name-input">
+        <input type="date" class="todo-date-input ts-todo-date-input">
+        <button class="add-button ts-add-button">Add</button>
+    </div>
+
+    <div class="todo-grid ts-todo-grid"></div>
+
+    <div class="error-message-display ts-error-message-display"></div>
+</body>
+</html>
