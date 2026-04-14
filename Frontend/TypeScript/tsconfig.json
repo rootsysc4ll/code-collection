@@ -44,5 +44,5 @@
 
   "include": [
     "src"
-, "todo-list/main.ts"  ]
+  ]
 }

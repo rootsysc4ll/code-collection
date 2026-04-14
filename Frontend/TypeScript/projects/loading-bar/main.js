@@ -1,4 +1,6 @@
+"use strict";
 class inputElement {
+    element;
     constructor(element) {
         this.element = element;
         element.addEventListener('click', () => {
@@ -16,6 +18,10 @@ function messageTimer() {
     }, timeoutDelayMS);
 }
 class user {
+    name;
+    age;
+    works;
+    gender;
     constructor(name, age, works, gender) {
         this.name = name;
         this.age = age;
@@ -51,6 +57,7 @@ class user {
 }
 const loadingFactorPX = 20;
 class inputButton {
+    element;
     constructor(element) {
         this.element = element;
         element.addEventListener('click', () => {
@@ -69,11 +76,9 @@ class inputButton {
         });
     }
 }
-let barProgress = 0;
-let fillElement = document.querySelector('.js-fill');
-let barButton = new inputButton(document.querySelector('.js-loading-bar-button'));
 let loadingBarElement = document.querySelector('.js-loading-bar');
 let barWidth = parseInt(getComputedStyle(loadingBarElement).width.split('px')[0]);
+let barProgress = 0;
 let statusElement = document.querySelector('.js-status');
-export {};
-//# sourceMappingURL=main.js.map
+let fillElement = document.querySelector('.js-fill');
+let barButton = new inputButton(document.querySelector('.js-loading-bar-button'));
