@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../images/icon.png">
+    <script type="module" src="scripts/main.js"></script>
+
+    <style>
+        body {
+            font-family: Roboto, Arial, Helvetica, sans-serif;
+            height: 4000px;
+            background-color: black;
+        }
+
+        .question-cards {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            row-gap: 20px;
+        }
+
+        .question-card-container {
+            display: flex;
+            width: 700px;
+            flex-direction: column;
+            /*border: 1px solid black;*/
+            border-radius: 20px;
+            overflow: hidden;
+        }   
+
+        .question-header-text {
+            display: flex;
+            flex: 1;
+            background-color: rgb(255, 0, 89);
+            color: white;
+            padding: 10px 0px 10px 18px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .question-body-container {
+            display: flex;
+            flex-direction: column;
+            padding: 18px;
+            background-color: rgb(243, 243, 243);
+        }
+
+        .main-text {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: rgb(111, 111, 111);
+        }   
+
+        .main-question {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .alternatives-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            row-gap: 3px;
+            font-size: 18px;
+        }
+
+        .alternative-letter {
+            font-weight: bold;
+        }
+
+        .alternative-text {
+            margin-left: 10px;
+        }
+
+        .answer-container {
+            display: flex;
+            flex-direction: column;
+            border: rgb(0, 166, 255) solid 2px;
+            /*
+            change to: 
+            border: rgb(90, 197, 255) solid 2px;
+            when clicked
+            */
+            border-radius: 13px;
+            background-color: rgb(222, 244, 255);
+        }
+
+        .show-button, .answer-button {
+            display: flex;
+            font-weight: bold;
+            color: white;
+            background-color: rgb(0, 166, 255);
+            padding: 8px;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .hide-button {
+            display: flex;
+            font-weight: bold;
+            color: white;
+            background-color: rgb(90, 197, 255);
+            padding: 8px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .show-button:hover, .hide-button:hover {
+            opacity: 0.8;
+        }
+
+        .answer-text {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ts-question-cards question-cards">
+        <div class="ts-question-card-container question-card-container"> 
+            <div class="ts-question-header-text question-header-text">Question X</div>
+
+            <div class="ts-question-body-container question-body-container">
+                <div class="ts-main-text main-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus laborum iste, sapiente eos maiores, tenetur velit consequatur facere, autem nesciunt alias cupiditate! Vitae earum itaque quam quos rem, provident explicabo!
+                </div>
+
+                <div class="ts-main-question main-question">Question Here</div>
+                <div class="ts-alternatives-container alternatives-container">
+                    <div style="display: flex;"><span class="alternative-letter">a&rpar;</span><div class="ts-alternative-a alternative-text">Alternative a</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">b&rpar;</span><div class="ts-alternative-b alternative-text">Alternative b</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">c&rpar;</span><div class="ts-alternative-c alternative-text">Alternative c</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">d&rpar;</span><div class="ts-alternative-d alternative-text">Alternative d</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">e&rpar;</span><div class="ts-alternative-e alternative-text">Alternative e</div></div>
+                </div>
+
+                <div class="ts-answer-container answer-container">
+                    <div class="ts-answer-button answer-button">Show answer</div>
+                    <div class="ts-answer-text-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ts-question-card-container question-card-container"> 
+            <div class="ts-question-header-text question-header-text">Question X</div>
+
+            <div class="ts-question-body-container question-body-container">
+                <div class="ts-main-text main-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus laborum iste, sapiente eos maiores, tenetur velit consequatur facere, autem nesciunt alias cupiditate! Vitae earum itaque quam quos rem, provident explicabo!
+                </div>
+
+                <div class="ts-main-question main-question">Question Here</div>
+                <div class="ts-alternatives-container alternatives-container">
+                    <div style="display: flex;"><span class="alternative-letter">a&rpar;</span><div class="ts-alternative-a alternative-text">Alternative a</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">b&rpar;</span><div class="ts-alternative-b alternative-text">Alternative b</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">c&rpar;</span><div class="ts-alternative-c alternative-text">Alternative c</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">d&rpar;</span><div class="ts-alternative-d alternative-text">Alternative d</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">e&rpar;</span><div class="ts-alternative-e alternative-text">Alternative e</div></div>
+                </div>
+
+                <div class="ts-answer-container answer-container">
+                    <div class="ts-answer-button answer-button">Show answer</div>
+                    <div class="ts-answer-text-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ts-question-card-container question-card-container"> 
+            <div class="ts-question-header-text question-header-text">Question X</div>
+
+            <div class="ts-question-body-container question-body-container">
+                <div class="ts-main-text main-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus laborum iste, sapiente eos maiores, tenetur velit consequatur facere, autem nesciunt alias cupiditate! Vitae earum itaque quam quos rem, provident explicabo!
+                </div>
+
+                <div class="ts-main-question main-question">Question Here</div>
+                <div class="ts-alternatives-container alternatives-container">
+                    <div style="display: flex;"><span class="alternative-letter">a&rpar;</span><div class="ts-alternative-a alternative-text">Alternative a</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">b&rpar;</span><div class="ts-alternative-b alternative-text">Alternative b</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">c&rpar;</span><div class="ts-alternative-c alternative-text">Alternative c</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">d&rpar;</span><div class="ts-alternative-d alternative-text">Alternative d</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">e&rpar;</span><div class="ts-alternative-e alternative-text">Alternative e</div></div>
+                </div>
+
+                <div class="ts-answer-container answer-container">
+                    <div class="ts-answer-button answer-button">Show answer</div>
+                    <div class="ts-answer-text-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ts-question-card-container question-card-container"> 
+            <div class="ts-question-header-text question-header-text">Question X</div>
+
+            <div class="ts-question-body-container question-body-container">
+                <div class="ts-main-text main-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus laborum iste, sapiente eos maiores, tenetur velit consequatur facere, autem nesciunt alias cupiditate! Vitae earum itaque quam quos rem, provident explicabo!
+                </div>
+
+                <div class="ts-main-question main-question">Question Here</div>
+                <div class="ts-alternatives-container alternatives-container">
+                    <div style="display: flex;"><span class="alternative-letter">a&rpar;</span><div class="ts-alternative-a alternative-text">Alternative a</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">b&rpar;</span><div class="ts-alternative-b alternative-text">Alternative b</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">c&rpar;</span><div class="ts-alternative-c alternative-text">Alternative c</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">d&rpar;</span><div class="ts-alternative-d alternative-text">Alternative d</div></div>
+                    <div style="display: flex;"><span class="alternative-letter">e&rpar;</span><div class="ts-alternative-e alternative-text">Alternative e</div></div>
+                </div>
+
+                <div class="ts-answer-container answer-container">
+                    <div class="ts-answer-button answer-button">Show answer</div>
+                    <div class="ts-answer-text-container"></div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</body>
+</html>
