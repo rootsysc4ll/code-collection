@@ -49,6 +49,6 @@ export default class FullList implements List {
 
     remove(id: string): void {
         this._list = this._list.filter(item => item.id !== id)
-        this.save
+        this.save()
     }
 }
