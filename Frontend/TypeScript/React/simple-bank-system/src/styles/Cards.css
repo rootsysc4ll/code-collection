@@ -1,0 +1,46 @@
+#cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: rgb(255, 127, 80);
+    color: white;
+    position: relative;
+}
+.card-container:hover {
+    cursor: pointer;
+    background-color: rgb(255, 165, 133);
+}
+.card-container:hover .delete-icon {
+    visibility: visible;
+    pointer-events: all;
+}
+
+.card-icon {
+    height: 85px;
+    width: 85px;
+}
+
+.card-text {
+    font-weight: bold;
+}
+
+.delete-icon {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    visibility: hidden;
+    pointer-events: none;
+}
+.delete-icon:hover {
+    opacity: 0.5;
+}

@@ -1,0 +1,13 @@
+#add-button {
+    width: max-content;
+    height: max-content;
+    background-color: rgb(255, 127, 80);
+}
+#add-button:hover {
+    cursor: pointer;
+}
+
+#plus-icon {
+    width: 35px;
+    height: 35px;
+}

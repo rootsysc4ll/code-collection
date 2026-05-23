@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './styles/App.css'
 import spinner from './assets/loading-spinner.gif'
-
+import Chatbot from 'supersimpledev/chatbot'
 
 function ChatMessageInput( {chatMessages, setChatMessages} ) {
     const [ inputValue, setInputValue ] = useState('');
@@ -80,6 +80,7 @@ function useAutoScroll(dependencies) {
 
     useEffect(() => {
         chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
+        console.log(chatMessagesRef.current);
     }, [dependencies]);
 
     return chatMessagesRef;

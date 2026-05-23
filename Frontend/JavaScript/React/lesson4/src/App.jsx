@@ -56,12 +56,12 @@ function Clock() {
     );
 }
 
-function AutoClick() {
+function AutoClick( {expandedMode} ) {
     let [ clicks, setClicks] = useState(0);
     const buttonElem = useRef(null);
 
     return (
-        <div style={{
+        <div data-mode={expandedMode} style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -79,12 +79,24 @@ function AutoClick() {
     );
 }
 
-function App() {
+function ExpandButton( {expandedMode, setExpandedMode} ) {
+    console.log(expandedMode);
     return (<>
-        <SwitchButton/>
-        <LoginForm/>
-        <Clock/>
-        <AutoClick/>
+        <button id={'expand-button'} onClick={() => { setExpandedMode(!expandedMode)}}>Expand the autoclick component</button>
+    </>);
+}
+
+function App() {
+    let [ expandedMode, setExpandedMode ] = useState(false)
+
+    return (<>
+        {!expandedMode && (<>
+            <SwitchButton/>
+            <LoginForm/>
+            <Clock/>
+        </>)}
+        <AutoClick expandedMode={expandedMode}/>
+        <ExpandButton expandedMode={expandedMode} setExpandedMode={setExpandedMode}/>
     </>);
 }
 
