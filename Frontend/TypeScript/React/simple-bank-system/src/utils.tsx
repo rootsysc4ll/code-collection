@@ -1,5 +1,7 @@
 export interface CardType {
     balance: number
+    color: string
+    name: string
     id: string
 }
 

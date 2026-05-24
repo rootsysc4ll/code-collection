@@ -1,5 +1,13 @@
-#add-quantity-overlay {
-    background-color: rgba(0, 0, 0, 0.8);
+.show {
+    visibility: visible;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.2);
     color: white;
     position: fixed;
     top: 0;
@@ -9,6 +17,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#error-overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#error-message-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
 }
 
 #add-quantity-container {

@@ -5,7 +5,7 @@ type Props = {
     setQuantityOverlayActive: Dispatch<React.SetStateAction<boolean>>
 }
 
-export function AddCardButton( {setQuantityOverlayActive}: Props ) {
+export default function AddCardButton( {setQuantityOverlayActive}: Props ) {
 
     return (<>
         <div onClick={() => setQuantityOverlayActive(true)} id='add-button'>
