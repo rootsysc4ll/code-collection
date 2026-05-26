@@ -32,14 +32,17 @@
     font-weight: bold;
 }
 
-.delete-icon {
-    width: 16px;
-    height: 16px;
+.delete-icon-container {
     position: absolute;
     top: 1px;
     right: 1px;
     visibility: hidden;
     pointer-events: none;
+}
+
+.delete-icon {
+    width: 16px;
+    height: 16px;
 }
 .delete-icon:hover {
     opacity: 0.5;

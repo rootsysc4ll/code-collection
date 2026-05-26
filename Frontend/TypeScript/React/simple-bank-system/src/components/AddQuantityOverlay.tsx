@@ -1,22 +1,23 @@
-import { useState, type MouseEvent, type KeyboardEvent } from 'react';
+import { useState, type Dispatch, type MouseEvent, type KeyboardEvent } from 'react';
 import '../styles/overlays.css'
 
 type Props = {
-    quantityOverlayActive: boolean
+    setQuantityOverlayActive: Dispatch<React.SetStateAction<boolean>>
     handleAddCard: (balance: number) => void
     showErrorMsg: (msg: string) => null
 }
 
-export default function AddQuantityOverlay( { quantityOverlayActive, handleAddCard, showErrorMsg }: Props ) {
+export default function AddQuantityOverlay( { handleAddCard, showErrorMsg }: Props ) {
     const [ inputValue, setInputValue ] = useState<string>('');
     
-    function handleInput(event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLInputElement>) {
+    function handleInput(e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLInputElement>) {
+        e.stopPropagation()
         const input = Number(inputValue)
 
-        const keydownCond = event.type === 'keydown'
-        const clickCond   = event.type === 'click'  
+        const keydownCond = e.type === 'keydown'
+        const clickCond   = e.type === 'click'  
         if (keydownCond) {
-            const keypress = event as KeyboardEvent<HTMLInputElement>
+            const keypress = e as KeyboardEvent<HTMLInputElement>
 
             if (keypress.key === 'Enter' && isNaN(input)) {
                 showErrorMsg('Invalid entry for balance! Enter only numbers')       
@@ -33,15 +34,15 @@ export default function AddQuantityOverlay( { quantityOverlayActive, handleAddCa
     }
 
     return (
-        <div className={(quantityOverlayActive ? 'show' : 'hide') + ' overlay' }>
+        <div className='overlay'>
             <div id="add-quantity-container">
                 add quantity:
                 <input id='quantity-input' placeholder='Enter a quantity for the card' type="text" 
                     onChange={(e) => setInputValue(e.target.value)}
                     value={inputValue}
-                    onKeyDown={(e) => handleInput(e)}
+                    onKeyDown={handleInput}
                 />
-                <button onClick={(e) => handleInput(e)}>add</button>
+                <button onClick={handleInput}>add</button>
             </div>
         </div>
     )

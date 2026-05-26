@@ -1,6 +1,10 @@
-#add-button {
+#add-button-container {
     width: max-content;
     height: max-content;
+}
+
+#add-button {
+    border: none;
     background-color: rgb(255, 127, 80);
 }
 #add-button:hover {

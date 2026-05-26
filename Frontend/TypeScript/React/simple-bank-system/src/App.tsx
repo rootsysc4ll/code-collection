@@ -5,14 +5,23 @@ import './styles/App.css'
 import Cards from './components/Cards'
 import AddCardButton from './components/AddCardButton'
 
-import AddQuantityOverlay from './components/AddQuantityOverlay.tsx';
 import ErrorOverlay from './components/ErrorOverlay.tsx';
 
-function App() {
-    const [ cards, setCards ] = useState<CardType[]>([])
+function Pog() {
+    return (<></>)
+}
 
-    const [ quantityOverlayActive, setQuantityOverlayActive ] = useState<boolean>(false)
-    const [ errorOverlayActive,setErrorOverlayActive]         = useState<boolean>(false)
+function App() {
+    const [ cards, setCards ] = useState<CardType[]>([
+        {
+            balance: 111,
+            color: cardColors[0],
+            name: '1',
+            id: crypto.randomUUID()
+        }
+    ])
+
+    const [ errorOverlayActive, setErrorOverlayActive]        = useState<boolean>(false)
 
     const [ errorMsg, setErrorMsg] = useState<string>('')
 
@@ -46,11 +55,6 @@ function App() {
         }
     }
 
-    function handleAddCard(balance: number) {
-        addCard(balance)
-        setQuantityOverlayActive(false)
-    }
-
     function removeCard(name: string) {
         setCards(cards.filter(card => {return card.name !== name}))
     }
@@ -69,20 +73,18 @@ function App() {
                 removeCard={removeCard}
             />
             <AddCardButton
-                setQuantityOverlayActive={setQuantityOverlayActive}
-            />
-
-            <AddQuantityOverlay
-                quantityOverlayActive={quantityOverlayActive}
-                handleAddCard={handleAddCard}
+                addCard={addCard}
                 showErrorMsg={showErrorMsg}
             />
 
-            <ErrorOverlay
-                errorOverlayActive={errorOverlayActive}
-                setErrorOverlayActive={setErrorOverlayActive}
-                errorMsg={errorMsg}
-            />    
+            {errorOverlayActive && (
+                <ErrorOverlay
+                    setErrorOverlayActive={setErrorOverlayActive}
+                    errorMsg={errorMsg}
+                />    
+            )}
+
+            <Pog/>
         </div>
     )
 }

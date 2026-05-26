@@ -1,17 +1,21 @@
-import { type Dispatch } from "react"
+import { type Dispatch, type MouseEvent } from "react"
 
 type Props = {
-    errorOverlayActive: boolean
     setErrorOverlayActive: Dispatch<React.SetStateAction<boolean>>
     errorMsg: string
 }
 
-export default function ErrorOverlay( {errorOverlayActive, setErrorOverlayActive, errorMsg}: Props ) {
+export default function ErrorOverlay( {setErrorOverlayActive, errorMsg}: Props ) {
+    function handleClick(e: MouseEvent<HTMLButtonElement>) {
+        e.stopPropagation()
+        setErrorOverlayActive(false)
+    }
+
     return (
-        <div className={errorOverlayActive ? 'show' : 'hide'} id="error-overlay">
+        <div id="error-overlay">
             <div id="error-message-container">
                 <span id="error-text">{errorMsg}</span>
-                <button onClick={() => setErrorOverlayActive(false)}>Close</button>
+                <button onClick={handleClick}>Close</button>
             </div>
         </div>
     )
