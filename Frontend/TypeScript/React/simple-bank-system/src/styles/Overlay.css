@@ -1,0 +1,24 @@
+.overlay, .error-overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-overlay {
+    z-index: 100;
+}
+
+#error-message-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+}

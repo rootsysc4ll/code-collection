@@ -6,17 +6,19 @@
 
 .card-container {
     display: flex;
+    width: 120px;
+    height: 120px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 10px;
-    background-color: rgb(255, 127, 80);
+    background-color: rgb(65, 65, 65);
     color: white;
     position: relative;
 }
 .card-container:hover {
     cursor: pointer;
-    background-color: rgb(255, 165, 133);
+    background-color: rgb(75, 75, 75);       
 }
 .card-container:hover .delete-icon {
     visibility: visible;

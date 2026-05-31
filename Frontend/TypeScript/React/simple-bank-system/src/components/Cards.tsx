@@ -1,3 +1,4 @@
+import { type MouseEvent } from "react"
 import { type CardType } from "../utils.tsx"
 import '../styles/Cards.css'
 
@@ -11,7 +12,12 @@ type CardProps = {
     removeCard: (name: string) => void
 }
 
-export function Card({ card, removeCard }: CardProps) {
+function Card( { card, removeCard }: CardProps) {
+    function handleDelete(e: MouseEvent<HTMLButtonElement>) {
+        e.stopPropagation()
+        removeCard(card.name)
+    }
+
     return (
         <div className='card-container'>
             <span className='card-text'>Card {card.name}</span>
@@ -22,7 +28,7 @@ export function Card({ card, removeCard }: CardProps) {
             </svg>
             <span className='card-text'>Balance: ${card.balance}</span>
 
-            <button className="delete-icon-container" onClick={() => { removeCard(card.name) }}>
+            <button className="delete-icon-container" onClick={handleDelete}>
                 <img className="delete-icon" src="src/assets/minus.svg" alt="" />
             </button>
         </div>
@@ -30,7 +36,7 @@ export function Card({ card, removeCard }: CardProps) {
 }
 
 export default function Cards({ cards, removeCard }: CardsProps) {
-
+    
     return (
         <div id='cards-container'>
             {cards.map((card) => {

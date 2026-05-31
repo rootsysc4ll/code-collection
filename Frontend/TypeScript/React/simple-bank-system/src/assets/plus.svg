@@ -39,22 +39,25 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-61.991577,-112.87589)">
-    <rect
-       style="fill:#000000;stroke-width:1.17479;paint-order:fill markers stroke"
-       id="rect1"
-       width="16.846079"
-       height="89.845757"
-       x="98.491409"
-       y="112.87589"
-       ry="8.4230394" />
-    <rect
-       style="fill:#000000;stroke-width:1.17479;paint-order:fill markers stroke"
-       id="rect1-1"
-       width="16.846079"
-       height="89.845757"
-       x="-166.22182"
-       y="61.991577"
-       transform="rotate(-90)"
-       ry="8.4230394" />
+    <g
+       id="g1">
+      <rect
+         style="fill:#000000;stroke-width:1.17479;paint-order:fill markers stroke"
+         id="rect1"
+         width="16.846079"
+         height="89.845757"
+         x="98.491409"
+         y="112.87589"
+         ry="8.4230394" />
+      <rect
+         style="fill:#000000;stroke-width:1.17479;paint-order:fill markers stroke"
+         id="rect1-1"
+         width="16.846079"
+         height="89.845757"
+         x="-166.22182"
+         y="61.991577"
+         transform="rotate(-90)"
+         ry="8.4230394" />
+    </g>
   </g>
 </svg>

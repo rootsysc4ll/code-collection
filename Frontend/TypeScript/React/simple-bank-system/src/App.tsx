@@ -4,12 +4,8 @@ import './styles/App.css'
 
 import Cards from './components/Cards'
 import AddCardButton from './components/AddCardButton'
-
-import ErrorOverlay from './components/ErrorOverlay.tsx';
-
-function Pog() {
-    return (<></>)
-}
+import TransferButton from './components/TransferButton.tsx';
+import { ErrorOverlay } from './components/Overlay.tsx';
 
 function App() {
     const [ cards, setCards ] = useState<CardType[]>([
@@ -21,17 +17,16 @@ function App() {
         }
     ])
 
-    const [ errorOverlayActive, setErrorOverlayActive]        = useState<boolean>(false)
-
-    const [ errorMsg, setErrorMsg] = useState<string>('')
+    const [ errorOverlayActive, setErrorOverlayActive] = useState<boolean>(false)
+    const [ errorMsg, setErrorMsg]                     = useState<string>('')
 
     function createCard(balance: number): (CardType | null) {
         const usedColors    = new Set(cards.map(card => card.color))
         const usedNames     = new Set(cards.map(card => card.name))
         const possibleNames = cardColors.map((_, i) => (i + 1).toString())
 
-        let color = cardColors.find(col => !usedColors.has(col))
-        let name  = possibleNames.find(nam => !usedNames.has(nam))
+        const color = cardColors.find(col => !usedColors.has(col))
+        const name  = possibleNames.find(nam => !usedNames.has(nam))
         if (!color || !name) {
             return showErrorMsg("There isn't more cards available!")
         }
@@ -76,17 +71,48 @@ function App() {
                 addCard={addCard}
                 showErrorMsg={showErrorMsg}
             />
+            <TransferButton
+            
+            />
 
             {errorOverlayActive && (
-                <ErrorOverlay
-                    setErrorOverlayActive={setErrorOverlayActive}
+                <ErrorOverlay 
                     errorMsg={errorMsg}
-                />    
+                    setErrorOverlayActive={setErrorOverlayActive}
+                />  
             )}
-
-            <Pog/>
         </div>
     )
 }
 
 export default App
+
+{/* <div style={{
+    marginLeft: '20px',
+    position: 'relative'
+}}>
+    <button onClick={() => setClicked(!clicked)}>Click to open dropdown</button>
+    <div style={(clicked ? {
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'column',
+        left: '20px'
+    } : {
+        position: 'absolute',
+        display: 'none',
+        flexDirection: 'column'
+    })}>
+        <span style={{
+            backgroundColor: 'white',
+            color: 'black'
+        }}>Item1</span>
+        <span style={{
+            backgroundColor: 'white',
+            color: 'black'
+        }}>Item2</span>
+        <span style={{
+            backgroundColor: 'white',
+            color: 'black'
+        }}>Item3</span>
+    </div>
+</div> */}
