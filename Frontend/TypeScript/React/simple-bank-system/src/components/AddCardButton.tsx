@@ -46,17 +46,19 @@ function AddCardOverlay( { setQuantityOverlayActive, handleAddCard, showErrorMsg
     }
 
     return (
-        <Overlay isError={false}>
-            <div id="add-quantity-container">
-                add quantity:
-                <input id='quantity-input' placeholder='Enter a quantity for the card' type="text" 
-                    onChange={(e) => setInputValue(e.target.value)}
-                    value={inputValue}
-                    onKeyDown={handleInput}
-                />
-                <button onClick={handleInput} id='add'>add</button>
-                <button className="close-button" onClick={handleClose}>Close</button>
-            </div>
+        <Overlay
+            overlayId='overlay'
+            containerId='add-quantity-container'
+            closeButtonId='add-close'
+            handleClose={handleClose}
+        >
+            add quantity:
+            <input id='quantity-input' placeholder='Enter a quantity for the card' type="text" 
+                onChange={(e) => setInputValue(e.target.value)}
+                value={inputValue}
+                onKeyDown={handleInput}
+            />
+            <button onClick={handleInput} id='add'>add</button>
         </Overlay>
     )
 }

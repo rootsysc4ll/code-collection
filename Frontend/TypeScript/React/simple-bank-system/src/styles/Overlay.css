@@ -1,4 +1,4 @@
-.overlay, .error-overlay {
+#overlay, #error-overlay {
     background-color: rgba(0, 0, 0, 0.3);
     color: white;
     position: fixed;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.error-overlay {
+#error-overlay {
     z-index: 100;
 }
 

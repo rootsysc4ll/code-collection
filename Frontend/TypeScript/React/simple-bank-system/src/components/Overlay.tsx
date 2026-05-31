@@ -8,7 +8,10 @@ type ErrorOverlayProps = {
 
 type OverlayProps = {
     children: ReactNode
-    isError: boolean
+    overlayId: string
+    containerId: string
+    closeButtonId: string
+    handleClose: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 export function ErrorOverlay( { errorMsg, setErrorOverlayActive }: ErrorOverlayProps) {
@@ -18,19 +21,24 @@ export function ErrorOverlay( { errorMsg, setErrorOverlayActive }: ErrorOverlayP
     }  
 
     return (
-        <Overlay isError={true}>
-            <div id="error-message-container">
-                <span id="error-text">{errorMsg}</span>
-                <button onClick={handleClose} className="close-button">Close</button>
-            </div>
+        <Overlay 
+            overlayId="error-overlay" 
+            containerId="error-message-container" 
+            closeButtonId="close-button"
+            handleClose={handleClose}
+        >
+            <span id="error-text">{errorMsg}</span>
         </Overlay>
     )
 }
 
-export default function Overlay( { children, isError }: OverlayProps ) {
+export default function Overlay( { children, overlayId, containerId, closeButtonId, handleClose }: OverlayProps ) {
     return (
-        <div className={isError ? "error-overlay" : "overlay"}>
-            {children}
+        <div id={overlayId}>
+            <div id={containerId}>
+                {children}
+                <button onClick={handleClose} id={closeButtonId}>Close</button>
+            </div>
         </div>
     )
 }

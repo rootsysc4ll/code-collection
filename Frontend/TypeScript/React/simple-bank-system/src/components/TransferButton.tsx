@@ -1,6 +1,8 @@
 import { useState, type Dispatch, type SetStateAction, type MouseEvent } from "react"
 import "../styles/TransferButton.css"
 
+import Overlay from "./Overlay"
+
 type TransferOverlayProps = {
     setTransferOverlayActive: Dispatch<SetStateAction<boolean>>
 }
@@ -12,11 +14,14 @@ function TransferOverlay( { setTransferOverlayActive }: TransferOverlayProps ) {
     }
     
     return (
-        <div className="overlay">
-            <div id="transfer-overlay-container">
-                <button id="transfer-close" onClick={handleClose}>Close</button>
-            </div>
-        </div>
+        <Overlay
+            overlayId="overlay"
+            containerId="transfer-overlay-container"
+            closeButtonId="transfer-Close"
+            handleClose={handleClose}
+        >
+            transferoverlay
+        </Overlay>
     )
 }
 
