@@ -12,8 +12,22 @@ function App() {
         {
             balance: 111,
             color: cardColors[0],
-            name: '1',
-            id: crypto.randomUUID()
+            name: '1'
+        },
+        {
+            balance: 111,
+            color: cardColors[1],
+            name: '2'
+        },
+        {
+            balance: 111,
+            color: cardColors[2],
+            name: '3'
+        },
+        {
+            balance: 111,
+            color: cardColors[3],
+            name: '4'
         }
     ])
 
@@ -34,8 +48,7 @@ function App() {
         return {
             balance,
             color,
-            name,
-            id: crypto.randomUUID()
+            name
         }
     }
 
@@ -72,7 +85,7 @@ function App() {
                 showErrorMsg={showErrorMsg}
             />
             <TransferButton
-            
+                cards={cards}
             />
 
             {errorOverlayActive && (

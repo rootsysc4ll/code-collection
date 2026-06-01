@@ -1,75 +1,142 @@
 import { useState, type Dispatch, type SetStateAction, type MouseEvent } from "react"
+import { type CardType } from "../utils"
+import { TransferSvg, ArrowsSvg, CardSvg } from "../assets/SvgComponents"
 import "../styles/TransferButton.css"
 
 import Overlay from "./Overlay"
 
 type TransferOverlayProps = {
     setTransferOverlayActive: Dispatch<SetStateAction<boolean>>
+    cards: CardType[]
+}
+ 
+type TransferButtonProps = {
+    cards: CardType[]
 }
 
-function TransferOverlay( { setTransferOverlayActive }: TransferOverlayProps ) {
+type TransferDropdownProps = {
+    transferSide: number
+    selectedCards: string[]
+    setSelectedCards: Dispatch<SetStateAction<string[]>>
+    cards: CardType[]
+}
+
+enum Sides { left, right }
+
+function TransferDropdown( { transferSide, selectedCards, setSelectedCards, cards }: TransferDropdownProps ) {
+    const [ dropdownIsActive, setDropdownIsActive ] = useState<boolean>(false)    
+    const [ dropDownText, setDropDownText ]         = useState<string>('Select a card')
+    
+    function handleSelection(e: MouseEvent<HTMLSpanElement>, name: string) {
+        e.stopPropagation()
+        setDropDownText(`Card ${name}`)
+        setDropdownIsActive(false)
+        
+        const newSelectedCards = selectedCards.map((selectedCard, i) => {
+            if (i === transferSide) {
+                return name
+            } else {
+                return selectedCard
+            }
+        })
+        setSelectedCards(newSelectedCards)
+    }
+
+    function startSelection(e: MouseEvent<HTMLSpanElement>) {
+        e.stopPropagation()
+        setDropdownIsActive(!dropdownIsActive)
+    }
+
+    return (
+        <div id={transferSide === Sides.left ? 'left-dropdown' : 'right-dropdown'}>
+            <span onClick={startSelection} className="dropdown-selection">{dropDownText}</span>
+
+            {dropdownIsActive && (
+                cards.map(card => {
+                    return (
+                        <span 
+                            onClick={e => handleSelection(e, card.name)} 
+                            className="dropdown-option"
+                            key={crypto.randomUUID()}
+                        >Card {card.name}</span>
+                    )
+                })
+            )}
+        </div>
+    )
+}
+
+function TransferOverlay( { setTransferOverlayActive, cards }: TransferOverlayProps ) {
     function handleClose(e: MouseEvent<HTMLButtonElement>) {
         e.stopPropagation()
         setTransferOverlayActive(false)
     }
+
+    const [ selectedCards, setSelectedCards ] = useState<string[]>(['', ''])
     
+    function returnValidSelection(): CardType[] {
+        return cards.filter(card => (card.name !== selectedCards[Sides.right] && card.name !== selectedCards[Sides.left]))
+    }
+
+    function pickCardColor(side: number): string {
+        return cards.filter(card => card.name === selectedCards[side])[0].color
+    }
+
     return (
         <Overlay
             overlayId="overlay"
             containerId="transfer-overlay-container"
-            closeButtonId="transfer-Close"
+            closeButtonId="transfer-close"
             handleClose={handleClose}
         >
-            transferoverlay
+            <div id="transfer-selection">
+                <div id="transfer-left-side">
+                    <span className="transfer-side-text">From</span>
+                    {selectedCards[Sides.left] === '' ? (<></>) : (
+                        <CardSvg color={pickCardColor(Sides.left)}/>
+                    )}
+                    <TransferDropdown 
+                        transferSide={Sides.left}
+                        selectedCards={selectedCards}
+                        setSelectedCards={setSelectedCards} 
+                        cards={returnValidSelection()} 
+                    />
+                </div>
+                <ArrowsSvg color="#000000" />
+                <div id="transfer-right-side">
+                    <span className="transfer-side-text">To</span>
+                    {selectedCards[Sides.right] === '' ? (<></>) : (
+                        <CardSvg color={pickCardColor(Sides.right)}/>
+                    )}
+                    <TransferDropdown 
+                        transferSide={Sides.right}
+                        selectedCards={selectedCards}
+                        setSelectedCards={setSelectedCards} 
+                        cards={returnValidSelection()} 
+                    />
+                </div>
+            </div>
+            <div id="transfer-input">
+                <input id="transfer-value" type="text" />
+                <button id="complete-transfer-button">Transfer</button>
+            </div>
         </Overlay>
     )
 }
 
-export default function TransferButton() {
+export default function TransferButton( { cards }: TransferButtonProps ) {
     const [ transferOverlayActive, setTransferOverlayActive ] = useState<boolean>(false)
 
     return (
         <div id="transfer-button-container" >
             <button id="transfer-button" onClick={() => setTransferOverlayActive(true)}>
-                <svg
-                    id="transfer-icon"
-                    width="165.03244mm"
-                    height="77.559662mm"
-                    viewBox="0 0 165.03244 77.559662"
-                    xmlns="http://www.w3.org/2000/svg">
-                <g transform="translate(-22.483781,-107.07434)">
-                    <g transform="translate(10.672469,-5.2916663)">
-                    <rect
-                        width="125"
-                        height="17.943691"
-                        x="51.843746"
-                        y="123.75318"
-                        fill="#ffffff" />
-                    <path
-                        d="M 107.67063,68.15604 72.374824,68.113791 37.079018,68.071542 54.763509,37.525603 72.448001,6.9796625 90.059315,37.567851 Z"
-                        fill="#ffffff"
-                        transform="matrix(-0.00116211,-0.57681024,0.66583229,-0.00100673,7.2482233,174.54014)" />
-                    </g>
-                    <g transform="translate(-10.672469)">
-                    <rect
-                        width="125"
-                        height="17.943691"
-                        x="-158.15625"
-                        y="-173.24683"
-                        fill="#ffffff"
-                        transform="scale(-1)" />
-                    <path
-                        d="M 107.67063,68.15604 72.374824,68.113791 37.079018,68.071542 54.763509,37.525603 72.448001,6.9796625 90.059315,37.567851 Z"
-                        fill="#ffffff"
-                        transform="matrix(0.00116211,0.57681024,-0.66583229,0.00100673,202.75178,122.45986)" />
-                    </g>
-                </g>
-                </svg>
+                <TransferSvg color="#ffffff" />
             </button>
 
             {transferOverlayActive && (
                 <TransferOverlay
                     setTransferOverlayActive={setTransferOverlayActive}
+                    cards={cards}
                 />
             )}
         </div>
