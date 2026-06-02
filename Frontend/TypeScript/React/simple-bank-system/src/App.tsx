@@ -67,6 +67,10 @@ function App() {
         setCards(cards.filter(card => {return card.name !== name}))
     }
 
+    // function transferQuantity(from: CardType, to: CardType, quantity: number) {
+    //     const newCards = 
+    // }
+
     function showErrorMsg(msg: string) {
         setErrorMsg(msg)
         setErrorOverlayActive(true)
@@ -86,6 +90,7 @@ function App() {
             />
             <TransferButton
                 cards={cards}
+                showErrorMsg={showErrorMsg}
             />
 
             {errorOverlayActive && (
