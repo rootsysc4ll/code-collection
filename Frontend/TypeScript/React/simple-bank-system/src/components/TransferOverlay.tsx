@@ -19,6 +19,7 @@ type TransferSelectionProps = {
 type TransferOverlayProps = {
     setTransferOverlayActive: Dispatch<SetStateAction<boolean>>
     cards: CardType[]
+    handleTransfer: (from: CardType, to: CardType, quantity: number) => void
     showErrorMsg: (errorMsg: string) => null
 }
 
@@ -112,7 +113,7 @@ function TransferSelection( { cards, selectedCardNames, setSelectedCardNames }: 
     )
 }
 
-export default function TransferOverlay( { setTransferOverlayActive, cards, showErrorMsg }: TransferOverlayProps ) {
+export default function TransferOverlay( { setTransferOverlayActive, cards, handleTransfer, showErrorMsg }: TransferOverlayProps ) {
     function handleClose(e: MouseEvent<HTMLButtonElement>) {
         e.stopPropagation()
         setTransferOverlayActive(false)
@@ -133,20 +134,25 @@ export default function TransferOverlay( { setTransferOverlayActive, cards, show
             if (keypress.key === 'Enter' && isNaN(input)) {
                 showErrorMsg('Invalid entry for balance! Enter only numbers')       
             } else if (keypress.key === 'Enter') {
-                handleTranfer(input)
+                initTransfer(input)
             }
         } else if (clickCond) {
             if (isNaN(input)) {
                 showErrorMsg('Invalid entry for balance! Enter only numbers')       
             } else {
-                handleTranfer(input)
+                initTransfer(input)
             }
         }
     }
 
-    function handleTranfer(input: number) {
+    function initTransfer(input: number) {
         if (selectedCardNames[Sides.left] === '' || selectedCardNames[Sides.right] === '') {
             showErrorMsg("Please select both the 'From' and the 'To' cards")
+        } else {
+            const fromCard = cards.filter(card => card.name === selectedCardNames[Sides.left])[0]
+            const toCard   = cards.filter(card => card.name === selectedCardNames[Sides.right])[0]
+
+            handleTransfer(fromCard, toCard, input)
         }
     }
 

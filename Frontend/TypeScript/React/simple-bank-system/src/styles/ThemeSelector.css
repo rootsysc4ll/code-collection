@@ -1,0 +1,10 @@
+#theme-selector-container {
+    position: fixed; 
+    bottom: 20px;
+    right: 20px;
+}
+
+.color-indicator {
+    width: 30px;
+    height: 30px;
+}

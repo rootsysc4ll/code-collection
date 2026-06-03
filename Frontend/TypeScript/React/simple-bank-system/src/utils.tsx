@@ -4,4 +4,27 @@ export interface CardType {
     name: string
 }
 
+export interface Theme {
+    color: string
+    name:  string
+}
+
 export const cardColors = ['#000000', '#ff0000', '#00ff00', '#0000ff']
+
+export const themes: Theme[] = [
+    {
+        color: '#000000',
+        name:  'night'
+    }, {
+        color: '#ffffff',
+        name:  'white'
+    }, {
+        color: '#ff3328',
+        name:  'coral'
+    }, {
+        color: '#80bc8a',
+        name:  'green'
+    }
+]
+
+export const defaultTheme = themes[0]

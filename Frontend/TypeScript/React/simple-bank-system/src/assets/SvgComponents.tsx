@@ -51,3 +51,11 @@ export function ArrowsSvg( { color }: {color: string} ) {
         </svg>       
     )
 }
+
+export function FilledCircle( { color }: {color: string} ) {
+    return (
+        <svg className="color-indicator" width="50mm" height="50mm" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="25" r="25" fill={color} />
+        </svg>
+    )
+}

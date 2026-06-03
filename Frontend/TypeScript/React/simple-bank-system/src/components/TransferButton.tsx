@@ -7,11 +7,17 @@ import TransferOverlay from "./TransferOverlay"
 
 type TransferButtonProps = {
     cards: CardType[]
+    transferQuantity: (from: CardType, to: CardType, quantity: number) => void
     showErrorMsg: (errorMsg: string) => null
 }
 
-export default function TransferButton( { cards, showErrorMsg }: TransferButtonProps ) {
+export default function TransferButton( { cards, transferQuantity, showErrorMsg }: TransferButtonProps ) {
     const [ transferOverlayActive, setTransferOverlayActive ] = useState<boolean>(false)
+
+    function handleTransfer(from: CardType, to: CardType, quantity: number) {
+        transferQuantity(from, to, quantity)
+        setTransferOverlayActive(false)
+    }
 
     return (
         <div id="transfer-button-container" >
@@ -23,6 +29,7 @@ export default function TransferButton( { cards, showErrorMsg }: TransferButtonP
                 <TransferOverlay
                     setTransferOverlayActive={setTransferOverlayActive}
                     cards={cards}
+                    handleTransfer={handleTransfer}
                     showErrorMsg={showErrorMsg}
                 />
             )}
