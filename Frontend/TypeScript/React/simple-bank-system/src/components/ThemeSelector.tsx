@@ -16,7 +16,10 @@ export default function ThemeSelector() {
 
     return (
         <div onMouseEnter={() => {setThemeOptionsActive(true)}} onMouseLeave={() => {setThemeOptionsActive(false)}} id="theme-selector-container">
-            <span>Current theme: {currentTheme.name}</span>
+            <u>Current theme:</u>
+            <span id="theme-name" style={{
+                color: `${currentTheme.color}`
+            }}>{currentTheme.name}</span>
             <FilledCircle color={currentTheme.color} />
 
             {themeOptionsActive && (

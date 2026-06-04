@@ -106,15 +106,17 @@ function App() {
                 cards={cards}
                 removeCard={removeCard}
             />
-            <AddCardButton
-                addCard={addCard}
-                showErrorMsg={showErrorMsg}
-            />
-            <TransferButton
-                cards={cards}
-                transferQuantity={transferQuantity}
-                showErrorMsg={showErrorMsg}
-            />
+            <div id='action-buttons'>
+                <AddCardButton
+                    addCard={addCard}
+                    showErrorMsg={showErrorMsg}
+                />
+                <TransferButton
+                    cards={cards}
+                    transferQuantity={transferQuantity}
+                    showErrorMsg={showErrorMsg}
+                />
+            </div>
             <ThemeSelector />
 
             {errorOverlayActive && (

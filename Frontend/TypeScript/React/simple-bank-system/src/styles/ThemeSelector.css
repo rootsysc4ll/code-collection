@@ -1,7 +1,19 @@
 #theme-selector-container {
     position: fixed; 
+    display: flex;
+    align-items: center;
     top: 20px;
     right: 20px;
+    padding: 6px 10px;
+    border-radius: 15px;
+    background-color: var(--secondary-color);
+    border: 3px solid var(--ternary-color);
+}
+
+#theme-name {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: bold;
 }
 
 .color-indicator {
