@@ -1,6 +1,7 @@
 import { type MouseEvent } from "react"
 import { type CardType } from "../utils.tsx"
 import { CardSvg } from "../assets/SvgComponents.tsx"
+
 import '../styles/Cards.css'
 
 type CardsProps = {

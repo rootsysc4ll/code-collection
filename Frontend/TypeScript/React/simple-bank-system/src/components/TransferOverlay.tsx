@@ -2,6 +2,8 @@ import { useState, type Dispatch, type SetStateAction, type MouseEvent, type Key
 import { type CardType } from "../utils"
 import { ArrowsSvg, CardSvg } from "../assets/SvgComponents"
 
+import "../styles/TransferOverlay.css"
+
 import Overlay from "./Overlay"
 
 type TransferDropdownProps = {

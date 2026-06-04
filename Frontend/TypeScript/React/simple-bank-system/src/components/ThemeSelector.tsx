@@ -1,6 +1,7 @@
 import { useState, type MouseEvent } from "react"
 import { themes, defaultTheme, type Theme } from "../utils"
 import { FilledCircle } from "../assets/SvgComponents"
+
 import "../styles/ThemeSelector.css"
 
 export default function ThemeSelector() {
@@ -8,6 +9,7 @@ export default function ThemeSelector() {
     const [ themeOptionsActive, setThemeOptionsActive ] = useState<boolean>(false)
 
     function handleClick(e: MouseEvent<HTMLDivElement>, theme: Theme) {
+        e.stopPropagation()
         setCurrentTheme(theme)
         setThemeOptionsActive(false)    
     }

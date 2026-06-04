@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { type CardType } from "../utils"
 import { TransferSvg } from "../assets/SvgComponents"
+
 import "../styles/TransferButton.css"
  
 import TransferOverlay from "./TransferOverlay"

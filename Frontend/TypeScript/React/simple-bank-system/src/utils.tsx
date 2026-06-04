@@ -19,7 +19,7 @@ export const themes: Theme[] = [
         color: '#ffffff',
         name:  'white'
     }, {
-        color: '#ff3328',
+        color: '#f76a6a',
         name:  'coral'
     }, {
         color: '#80bc8a',

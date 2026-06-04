@@ -1,5 +1,7 @@
 import { useState, type Dispatch, type MouseEvent, type KeyboardEvent } from 'react';
 
+import "../styles/AddCardOverlay.css"
+
 import Overlay from './Overlay';
 
 type Props = {
