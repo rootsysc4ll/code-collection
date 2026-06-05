@@ -10,7 +10,7 @@
     height: 100%;
     align-items: center;
     justify-content: center;
-    border: 3px solid var(--ternary-color);
+    border: var(--default-border);
     background-color: var(--secondary-color);
 }
 #add-button:hover {

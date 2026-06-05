@@ -25,7 +25,7 @@ export function ErrorOverlay( { errorMsg, setErrorOverlayActive }: ErrorOverlayP
         <Overlay 
             overlayId="error-overlay" 
             containerId="error-message-container" 
-            closeButtonId="close-button"
+            closeButtonId="error-close"
             handleClose={handleClose}
         >
             <span id="error-text">{errorMsg}</span>

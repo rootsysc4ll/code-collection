@@ -48,13 +48,14 @@ export default function AddCardOverlay( { setQuantityOverlayActive, handleAddCar
             closeButtonId='add-close'
             handleClose={handleClose}
         >
-            add quantity:
-            <input id='quantity-input' placeholder='Enter a quantity for the card' type="text" 
-                onChange={(e) => setInputValue(e.target.value)}
-                value={inputValue}
-                onKeyDown={handleInput}
-            />
-            <button onClick={handleInput} id='add'>add</button>
+            <div id='add-card-main'>
+                <input id='quantity-input' placeholder='Enter a quantity for the card' type="text" 
+                    onChange={(e) => setInputValue(e.target.value)}
+                    value={inputValue}
+                    onKeyDown={handleInput}
+                />
+                <button onClick={handleInput} id='add-card-button'>Add</button>
+            </div>
         </Overlay>
     )
 }

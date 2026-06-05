@@ -24,7 +24,7 @@ function Card( { card, removeCard }: CardProps) {
         <div className='card-container'>
             <span className='card-text'>Card {card.name}</span>
             <CardSvg color={card.color}/>
-            <span className='card-text'>Balance: <u>${card.balance}</u></span>
+            <span className='card-text'>Balance: ${card.balance}</span>
 
             <button className="delete-icon-container" onClick={handleDelete}>
                 <img className="delete-icon" src="src/assets/minus.svg" alt="" />

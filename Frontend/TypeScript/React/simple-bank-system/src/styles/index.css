@@ -14,10 +14,14 @@ button:hover {
 }
 
 :root {
-    --default-column-gap: 50px;
-    --default-row-gap: 30px;
-
     --primary-color: #222222;
     --secondary-color: #171717;
-    --ternary-color: #393939;
+    --ternary-color: #313131;
+    --quaternary-color: #686868;
+
+    --text-color: #c4c4c4;
+
+    --default-column-gap: 50px;
+    --default-row-gap: 30px;
+    --default-border: 3px solid var(--ternary-color);
 }
