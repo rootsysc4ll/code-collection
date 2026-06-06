@@ -14,6 +14,7 @@ button:hover {
 }
 
 :root {
+    --main-color: black;
     --primary-color: #222222;
     --secondary-color: #171717;
     --ternary-color: #474747;
