@@ -16,12 +16,13 @@ button:hover {
 :root {
     --primary-color: #222222;
     --secondary-color: #171717;
-    --ternary-color: #313131;
-    --quaternary-color: #686868;
+    --ternary-color: #474747;
+    --quaternary-color: #828282;
 
     --text-color: #c4c4c4;
 
+    --border-thickness: 3px;
     --default-column-gap: 50px;
     --default-row-gap: 30px;
-    --default-border: 3px solid var(--ternary-color);
+    --default-border: var(--border-thickness) solid var(--ternary-color);
 }

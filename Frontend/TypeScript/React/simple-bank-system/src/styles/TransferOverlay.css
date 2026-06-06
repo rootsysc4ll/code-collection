@@ -1,39 +1,122 @@
 #transfer-overlay-container {
     display: flex;
+    row-gap: 5px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: white;
     color: black;
+    padding: 15px 20px;
+    background-color: var(--primary-color);
+    border: var(--default-border);
+    border-radius: 15px;
 }
 
 #transfer-selection {
     display: flex;
-    flex-direction: row;
+    column-gap: 15px;
+    align-items: center;
 }
 
-#transfer-selection #transfer-left-side, #transfer-right-side {
+#transfer-left-side, #transfer-right-side {
     display: flex;
     flex-direction: column;
 }
 
-#transfer-selection #left-dropdown, #right-dropdown {
+.transfer-side-text {
     display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+#transfer-left-side, #transfer-right-side {
+    align-self: start;
+}
+
+#left-dropdown, #right-dropdown {
+    display: flex;
+    position: relative;
     flex-direction: column;
-    background-color: gray;
     color: white;
+    width: 100%;
+}
+
+#arrows-icon {
+    fill: black;
+}
+
+.dropdown-selection {
+    padding: 2px 5px;
+    font-weight: bold;
+    border: var(--default-border);
+    color: white;
+    background-color: var(--quaternary-color);
+    border-radius: 10px;
+}
+.dropdown-selection:hover {
+    cursor: pointer;
+}
+
+.dropdown-options {
+    padding-top: 5px;
+    position: absolute;
+    top: 21px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - (2 * var(--border-thickness)));
+    background-color: var(--quaternary-color);
+    border-left: var(--default-border);
+    border-right: var(--default-border);
+    border-bottom: var(--default-border);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.dropdown-option {
+    padding: 2px 5px;
+}
+.dropdown-option:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }
 
 #transfer-input {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin-top: 5px;
+    row-gap: 5px;
 }
 
-#transfer-input #complete-transfer-button {
-    background-color: gray;
-    color: white;   
+#transfer-input-value {
+    flex-grow: 1;
+    font-size: 15px;
+    background-color: rgb(204, 204, 204);
+    color: black;
+    border: var(--default-border);
+    border-radius: 8px;
+    padding: 6px 5px;
 }
 
-.dropdown-selection {
-    background-color: rgb(75, 75, 75);
+#complete-transfer-button {
+    font-size: 15px;
+    padding: 4px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+#transfer-close {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 15px;
+    padding: 4px 3px;
+    background-color: var(--quaternary-color);
+    color: black;
+    border: none;
+    border-radius: 8px;
 }

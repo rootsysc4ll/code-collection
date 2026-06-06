@@ -46,18 +46,20 @@ function TransferDropdown( { transferSide, changeSelections, cardNames }: Transf
 
     return (
         <div id={transferSide === Sides.left ? 'left-dropdown' : 'right-dropdown'}>
-            <span onClick={startSelection} className="dropdown-selection">{dropDownText}</span>
+            <div onClick={startSelection} className="dropdown-selection">{dropDownText}</div>
 
             {dropdownIsActive && (
-                cardNames.map(name => {
-                    return (
-                        <span 
-                            onClick={e => handleSelection(e, name)} 
-                            className="dropdown-option"
-                            key={crypto.randomUUID()}
-                        >Card {name}</span>
-                    )
-                })
+                <div className="dropdown-options">
+                    {cardNames.map(name => {
+                        return (
+                            <span 
+                                onClick={e => handleSelection(e, name)} 
+                                className="dropdown-option"
+                                key={crypto.randomUUID()}
+                            >Card {name}</span>
+                        )
+                    })}
+                </div>
             )}
         </div>
     )
@@ -98,7 +100,7 @@ function TransferSelection( { cards, selectedCardNames, setSelectedCardNames }: 
                     cardNames={returnValidSelection()} 
                 />
             </div>
-            <ArrowsSvg color="#000000" />
+            <ArrowsSvg/>
             <div id="transfer-right-side">
                 <span className="transfer-side-text">To</span>
                 {selectedCardNames[Sides.right] === '' ? (<></>) : (
@@ -174,7 +176,7 @@ export default function TransferOverlay( { setTransferOverlayActive, cards, hand
                 <input 
                     onChange={e => setInputValue(e.target.value)}
                     onKeyDown={handleInput}
-                    placeholder="Enter a value to tranfer" id="transfer-input-value" type="text"
+                    placeholder="Enter a value to transfer" id="transfer-input-value" type="text"
                 />
                 <button onClick={handleInput} id="complete-transfer-button">Transfer</button>
             </div>

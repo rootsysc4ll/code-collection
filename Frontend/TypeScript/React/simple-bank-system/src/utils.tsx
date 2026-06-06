@@ -9,7 +9,7 @@ export interface Theme {
     name:  string
 }
 
-export const cardColors = ['#000000', '#ff0000', '#00ff00', '#0000ff']
+export const cardColors = ['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffff00']
 
 export const themes: Theme[] = [
     {

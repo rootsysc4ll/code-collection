@@ -3,10 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: black;
-    width: 500px;
-    height: 130px;
-    padding: 10px 15px;
+    padding: 18px 12px;
     border-radius: 15px;
     background-color: var(--secondary-color);
     border: var(--default-border);
@@ -22,6 +19,7 @@
 
 #quantity-input {
     flex-grow: 1;
+    min-width: 320px;
     margin-right: 10px;
     font-size: 15px;
     background-color: rgb(204, 204, 204);
@@ -34,9 +32,11 @@
 #add-card-button {
     font-size: 16px;
     padding: 6px 10px;
-    background-color: var(--quaternary-color);
+    background-color: black;
+    color: white;
     border: none;
     border-radius: 8px;
+    font-weight: bold;
 }
 
 #add-close {
@@ -44,8 +44,9 @@
     justify-content: center;
     width: 100%;
     font-size: 16px;
-    padding: 6px 3px;
+    padding: 4px 3px;
     background-color: var(--quaternary-color);
+    color: black;
     border: none;
     border-radius: 8px;
 }

@@ -34,19 +34,19 @@ export function TransferSvg( { color }: {color: string} ) {
     )
 }
 
-export function ArrowsSvg( { color }: {color: string} ) {
+export function ArrowsSvg() {
     return (
-        <svg width="128.64391" height="114.28025" viewBox="0 0 128.64391 114.28025" xmlns="http://www.w3.org/2000/svg">
+        <svg id="arrows-icon" width="128.64391" height="114.28025" viewBox="0 0 128.64391 114.28025" xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(-39.020519,-74.514241)">
-                <rect fill={color} width="40.288151" height="8.8453865" x="-210.06612" y="2.9070101" transform="matrix(-0.76477572,-0.64429659,0.76477572,-0.64429659,0,0)" ry="4.4226933"/>
-                <rect fill={color} width="126.74343" height="8.0597296" x="39.020519" y="124.22496" ry="4.0298648"/>
-                <rect fill={color} width="40.288151" height="8.8453865" x="-10.904122" y="-210.90193" transform="matrix(-0.76477572,0.64429659,-0.76477572,-0.64429659,0,0)" ry="4.4226933"/>
-                <rect fill={color} width="36.709473" height="8.0596771" x="-159.37325" y="11.580486" transform="rotate(-135)" ry="4.0298386"/>
-                <rect fill={color} width="65.620255" height="8.0597296" x="57.97905" y="95.258331" ry="4.0298648"/>
-                <rect fill={color} width="36.709473" height="8.0596771" x="-18.867239" y="-160.13483" transform="rotate(135)" ry="4.0298386"/>
-                <rect fill={color} width="36.709473" height="8.0596771" x="-214.59079" y="-24.576061" transform="rotate(-135)" ry="4.0298386"/>
-                <rect fill={color} width="63.888306" height="8.0597296" x="72.904831" y="159.86957" ry="4.0298648"/>
-                <rect fill={color} width="36.709473" height="8.0596771" x="17.28931" y="-215.35239" transform="rotate(135)" ry="4.0298386"/>
+                <rect width="40.288151" height="8.8453865" x="-210.06612" y="2.9070101" transform="matrix(-0.76477572,-0.64429659,0.76477572,-0.64429659,0,0)" ry="4.4226933"/>
+                <rect width="126.74343" height="8.0597296" x="39.020519" y="124.22496" ry="4.0298648"/>
+                <rect width="40.288151" height="8.8453865" x="-10.904122" y="-210.90193" transform="matrix(-0.76477572,0.64429659,-0.76477572,-0.64429659,0,0)" ry="4.4226933"/>
+                <rect width="36.709473" height="8.0596771" x="-159.37325" y="11.580486" transform="rotate(-135)" ry="4.0298386"/>
+                <rect width="65.620255" height="8.0597296" x="57.97905" y="95.258331" ry="4.0298648"/>
+                <rect width="36.709473" height="8.0596771" x="-18.867239" y="-160.13483" transform="rotate(135)" ry="4.0298386"/>
+                <rect width="36.709473" height="8.0596771" x="-214.59079" y="-24.576061" transform="rotate(-135)" ry="4.0298386"/>
+                <rect width="63.888306" height="8.0597296" x="72.904831" y="159.86957" ry="4.0298648"/>
+                <rect width="36.709473" height="8.0596771" x="17.28931" y="-215.35239" transform="rotate(135)" ry="4.0298386"/>
             </g>
         </svg>       
     )

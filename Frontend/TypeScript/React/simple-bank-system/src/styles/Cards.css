@@ -18,8 +18,7 @@
     background-color: var(--secondary-color);
 }
 .card-container:hover {
-    cursor: pointer;
-    background-color: rgb(75, 75, 75);       
+    background-color: rgb(66, 66, 66);       
 }
 .card-container:hover .delete-icon {
     visibility: visible;
@@ -33,6 +32,8 @@
 
 .card-text {
     font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
 
 .delete-icon-container {
