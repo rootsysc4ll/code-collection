@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { type CardType, cardColors } from './utils.tsx';
 import './styles/App.css'
 
@@ -9,29 +9,7 @@ import ThemeSelector from './components/ThemeSelector.tsx';
 import { ErrorOverlay } from './components/Overlay.tsx';
 
 function App() {
-    const [ cards, setCards ] = useState<CardType[]>([
-        {
-            balance: 111,
-            color: cardColors[0],
-            name: '1'
-        },
-        {
-            balance: 111,
-            color: cardColors[1],
-            name: '2'
-        },
-        {
-            balance: 111,
-            color: cardColors[2],
-            name: '3'
-        },
-        {
-            balance: 111,
-            color: cardColors[3],
-            name: '4'
-        }
-    ])
-
+    const [ cards, setCards ]                          = useState<CardType[]>(loadCards())
     const [ errorOverlayActive, setErrorOverlayActive] = useState<boolean>(false)
     const [ errorMsg, setErrorMsg]                     = useState<string>('')
 
@@ -100,6 +78,29 @@ function App() {
         return null
     }
 
+    useEffect(() => {
+        localStorage.setItem('cards', JSON.stringify(cards))   
+        console.log('saved!')
+    }, [cards])
+
+    function loadCards(): CardType[] {
+        const storageItem = localStorage.getItem('cards')
+        if (storageItem) {
+            return JSON.parse(storageItem)
+        } else {
+            return [{
+                balance: 500,
+                color: cardColors[0],
+                name: '1'
+            },
+            {
+                balance: 500,
+                color: cardColors[1],
+                name: '2'
+            }]
+        }
+    }
+
     return (
         <div id='app-container'>
             <Cards 
@@ -130,33 +131,3 @@ function App() {
 }
 
 export default App
-
-{/* <div style={{
-    marginLeft: '20px',
-    position: 'relative'
-}}>
-    <button onClick={() => setClicked(!clicked)}>Click to open dropdown</button>
-    <div style={(clicked ? {
-        position: 'absolute',
-        display: 'flex',
-        flexDirection: 'column',
-        left: '20px'
-    } : {
-        position: 'absolute',
-        display: 'none',
-        flexDirection: 'column'
-    })}>
-        <span style={{
-            backgroundColor: 'white',
-            color: 'black'
-        }}>Item1</span>
-        <span style={{
-            backgroundColor: 'white',
-            color: 'black'
-        }}>Item2</span>
-        <span style={{
-            backgroundColor: 'white',
-            color: 'black'
-        }}>Item3</span>
-    </div>
-</div> */}
