@@ -6,8 +6,8 @@
     right: 20px;
     padding: 6px 10px;
     border-radius: 15px;
-    background-color: var(--secondary-color);
-    border: 3px solid var(--ternary-color);
+    background-color: var(--ternary-color);
+    border: 3px solid var(--secondary-color);
 }
 
 #theme-name {
@@ -35,7 +35,7 @@
     padding-left: 15px;
     padding-right: inherit;
     row-gap: 5px;
-    background-color: vabr(--secondary-color);
+    background-color: var(--secondary-color);
     border: var(--default-border);
 }
 

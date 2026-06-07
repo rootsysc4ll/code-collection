@@ -49,7 +49,7 @@
     padding: 2px 5px;
     font-weight: bold;
     border: var(--default-border);
-    color: white;
+    color: var(--text-color);
     background-color: var(--quaternary-color);
     border-radius: 10px;
 }
@@ -69,6 +69,7 @@
     border-left: var(--default-border);
     border-right: var(--default-border);
     border-bottom: var(--default-border);
+    color: var(--text-color);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -78,7 +79,7 @@
 }
 .dropdown-option:hover {
     cursor: pointer;
-    opacity: 0.8;
+    opacity: var(--default-hover-opacity);
 }
 
 #transfer-input {
@@ -92,7 +93,7 @@
 #transfer-input-value {
     flex-grow: 1;
     font-size: 15px;
-    background-color: rgb(204, 204, 204);
+    background-color: var(--quaternary-color);
     color: black;
     border: var(--default-border);
     border-radius: 8px;
@@ -102,8 +103,8 @@
 #complete-transfer-button {
     font-size: 15px;
     padding: 4px 10px;
-    background-color: black;
-    color: white;
+    background-color: var(--main-color);
+    color: var(--text-color);
     border: none;
     border-radius: 8px;
     font-weight: bold;
@@ -116,7 +117,7 @@
     font-size: 15px;
     padding: 4px 3px;
     background-color: var(--quaternary-color);
-    color: black;
     border: none;
+    color: black;
     border-radius: 8px;
 }

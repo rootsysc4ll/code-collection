@@ -18,7 +18,7 @@
     background-color: var(--secondary-color);
 }
 .card-container:hover {
-    background-color: rgb(66, 66, 66);       
+    background-color: var(--ternary-color);       
 }
 .card-container:hover .delete-icon {
     visibility: visible;

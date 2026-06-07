@@ -12,7 +12,8 @@
     align-items: center;
     justify-content: center;
     border: var(--default-border);
-    background-color: var(--secondary-color);
+    background-color: var(--ternary-color);
+    border-color: var(--secondary-color);
 }
 #transfer-button:hover {
     cursor: pointer;
@@ -20,4 +21,5 @@
 
 #transfer-icon {
     height: 40px;
+    fill: var(--main-color);
 }

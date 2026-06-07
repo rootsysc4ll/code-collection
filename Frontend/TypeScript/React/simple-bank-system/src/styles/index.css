@@ -26,4 +26,25 @@ button:hover {
     --default-column-gap: 50px;
     --default-row-gap: 30px;
     --default-border: var(--border-thickness) solid var(--ternary-color);
+    --default-hover-opacity: 0.4;
+}
+
+html[data-theme="coral"] {
+    --main-color: #B6232D;
+    --primary-color: #EE4A43;
+    --secondary-color: #DC2B37;
+    --ternary-color: #C82732;
+    --quaternary-color: #ff7f50;
+
+    --text-color: #ffbfb4;
+}
+
+html[data-theme="green"] {
+    --main-color: #80bc8a;
+    --primary-color: #b2d7b2;
+    --secondary-color: #8ac194;
+    --ternary-color: #9ecca0;
+    --quaternary-color: #bfdebf;
+
+    --text-color: #ffffff;
 }

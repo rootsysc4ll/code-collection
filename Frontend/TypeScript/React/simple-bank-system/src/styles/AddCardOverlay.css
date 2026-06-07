@@ -22,7 +22,7 @@
     min-width: 320px;
     margin-right: 10px;
     font-size: 15px;
-    background-color: rgb(204, 204, 204);
+    background-color: var(--quaternary-color);
     color: black;
     border: var(--default-border);
     border-radius: 8px;
@@ -32,8 +32,8 @@
 #add-card-button {
     font-size: 16px;
     padding: 6px 10px;
-    background-color: black;
-    color: white;
+    background-color: var(--main-color);
+    color: var(--text-color);
     border: none;
     border-radius: 8px;
     font-weight: bold;

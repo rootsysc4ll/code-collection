@@ -21,7 +21,7 @@ export default function AddCardButton( {addCard, showErrorMsg}: AddCardButtonPro
     return (
         <div id="add-button-container">
             <button onClick={() => setQuantityOverlayActive(true)} id='add-button'>
-                <PlusSvg color='#ffffff' />
+                <PlusSvg />
             </button>
 
             {quantityOverlayActive && (<AddCardOverlay

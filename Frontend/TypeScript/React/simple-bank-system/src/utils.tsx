@@ -26,5 +26,3 @@ export const themes: Theme[] = [
         name:  'green'
     }
 ]
-
-export const defaultTheme = themes[0]

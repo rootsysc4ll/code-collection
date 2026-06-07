@@ -23,7 +23,7 @@ export default function TransferButton( { cards, transferQuantity, showErrorMsg 
     return (
         <div id="transfer-button-container" >
             <button id="transfer-button" onClick={() => setTransferOverlayActive(true)}>
-                <TransferSvg color="#ffffff" />
+                <TransferSvg />
             </button>
 
             {transferOverlayActive && (
