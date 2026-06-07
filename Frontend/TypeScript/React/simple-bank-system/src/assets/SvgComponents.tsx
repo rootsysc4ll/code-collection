@@ -8,6 +8,12 @@ export function CardSvg( { color }: {color: string} ) {
     )
 }
 
+export function MinusSvg() {
+    return (
+        <svg className="delete-icon" width="147.69348mm" height="142.00391mm" viewBox="0 0 147.69348 142.00391" xmlns="http://www.w3.org/2000/svg"><rect width="147.69348" height="142.00391" rx="71.001953" fill="#ff0000" /><rect width="107.5108" height="19.364168" x="20.091160" y="61.319876" rx="9.6820841" fill="#ff9292" /></svg>
+    )
+}
+
 export function PlusSvg() {
     return (
         <svg id='plus-icon' width="89.85mm" height="89.85mm" viewBox="0 0 89.85 89.85" xmlns="http://www.w3.org/2000/svg">

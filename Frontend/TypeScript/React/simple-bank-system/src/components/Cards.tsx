@@ -1,6 +1,6 @@
 import { type MouseEvent } from "react"
 import { type CardType } from "../utils.tsx"
-import { CardSvg } from "../assets/SvgComponents.tsx"
+import { CardSvg, MinusSvg } from "../assets/SvgComponents.tsx"
 
 import '../styles/Cards.css'
 
@@ -27,7 +27,7 @@ function Card( { card, removeCard }: CardProps) {
             <span className='card-text'>Balance: ${card.balance}</span>
 
             <button className="delete-icon-container" onClick={handleDelete}>
-                <img className="delete-icon" src="src/assets/minus.svg" alt="" />
+                <MinusSvg />
             </button>
         </div>
     )
