@@ -21,6 +21,7 @@ button:hover {
     --quaternary-color: #828282;
 
     --text-color: #c4c4c4;
+    --highest-contrast-color: #ffffff;
 
     --border-thickness: 3px;
     --default-column-gap: 50px;
@@ -32,11 +33,12 @@ button:hover {
 html[data-theme="coral"] {
     --main-color: #B6232D;
     --primary-color: #EE4A43;
-    --secondary-color: #DC2B37;
-    --ternary-color: #C82732;
+    --secondary-color: #C82732;
+    --ternary-color: #DC2B37;
     --quaternary-color: #ff7f50;
 
     --text-color: #ffbfb4;
+    --highest-contrast-color: #f76a6a;
 }
 
 html[data-theme="green"] {
@@ -47,4 +49,15 @@ html[data-theme="green"] {
     --quaternary-color: #bfdebf;
 
     --text-color: #ffffff;
+    --highest-contrast-color: #6c9f75;
+}
+
+html[data-theme="white"] {
+    --main-color: #ffffff;
+    --primary-color: #f2f2f2;
+    --secondary-color: #8c8c8c;
+    --ternary-color: #d3d3d3;
+    --quaternary-color: #dbdbdb;
+
+    --text-color: #000000;--highest-contrast-color: #000000;
 }

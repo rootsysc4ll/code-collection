@@ -35,8 +35,9 @@
     padding-left: 15px;
     padding-right: inherit;
     row-gap: 5px;
-    background-color: var(--secondary-color);
+    background-color: var(--ternary-color);
     border: var(--default-border);
+    border-color: var(--secondary-color);
 }
 
 .theme-option {

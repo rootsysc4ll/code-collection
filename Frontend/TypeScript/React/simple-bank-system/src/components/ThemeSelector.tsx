@@ -26,11 +26,11 @@ export default function ThemeSelector() {
 
             {themeOptionsActive && (
                 <div id="theme-options-container">
-                    {themes.map(theme => {
+                    {themes.filter(theme => theme.name !== currentTheme.name).map(t => {
                         return (
-                            <div onClick={e => handleClick(e, theme)} className="theme-option" key={crypto.randomUUID()}>
-                                <span className="theme-option-text">{theme.name}</span>
-                                <FilledCircle color={theme.color} />
+                            <div onClick={e => handleClick(e, t)} className="theme-option" key={crypto.randomUUID()}>
+                                <span className="theme-option-text">{t.name}</span>
+                                <FilledCircle color={t.color} />
                             </div>
                         )
                     })}

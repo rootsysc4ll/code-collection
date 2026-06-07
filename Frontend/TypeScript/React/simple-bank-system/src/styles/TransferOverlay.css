@@ -42,7 +42,7 @@
 }
 
 #arrows-icon {
-    fill: var(--main-color);
+    fill: var(--highest-contrast-color);
 }
 
 .dropdown-selection {
