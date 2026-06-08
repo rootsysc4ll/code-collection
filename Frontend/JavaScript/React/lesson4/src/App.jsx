@@ -28,7 +28,7 @@ function LoginForm() {
         <div id='form-container'>
             <p id='form-title'>Hello, welcome to my website</p>
             <div id='form-input-container'>
-                <input type="text" placeholder="Email" className='form-input'/><br></br>
+                <input type="text" placeholdezr="Email" className='form-input'/><br></br>
                 <input type={ showPasssword ? 'text' : 'password' } placeholder="Password" className='form-input'
                 />
                 <button id='password-show-button' onClick={() => {setShowPasssword(!showPasssword)}}    
@@ -44,7 +44,7 @@ function LoginForm() {
 
 function Clock() {
     let [ time, setTime ] = useState(dayjs().format('HH:mm:ss'))
-
+    
     useEffect(() => {
         setInterval(() => {
             setTime(dayjs().tz('Brazil/East').format('HH:mm:ss'));
