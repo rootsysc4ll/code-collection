@@ -6,7 +6,7 @@ import Overlay from './Overlay';
 
 type Props = {
     setQuantityOverlayActive: Dispatch<React.SetStateAction<boolean>>
-    handleAddCard: (balance: number) => void
+    handleAddCard: (balance: number, color: string) => void
     showErrorMsg: (msg: string) => null
 }
 
@@ -16,11 +16,12 @@ export default function AddCardOverlay( { setQuantityOverlayActive, handleAddCar
         setQuantityOverlayActive(false)
     }
     
-    const [ inputValue, setInputValue ] = useState<string>('');
+    const [ balanceInputValue, setbalanceInputValue ] = useState<string>('');
+    const [ colorInputValue, setColorInputValue ]     = useState<string>('');
     
     function handleInput(e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLInputElement>) {
         e.stopPropagation()
-        const input = Number(inputValue)
+        const input = Number(balanceInputValue)
 
         const keydownCond = e.type === 'keydown'
         const clickCond   = e.type === 'click'  
@@ -30,13 +31,13 @@ export default function AddCardOverlay( { setQuantityOverlayActive, handleAddCar
             if (keypress.key === 'Enter' && isNaN(input)) {
                 showErrorMsg('Invalid entry for balance! Enter only numbers')       
             } else if (keypress.key === 'Enter') {
-                handleAddCard(input)
+                handleAddCard(input, colorInputValue)
             }
         } else if (clickCond) {
             if (isNaN(input)) {
                 showErrorMsg('Invalid entry for balance! Enter only numbers')       
             } else {
-                handleAddCard(input)
+                handleAddCard(input, colorInputValue)
             }
         }
     }
@@ -48,14 +49,18 @@ export default function AddCardOverlay( { setQuantityOverlayActive, handleAddCar
             closeButtonId='add-close'
             handleClose={handleClose}
         >
-            <div id='add-card-main'>
-                <input id='quantity-input' placeholder='Enter a quantity for the card' type="text" 
-                    onChange={(e) => setInputValue(e.target.value)}
-                    value={inputValue}
-                    onKeyDown={handleInput}
+            <input id='quantity-input' placeholder='Enter a quantity for the card' type="text" 
+                onChange={(e) => setbalanceInputValue(e.target.value)}
+                value={balanceInputValue}
+                onKeyDown={handleInput}
+            />
+            <div id='color-input-container'>
+                <span id='color-input-text'>Color:</span>
+                <input id='color-input' type="color"
+                    onChange={e => setColorInputValue(e.target.value)}
                 />
-                <button onClick={handleInput} id='add-card-button'>Add</button>
             </div>
+            <button onClick={handleInput} id='add-card-button'>Add</button>
         </Overlay>
     )
 }

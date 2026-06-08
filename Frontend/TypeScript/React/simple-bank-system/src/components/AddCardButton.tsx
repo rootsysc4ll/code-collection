@@ -6,15 +6,15 @@ import '../styles/AddCardButton.css'
 import AddCardOverlay from './AddCardOverlay';
 
 type AddCardButtonProps = {
-    addCard: (balance: number) => void
+    addCard: (balance: number, color: string) => void
     showErrorMsg: (msg: string) => null
 }
 
 export default function AddCardButton( {addCard, showErrorMsg}: AddCardButtonProps ) {
     const [ quantityOverlayActive, setQuantityOverlayActive ] = useState<boolean>(false)
     
-    function handleAddCard(balance: number) {
-        addCard(balance)
+    function handleAddCard(balance: number, color: string) {
+        addCard(balance, color)
         setQuantityOverlayActive(false)
     }
 

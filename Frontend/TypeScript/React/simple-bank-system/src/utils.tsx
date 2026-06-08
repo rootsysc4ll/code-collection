@@ -9,7 +9,11 @@ export interface Theme {
     name:  string
 }
 
-export const cardColors = ['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffff00']
+// export const cardColors = ['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffff00']
+const cardQuantityLimit = 10
+export const possibleNames: string[] = [...Array(cardQuantityLimit)].map((_, i) => {
+    return (i + 1).toString()
+})
 
 export const themes: Theme[] = [
     {

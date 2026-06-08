@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { type CardType, cardColors } from './utils.tsx';
+import { type CardType, possibleNames } from './utils.tsx';
 import './styles/App.css'
 
 import Cards from './components/Cards'
@@ -13,14 +13,10 @@ function App() {
     const [ errorOverlayActive, setErrorOverlayActive] = useState<boolean>(false)
     const [ errorMsg, setErrorMsg]                     = useState<string>('')
 
-    function createCard(balance: number): (CardType | null) {
-        const usedColors    = new Set(cards.map(card => card.color))
-        const usedNames     = new Set(cards.map(card => card.name))
-        const possibleNames = cardColors.map((_, i) => (i + 1).toString())
-
-        const color = cardColors.find(col => !usedColors.has(col))
-        const name  = possibleNames.find(nam => !usedNames.has(nam))
-        if (!color || !name) {
+    function createCard(balance: number, color: string): (CardType | null) {
+        const usedNames = new Set(cards.map(card => card.name))
+        const name      = possibleNames.find(nam => !usedNames.has(nam))
+        if (!name) {
             return showErrorMsg("There isn't more cards available!")
         }
 
@@ -31,8 +27,8 @@ function App() {
         }
     }
 
-    function addCard(balance: number) {
-        const newCard = createCard(balance)
+    function addCard(balance: number, color: string) {
+        const newCard = createCard(balance, color)
         
         if (newCard !== null) {
             setCards([
@@ -78,10 +74,7 @@ function App() {
         return null
     }
 
-    useEffect(() => {
-        localStorage.setItem('cards', JSON.stringify(cards))   
-        console.log('saved!')
-    }, [cards])
+    useEffect(() => localStorage.setItem('cards', JSON.stringify(cards)), [cards])
 
     function loadCards(): CardType[] {
         const storageItem = localStorage.getItem('cards')
@@ -90,12 +83,12 @@ function App() {
         } else {
             return [{
                 balance: 500,
-                color: cardColors[0],
+                color: '#000000',
                 name: '1'
             },
             {
                 balance: 500,
-                color: cardColors[1],
+                color: '#ff0000',
                 name: '2'
             }]
         }
