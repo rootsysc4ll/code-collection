@@ -1,5 +1,5 @@
 {
-  "name": "chatbot",
+  "name": "multi-timers",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "dayjs": "^1.11.21",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "supersimpledev": "^8.6.4"
+    "react-dom": "^19.2.6"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

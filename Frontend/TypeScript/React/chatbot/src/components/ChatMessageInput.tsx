@@ -1,7 +1,7 @@
-import { useState, type ChangeEvent, type KeyboardEvent, type MouseEvent } from "react";
+import { useEffect, useState, type ChangeEvent, type KeyboardEvent, type MouseEvent } from "react";
 import type { ChatMessageType } from "../abstraction/abstraction";
 import spinner from './../assets/loading-spinner.gif'
-import { Chatbot } from "supersimpledev";
+import { Chatbot, chatbot } from "supersimpledev";
 
 type Props = {
     chatMessages: ChatMessageType[]
@@ -9,6 +9,12 @@ type Props = {
 }
 
 export function ChatMessageInput( {chatMessages, setChatMessages}: Props ) {
+    useEffect(() => {
+        chatbot.addResponses({
+            poggers: 'a'
+        })
+    }, []) 
+
     const [ inputValue, setInputValue ] = useState('');
     const [ isLoading, setIsLoading ] = useState(false);
 
@@ -60,6 +66,11 @@ export function ChatMessageInput( {chatMessages, setChatMessages}: Props ) {
         }
     }
 
+    function clearMessages(e: MouseEvent<HTMLButtonElement>) {
+        e.stopPropagation()
+        setChatMessages([])
+    }
+
     return (
         <div id='message-input-container'>
             <input 
@@ -67,6 +78,7 @@ export function ChatMessageInput( {chatMessages, setChatMessages}: Props ) {
                 id='message-input'
             />
             <button onClick={handleInput} id='send-button'>Send</button>
+            <button onClick={clearMessages} id='clear-button' >Clear</button>
         </div>
     );
 }

@@ -36,12 +36,19 @@
     justify-content: left;
 }
 
-.chat-message-text {
+.chat-message-container {
     display: flex;
+    flex-direction: column;
     max-width: 300px;
     background-color: rgb(238, 238, 238);
     padding: 15px 20px;
     border-radius: 10px;
+}
+
+.chat-message-date {
+    color: gray;
+    font-size: 14px;
+    margin-top: 10px;
     /* overflow-wrap: break-word; */
 }
 
@@ -56,13 +63,13 @@
 
 #message-input-container {
     display: flex;
+    column-gap: 10px;
 }
 
 #message-input {
     flex-grow: 1;
     font-size: 15px;
     padding-left: 15px;
-    margin-right: 10px;
     border: solid 1px gray;
     border-radius: 10px;    
 }
@@ -70,6 +77,15 @@
 #send-button {
     background-color: rgb(25, 135, 84);
     color: white;
+    padding: 13px 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+}
+
+#clear-button {
+    background-color: rgb(238, 238, 238);
+    color: black;
     padding: 13px 20px;
     font-size: 15px;
     border: none;

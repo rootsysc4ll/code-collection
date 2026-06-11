@@ -23,7 +23,7 @@ function WelcomeMessage() {
 }
 
 export default function ChatMessages( {chatMessages}: Props ) {
-    let ref = useAutoScroll(chatMessages);
+    const ref = useAutoScroll(chatMessages);
 
     return (
         <div id='chat-messages-container' ref={ref}>
