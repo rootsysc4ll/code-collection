@@ -6,6 +6,7 @@ import { Link } from "react-router"
 export default function Orders() {
     return (<>
         <title>Orders</title>
+        <link rel="icon" href="orders-favicon.png" />
 
         <Header />
 
