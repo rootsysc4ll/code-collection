@@ -1,6 +1,6 @@
-import "./../styles/OrdersPage.css"
+import "./../styles/Orders.css"
 
-export default function OrdersPage() {
+export default function Orders() {
     return (<>
         <title>Orders</title>
 
@@ -82,7 +82,7 @@ export default function OrdersPage() {
                         </div>
 
                         <div className="product-actions">
-                            <a href="tracking.html">
+                            <a href="/tracking">
                                 <button className="track-package-button button-secondary">
                                     Track package
                                 </button>
@@ -110,7 +110,7 @@ export default function OrdersPage() {
                         </div>
 
                         <div className="product-actions">
-                            <a href="tracking.html">
+                            <a href="/tracking">
                                 <button className="track-package-button button-secondary">
                                     Track package
                                 </button>
@@ -161,7 +161,7 @@ export default function OrdersPage() {
                         </div>
 
                         <div className="product-actions">
-                            <a href="tracking.html">
+                            <a href="/tracking">
                                 <button className="track-package-button button-secondary">
                                     Track package
                                 </button>

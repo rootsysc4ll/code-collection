@@ -1,6 +1,6 @@
-import "./../styles/HomePage.css"
+import "./../styles/Home.css"
 
-export default function HomePage() {
+export default function Home() {
     return (
         <>
             <div className="header">
