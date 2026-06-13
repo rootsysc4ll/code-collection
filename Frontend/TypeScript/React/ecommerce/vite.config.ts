@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-const defaultTarget = 'http://192.168.0.100:3000'
+const target = process.argv.slice(2)[0] || "http://localhost:3000"
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -9,10 +9,10 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: defaultTarget
+        target
       },
       '/images': {
-        target: defaultTarget
+        target
       }
     }
   }
