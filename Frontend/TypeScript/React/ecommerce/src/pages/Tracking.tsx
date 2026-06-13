@@ -1,13 +1,18 @@
 import "./../styles/Tracking.css"
 
 import Header from "../components/Header"
+import { type CartItemType } from "../utils/types"
 
-export default function Tracking() {
+type Props = {
+    cart: CartItemType[]
+}
+
+export default function Tracking( { cart }: Props ) {
     return (<>
         <title>Tracking</title>
         <link rel="icon" href="tracking-favicon.png" />
 
-        <Header />
+        <Header cart={cart} />
 
         <div className="tracking-page">
             <div className="order-tracking">

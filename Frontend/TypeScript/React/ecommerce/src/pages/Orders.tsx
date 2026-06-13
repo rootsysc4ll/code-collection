@@ -3,13 +3,18 @@ import "./../styles/Orders.css"
 
 import Header from "../components/Header"
 import buyAgainIcon from "./../assets/images/icons/buy-again.png"
+import { type CartItemType } from "../utils/types"
 
-export default function Orders() {
+type Props = {
+    cart: CartItemType[]
+}
+
+export default function Orders( { cart }: Props ) {
     return (<>
         <title>Orders</title>
         <link rel="icon" href="orders-favicon.png" />
 
-        <Header />
+        <Header cart={cart} />
 
         <div className="orders-page">
             <div className="page-title">Your Orders</div>
