@@ -39,3 +39,19 @@ export interface PaymentSummaryType {
     taxCents	           : number
     totalCostCents	       : number
 }
+
+export interface OrderProductType {
+    productId              : string
+    quantity               : number
+    estimatedDeliveryTimeMs: number
+    product                : ProductType
+}
+
+export interface OrderType {
+    id            : string
+    orderTimeMs   : number 
+    totalCostCents: number
+    products      : OrderProductType[]
+    createdAt     : string
+    updatedAt     : string
+}
