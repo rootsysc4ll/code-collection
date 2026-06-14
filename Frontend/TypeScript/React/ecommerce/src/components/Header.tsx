@@ -5,17 +5,14 @@ import mobileLogoWhite from "./../assets/images/mobile-logo-white.png"
 import cartIcon from "./../assets/images/icons/cart-icon.png"
 import searchIcon from "./../assets/images/icons/search-icon.png"
 import { type CartItemType } from "../utils/types"
+import { calculateCartQuantity } from "../utils/functions"
 
 type Props = {
     cart: CartItemType[]
 }
 
 export default function Header( { cart }: Props ) {
-    let cartQuantity = 0
-
-    cart.forEach(cartItem => {
-        cartQuantity += cartItem.quantity
-    })
+    const cartQuantity = calculateCartQuantity(cart)
     
     return (
         <div className="header">

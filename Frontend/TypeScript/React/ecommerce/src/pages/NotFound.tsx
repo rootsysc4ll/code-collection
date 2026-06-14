@@ -1,8 +1,13 @@
 import Header from "../components/Header"
+import { type CartItemType } from "../utils/types"
 
-export default function NotFound() {
+type Props = {
+    cart: CartItemType[]
+}
+
+export default function NotFound( { cart }: Props ) {
     return (<>
-        <Header />
+        <Header cart={cart} />
 
         <span style={{
             display: 'flex',

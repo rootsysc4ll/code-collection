@@ -30,3 +30,12 @@ export interface DeliveryOptionsType {
     updatedAt: string
     estimatedDeliveryTimeMs: number
 }
+
+export interface PaymentSummaryType {
+    totalItems	           : number
+    productCostCents	   : number
+    shippingCostCents	   : number
+    totalCostBeforeTaxCents: number
+    taxCents	           : number
+    totalCostCents	       : number
+}

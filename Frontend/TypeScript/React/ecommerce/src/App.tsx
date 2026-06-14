@@ -8,6 +8,7 @@ import CheckoutPage from './pages/checkout/Checkout'
 import OrdersPage from './pages/Orders'
 import TrackingPage from './pages/Tracking'
 import NotFoundPage from './pages/NotFound'
+
 import { type CartItemType } from "./utils/types"
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     useEffect(() => {
         axios.get('/api/cart-items?expand=product').then(response => setCart(response.data))
     }, [])
-
+    
     return (
         <Routes>
             <Route index            element={<HomePage     cart={cart}/>} />
@@ -24,7 +25,7 @@ function App() {
             <Route path='/orders'   element={<OrdersPage   cart={cart}/>} />
             <Route path='/tracking' element={<TrackingPage cart={cart}/>} />
 
-            <Route path='*'         element={<NotFoundPage />} />
+            <Route path='*'         element={<NotFoundPage cart={cart}/>} />
         </Routes>
     )
 }

@@ -5,17 +5,14 @@ import logo from "./../../assets/images/logo.png"
 import mobileLogo from "./../../assets/images/mobile-logo.png"
 import checkout from "./../../assets/images/icons/checkout-lock-icon.png"
 import { type CartItemType } from "../../utils/types"
+import { calculateCartQuantity } from "../../utils/functions"
 
 type Props = {
     cart: CartItemType[]
 }
 
 export default function CheckoutHeader( { cart }: Props ) {
-    let cartQuantity = 0
-
-    cart.forEach(cartItem => {
-        cartQuantity += cartItem.quantity
-    })
+    const cartQuantity = calculateCartQuantity(cart)
     
     return(
         <div className="checkout-header">
