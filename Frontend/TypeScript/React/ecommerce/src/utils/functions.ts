@@ -5,7 +5,7 @@ export function formatMoney(amountCents: number) {
     return `$${(amountCents / 100).toFixed(2)}`
 }
 
-export function formatDate(timeMS: number) {
+export function formatDate(timeMS: number | undefined) {
     return dayjs(timeMS).format('dddd, MMMM D')
 }
 
