@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import "../../styles/checkout/Checkout.css"
+import "./Checkout.css"
 
 import CheckoutHeader from "./CheckoutHeader"
 import OrderSummary from "./OrderSummary"

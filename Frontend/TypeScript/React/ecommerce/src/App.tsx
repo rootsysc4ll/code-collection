@@ -5,7 +5,7 @@ import './styles/App.css'
 
 import HomePage from './pages/Home'
 import CheckoutPage from './pages/checkout/Checkout'
-import OrdersPage from './pages/Orders'
+import OrdersPage from './pages/orders/Orders'
 import TrackingPage from './pages/Tracking'
 import NotFoundPage from './pages/NotFound'
 

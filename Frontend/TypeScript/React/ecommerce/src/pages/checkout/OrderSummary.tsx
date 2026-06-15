@@ -1,7 +1,7 @@
 import type { CartItemType, DeliveryOptionsType } from "../../utils/types"
 import { formatDate, formatMoney } from "../../utils/functions"
 
-import DeliveryOption from "./DeliveryOption"
+import DeliveryOptions from "./DeliveryOptions"
 
 type Props = {
     cart: CartItemType[]
@@ -42,25 +42,10 @@ export default function OrderSummary( { cart, deliveryOptions }: Props ) {
                                 </div>
                             </div>
 
-                            <div className="delivery-options">
-                                <div className="delivery-options-title">
-                                    Choose a delivery option:
-                                </div>
-
-                                {deliveryOptions.map(deliveryOption => {
-                                    function deliveryOptionPrice() {
-                                        return deliveryOption.priceCents === 0 ? 'FREE' : formatMoney(deliveryOption.priceCents)
-                                    }
-
-                                    return (
-                                        <DeliveryOption
-                                            deliveryOption={deliveryOption}
-                                            cartItem={cartItem}
-                                            priceString={deliveryOptionPrice()}
-                                        />
-                                    )
-                                })}
-                            </div>
+                            <DeliveryOptions 
+                                deliveryOptions={deliveryOptions}
+                                cartItem={cartItem}
+                            />
                         </div>
                     </div>
                 )

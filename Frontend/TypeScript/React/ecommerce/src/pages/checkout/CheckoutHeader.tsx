@@ -1,9 +1,9 @@
-import "./../../styles/checkout/CheckoutHeader.css"
+import "./CheckoutHeader.css"
 
 import { Link } from "react-router"
-import logo from "./../../assets/images/logo.png"
-import mobileLogo from "./../../assets/images/mobile-logo.png"
-import checkout from "./../../assets/images/icons/checkout-lock-icon.png"
+import logo from "../../assets/images/logo.png"
+import mobileLogo from "../../assets/images/mobile-logo.png"
+import checkout from "../../assets/images/icons/checkout-lock-icon.png"
 import { type CartItemType } from "../../utils/types"
 import { calculateCartQuantity } from "../../utils/functions"
 
