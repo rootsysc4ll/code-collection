@@ -72,7 +72,11 @@ export default function Home({ cart }: HomeProps) {
     const [products, setProducts] = useState<ProductType[]>([])
 
     useEffect(() => {
-        axios.get('/api/products').then(response => setProducts(response.data))
+        async function requestProducts() {
+            const response = await axios.get('/api/products')
+            setProducts(response.data)
+        }
+        requestProducts()
     }, [])
 
     return (<>

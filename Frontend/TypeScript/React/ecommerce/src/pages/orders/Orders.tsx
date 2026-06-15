@@ -8,26 +8,30 @@ import OrdersGrid from "./OrdersGrid"
 import { type CartItemType, type OrderType } from "../../utils/types"
 
 type OrdersProps = {
-  cart: CartItemType[]
+    cart: CartItemType[]
 }
 
 export default function Orders({ cart }: OrdersProps) {
-  const [orders, setOrders] = useState<OrderType[]>([])
+    const [orders, setOrders] = useState<OrderType[]>([])
 
-  useEffect(() => {
-    axios.get('/api/orders?expand=products').then(response => setOrders(response.data))
-  }, [])
+    useEffect(() => {
+        async function requestOrders() {
+            const response = await axios.get('/api/orders?expand=products')
+            setOrders(response.data)
+        }
+        requestOrders()
+    }, [])
 
-  return (<>
-    <title>Orders</title>
-    <link rel="icon" href="orders-favicon.png" />
+    return (<>
+        <title>Orders</title>
+        <link rel="icon" href="orders-favicon.png" />
 
-    <Header cart={cart} />
+        <Header cart={cart} />
 
-    <div className="orders-page">
-      <div className="page-title">Your Orders</div>
+        <div className="orders-page">
+            <div className="page-title">Your Orders</div>
 
-      <OrdersGrid orders={orders} />
-    </div>
-  </>)
+            <OrdersGrid orders={orders} />
+        </div>
+    </>)
 }

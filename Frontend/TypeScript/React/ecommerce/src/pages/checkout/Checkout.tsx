@@ -16,8 +16,14 @@ export default function Checkout({ cart }: Props) {
     const [paymentSummary, setPaymentSummary] = useState<(PaymentSummaryType | null)>(null)
 
     useEffect(() => {
-        axios.get('/api/delivery-options?expand=estimatedDeliveryTime').then(response => setDeliveryOptions(response.data))
-        axios.get('/api/payment-summary').then(response => setPaymentSummary(response.data))
+        async function requestChedkoutData() {
+            const deliveryOptionsResponse = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
+            setDeliveryOptions(deliveryOptionsResponse.data)
+
+            const paymentSummaryReponse = await axios.get('/api/payment-summary')
+            setPaymentSummary(paymentSummaryReponse.data)
+        }
+        requestChedkoutData()
     }, [])
 
     return (<>
