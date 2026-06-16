@@ -9,9 +9,10 @@ import { type CartItemType, type OrderType } from "../../utils/types"
 
 type OrdersProps = {
     cart: CartItemType[]
+    loadCart: () => void
 }
 
-export default function Orders({ cart }: OrdersProps) {
+export default function Orders({ cart, loadCart }: OrdersProps) {
     const [orders, setOrders] = useState<OrderType[]>([])
 
     useEffect(() => {
@@ -31,7 +32,7 @@ export default function Orders({ cart }: OrdersProps) {
         <div className="orders-page">
             <div className="page-title">Your Orders</div>
 
-            <OrdersGrid orders={orders} />
+            <OrdersGrid orders={orders} loadCart={loadCart}/>
         </div>
     </>)
 }

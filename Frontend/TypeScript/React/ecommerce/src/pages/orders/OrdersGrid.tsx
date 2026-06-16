@@ -4,6 +4,7 @@ import OrderDetailsGrid from "./OrderDetailsGrid"
 
 type OrdersGridProps = {
     orders: OrderType[]
+    loadCart: () => void
 }
 
 type OrderHeaderProps = {
@@ -32,14 +33,14 @@ function OrderHeader( { order }: OrderHeaderProps ) {
     )
 }
 
-export default function OrdersGrid({ orders }: OrdersGridProps) {
+export default function OrdersGrid({ orders, loadCart }: OrdersGridProps) {
     return (
         <div className="orders-grid">
             {orders.map(order => {
                 return (
                     <div key={order.id} className="order-container">
                         <OrderHeader order={order}/>
-                        <OrderDetailsGrid order={order} />
+                        <OrderDetailsGrid order={order} loadCart={loadCart}/>
                     </div>
                 )
             })}

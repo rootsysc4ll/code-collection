@@ -26,7 +26,7 @@ export default function Checkout({ cart, loadCart }: Props) {
     }
     useEffect(() => {
         loadDeliveryOptions()
-    }, [cart])
+    }, [])
     useEffect(() => {
         loadPaymentSummary()
     }, [cart])
