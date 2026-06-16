@@ -1,6 +1,6 @@
 import { type OrderType } from "../../utils/types"
 import { formatDate, formatMoney } from "../../utils/functions"
-import OrderDetailsGrid from "./OrderDetailsGrid"
+import OrderDetails from "./OrderDetails"
 
 type OrdersGridProps = {
     orders: OrderType[]
@@ -40,7 +40,7 @@ export default function OrdersGrid({ orders, loadCart }: OrdersGridProps) {
                 return (
                     <div key={order.id} className="order-container">
                         <OrderHeader order={order}/>
-                        <OrderDetailsGrid order={order} loadCart={loadCart}/>
+                        <OrderDetails order={order} loadCart={loadCart}/>
                     </div>
                 )
             })}

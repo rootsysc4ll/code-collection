@@ -1,9 +1,8 @@
 import axios from "axios"
 
+import CartItemDetails from "./CartItemDetails"
 import type { CartItemType, DeliveryOptionType } from "../../utils/types"
-import { formatDate, formatMoney } from "../../utils/functions"
-
-import DeliveryOptions from "./DeliveryOptions"
+import { formatDate } from "../../utils/functions"
 
 type Props = {
     cart: CartItemType[]
@@ -30,33 +29,12 @@ export default function OrderSummary( { cart, deliveryOptions, loadCart }: Props
                             Delivery date: {formatDate(selectedDeliveryOption!.estimatedDeliveryTimeMs as number)}
                         </div>
 
-                        <div className="cart-item-details-grid">
-                            <img className="product-image"
-                                src={cartItem.product.image} />
-
-                            <div className="cart-item-details">
-                                <div className="product-name">{cartItem.product.name}</div>
-                                <div className="product-price">{formatMoney(cartItem.product.priceCents)}</div>
-                                <div className="product-quantity">
-                                    <span>
-                                        Quantity: <span className="quantity-label">{cartItem.quantity}</span>
-                                    </span>
-                                    <span className="update-quantity-link link-primary">
-                                        Update
-                                    </span>
-                                    <span className="delete-quantity-link link-primary" onClick={() => 
-                                        handleDeleteCartItem(cartItem)}>
-                                        Delete
-                                    </span>
-                                </div>
-                            </div>
-
-                            <DeliveryOptions 
-                                deliveryOptions={deliveryOptions}
-                                cartItem={cartItem}
-                                loadCart={loadCart}
-                            />
-                        </div>
+                        <CartItemDetails 
+                            cartItem={cartItem}
+                            loadCart={loadCart}
+                            handleDeleteCartItem={handleDeleteCartItem}
+                            deliveryOptions={deliveryOptions}
+                        />    
                     </div>
                 )
             })}

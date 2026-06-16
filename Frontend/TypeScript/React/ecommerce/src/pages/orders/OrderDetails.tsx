@@ -8,7 +8,7 @@ import buyAgainIcon from "../../assets/images/icons/buy-again.png"
 import { formatDate } from "../../utils/functions"
 import { type OrderProductType, type OrderType } from "../../utils/types"
 
-type OrderDetailsGridProps = {
+type OrderDetailsProps = {
     order: OrderType
     loadCart: () => void
 }
@@ -46,7 +46,7 @@ function ProductsDetails({ orderProduct, loadCart }: ProductsDetailsProps) {
     )
 }
 
-export default function OrderDetailsGrid({ order, loadCart }: OrderDetailsGridProps) {
+export default function OrderDetails({ order, loadCart }: OrderDetailsProps) {
     return (
         <div className="order-details-grid">
             {order.products.map(orderProduct => {
