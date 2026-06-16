@@ -9,22 +9,25 @@ import { type CartItemType, type DeliveryOptionsType, type PaymentSummaryType } 
 
 type Props = {
     cart: CartItemType[]
+    loadCart: () => void
 }
 
-export default function Checkout({ cart }: Props) {
+export default function Checkout({ cart, loadCart }: Props) {
     const [deliveryOptions, setDeliveryOptions] = useState<DeliveryOptionsType[]>([])
     const [paymentSummary, setPaymentSummary] = useState<(PaymentSummaryType | null)>(null)
 
+    async function loadDeliveryOptions() {
+        const response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
+        setDeliveryOptions(response.data)
+    }
+    async function loadPaymentSummary() {
+        const response = await axios.get('/api/payment-summary')
+        setPaymentSummary(response.data)
+    }
     useEffect(() => {
-        async function requestChedkoutData() {
-            const deliveryOptionsResponse = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-            setDeliveryOptions(deliveryOptionsResponse.data)
-
-            const paymentSummaryReponse = await axios.get('/api/payment-summary')
-            setPaymentSummary(paymentSummaryReponse.data)
-        }
-        requestChedkoutData()
-    }, [])
+        loadDeliveryOptions()
+        loadPaymentSummary()
+    }, [cart])
 
     return (<>
         <title>Checkout</title>
@@ -39,14 +42,13 @@ export default function Checkout({ cart }: Props) {
                 <OrderSummary
                     cart={cart}
                     deliveryOptions={deliveryOptions}
+                    loadCart={loadCart}
                 />
 
                 <div className="payment-summary">
                     <div className="payment-summary-title">
                         Payment Summary
                     </div>
-
-
                     {paymentSummary && (
                         <PaymentSummary paymentSummary={paymentSummary} />
                     )}

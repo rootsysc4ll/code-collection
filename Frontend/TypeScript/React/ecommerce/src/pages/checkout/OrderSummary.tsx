@@ -6,20 +6,21 @@ import DeliveryOptions from "./DeliveryOptions"
 type Props = {
     cart: CartItemType[]
     deliveryOptions: DeliveryOptionsType[]
+    loadCart: () => void
 }
 
-export default function OrderSummary( { cart, deliveryOptions }: Props ) {
+export default function OrderSummary( { cart, deliveryOptions, loadCart }: Props ) {
     return (
         <div className="order-summary">
             {deliveryOptions.length > 0 && cart.map(cartItem => {
-                const selectedDeliveryOption = deliveryOptions.find(deliveryOption => {
-                    return deliveryOption.id === cartItem.deliveryOptionId
-                })
+                const selectedDeliveryOption = deliveryOptions.find(
+                    deliveryOption => deliveryOption.id === cartItem.deliveryOptionId
+                )
 
                 return (
                     <div key={cartItem.id} className="cart-item-container">
                         <div className="delivery-date">
-                            Delivery date: {formatDate(selectedDeliveryOption?.estimatedDeliveryTimeMs as number)}
+                            Delivery date: {formatDate(selectedDeliveryOption!.estimatedDeliveryTimeMs as number)}
                         </div>
 
                         <div className="cart-item-details-grid">
@@ -45,6 +46,7 @@ export default function OrderSummary( { cart, deliveryOptions }: Props ) {
                             <DeliveryOptions 
                                 deliveryOptions={deliveryOptions}
                                 cartItem={cartItem}
+                                loadCart={loadCart}
                             />
                         </div>
                     </div>

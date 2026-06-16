@@ -1,12 +1,15 @@
+import axios from "axios"
+
 import { type DeliveryOptionsType, type CartItemType } from "../../utils/types"
 import { formatDate, formatMoney } from "../../utils/functions"
 
 type Props = {
     deliveryOptions: DeliveryOptionsType[]
     cartItem: CartItemType
+    loadCart: () => void
 }
 
-export default function DeliveryOptions({ deliveryOptions, cartItem }: Props) {
+export default function DeliveryOptions({ deliveryOptions, cartItem, loadCart }: Props) {
     return (
         <div className="delivery-options">
             <div className="delivery-options-title">
@@ -14,14 +17,20 @@ export default function DeliveryOptions({ deliveryOptions, cartItem }: Props) {
             </div>
 
             {deliveryOptions.map(deliveryOption => {
-                function deliveryOptionPrice() {
+                function getDeliveryOptionPrice() {
                     return deliveryOption.priceCents === 0 ? 'FREE' : formatMoney(deliveryOption.priceCents)
                 }
 
                 return (
-                    <div key={deliveryOption.id} className="delivery-option">
+                    <div key={deliveryOption.id} className="delivery-option" onClick={async () => {
+                        await axios.put(`/api/cart-items/${cartItem.productId}`, {
+                            deliveryOptionId: deliveryOption.id
+                        })
+                        loadCart()
+                    }}>
                         <input type="radio"
-                            defaultChecked={deliveryOption.id === cartItem.deliveryOptionId}
+                            checked={deliveryOption.id === cartItem.deliveryOptionId}
+                            onChange={() => {}}
                             className="delivery-option-input"
                             name={`delivery-option-${cartItem.productId}`} />
                         <div>
@@ -29,7 +38,7 @@ export default function DeliveryOptions({ deliveryOptions, cartItem }: Props) {
                                 {formatDate(deliveryOption.estimatedDeliveryTimeMs)}
                             </div>
                             <div className="delivery-option-price">
-                                {deliveryOptionPrice()} - Shipping
+                                {getDeliveryOptionPrice()} - Shipping
                             </div>
                         </div>
                     </div>
