@@ -1,12 +1,24 @@
+import axios from "axios";
+import { useNavigate } from "react-router";
+
 import { Fragment } from "react/jsx-runtime";
 import type { PaymentSummaryType } from "../../utils/types";
 import { formatMoney } from "../../utils/functions";
 
 type Props = {
     paymentSummary: PaymentSummaryType
+    loadCart: () => void
 }
 
-export default function PaymentSummary( { paymentSummary }: Props ) {
+export default function PaymentSummary( { paymentSummary, loadCart }: Props ) {
+    const navigate = useNavigate()
+
+    async function handleCreateOrder() {
+        await axios.post(`/api/orders`)
+        loadCart()
+        navigate('/orders')
+    }
+    
     return (
         <Fragment>
             <div className="payment-summary-row">
@@ -34,7 +46,7 @@ export default function PaymentSummary( { paymentSummary }: Props ) {
                 <div className="payment-summary-money">{formatMoney(paymentSummary.totalCostCents)}</div>
             </div>
 
-            <button className="place-order-button button-primary">
+            <button className="place-order-button button-primary" onClick={handleCreateOrder}>
                 Place your order
             </button>
         </Fragment>

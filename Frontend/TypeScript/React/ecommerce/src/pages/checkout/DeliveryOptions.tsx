@@ -1,15 +1,22 @@
 import axios from "axios"
 
-import { type DeliveryOptionsType, type CartItemType } from "../../utils/types"
+import { type DeliveryOptionType, type CartItemType } from "../../utils/types"
 import { formatDate, formatMoney } from "../../utils/functions"
 
 type Props = {
-    deliveryOptions: DeliveryOptionsType[]
+    deliveryOptions: DeliveryOptionType[]
     cartItem: CartItemType
     loadCart: () => void
 }
 
 export default function DeliveryOptions({ deliveryOptions, cartItem, loadCart }: Props) {
+    async function handleUpdateDeliveryOption(deliveryOption: DeliveryOptionType) {
+        await axios.put(`/api/cart-items/${cartItem.productId}`, {
+            deliveryOptionId: deliveryOption.id
+        })
+        loadCart()
+    }
+
     return (
         <div className="delivery-options">
             <div className="delivery-options-title">
@@ -22,12 +29,7 @@ export default function DeliveryOptions({ deliveryOptions, cartItem, loadCart }:
                 }
 
                 return (
-                    <div key={deliveryOption.id} className="delivery-option" onClick={async () => {
-                        await axios.put(`/api/cart-items/${cartItem.productId}`, {
-                            deliveryOptionId: deliveryOption.id
-                        })
-                        loadCart()
-                    }}>
+                    <div key={deliveryOption.id} className="delivery-option" onClick={() => handleUpdateDeliveryOption(deliveryOption)}>
                         <input type="radio"
                             checked={deliveryOption.id === cartItem.deliveryOptionId}
                             onChange={() => {}}

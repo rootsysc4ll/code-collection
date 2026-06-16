@@ -1,15 +1,22 @@
-import type { CartItemType, DeliveryOptionsType } from "../../utils/types"
+import axios from "axios"
+
+import type { CartItemType, DeliveryOptionType } from "../../utils/types"
 import { formatDate, formatMoney } from "../../utils/functions"
 
 import DeliveryOptions from "./DeliveryOptions"
 
 type Props = {
     cart: CartItemType[]
-    deliveryOptions: DeliveryOptionsType[]
+    deliveryOptions: DeliveryOptionType[]
     loadCart: () => void
 }
 
 export default function OrderSummary( { cart, deliveryOptions, loadCart }: Props ) {
+    async function handleDeleteCartItem(cartItem: CartItemType) {
+        await axios.delete(`/api/cart-items/${cartItem.productId}`)
+        loadCart()
+    }
+
     return (
         <div className="order-summary">
             {deliveryOptions.length > 0 && cart.map(cartItem => {
@@ -37,7 +44,8 @@ export default function OrderSummary( { cart, deliveryOptions, loadCart }: Props
                                     <span className="update-quantity-link link-primary">
                                         Update
                                     </span>
-                                    <span className="delete-quantity-link link-primary">
+                                    <span className="delete-quantity-link link-primary" onClick={() => 
+                                        handleDeleteCartItem(cartItem)}>
                                         Delete
                                     </span>
                                 </div>

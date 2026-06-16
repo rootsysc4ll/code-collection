@@ -5,7 +5,7 @@ import "./Checkout.css"
 import CheckoutHeader from "./CheckoutHeader"
 import OrderSummary from "./OrderSummary"
 import PaymentSummary from "./PaymentSummary"
-import { type CartItemType, type DeliveryOptionsType, type PaymentSummaryType } from "../../utils/types"
+import { type CartItemType, type DeliveryOptionType, type PaymentSummaryType } from "../../utils/types"
 
 type Props = {
     cart: CartItemType[]
@@ -13,7 +13,7 @@ type Props = {
 }
 
 export default function Checkout({ cart, loadCart }: Props) {
-    const [deliveryOptions, setDeliveryOptions] = useState<DeliveryOptionsType[]>([])
+    const [deliveryOptions, setDeliveryOptions] = useState<DeliveryOptionType[]>([])
     const [paymentSummary, setPaymentSummary] = useState<(PaymentSummaryType | null)>(null)
 
     async function loadDeliveryOptions() {
@@ -26,6 +26,8 @@ export default function Checkout({ cart, loadCart }: Props) {
     }
     useEffect(() => {
         loadDeliveryOptions()
+    }, [cart])
+    useEffect(() => {
         loadPaymentSummary()
     }, [cart])
 
@@ -50,7 +52,10 @@ export default function Checkout({ cart, loadCart }: Props) {
                         Payment Summary
                     </div>
                     {paymentSummary && (
-                        <PaymentSummary paymentSummary={paymentSummary} />
+                        <PaymentSummary 
+                            paymentSummary={paymentSummary}
+                            loadCart={loadCart}
+                        />
                     )}
                 </div>
             </div>

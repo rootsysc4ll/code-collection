@@ -22,7 +22,7 @@ export interface CartItemType {
     product: ProductType
 }
 
-export interface DeliveryOptionsType {
+export interface DeliveryOptionType {
     id: string
     deliveryDays: number
     priceCents: number
