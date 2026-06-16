@@ -19,6 +19,7 @@ type ProductContainerProps = {
 
 function ProductContainer({ product, loadCart }: ProductContainerProps) {
     const [ quantity, setQuantity ] = useState<number>(1)
+    const [ addded, setAddded ]     = useState<boolean>(false)
 
     async function handleAddToCart(){
         await axios.post('/api/cart-items', {
@@ -26,6 +27,11 @@ function ProductContainer({ product, loadCart }: ProductContainerProps) {
             quantity
         })
         loadCart()
+        
+        setAddded(true)
+        setTimeout(() => {
+            setAddded(false)
+        }, 1500);
     }
 
     return (
@@ -62,7 +68,7 @@ function ProductContainer({ product, loadCart }: ProductContainerProps) {
 
             <div className="product-spacer"></div>
 
-            <div className="added-to-cart">
+            <div className="added-to-cart" style={{ opacity: addded ? '1' : '0' }}>
                 <img src={checkmark} />
                 Added
             </div>
