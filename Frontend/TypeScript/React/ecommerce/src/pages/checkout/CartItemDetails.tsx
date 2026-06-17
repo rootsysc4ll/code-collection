@@ -20,7 +20,7 @@ export default function CartItemDetails({ cartItem, loadCart, handleDeleteCartIt
     async function updateCart() {
         const quantityNumber = Number(quantity)
 
-        if (quantityNumber) {
+        if (quantityNumber && quantityNumber > 0) {
             await axios.put(`/api/cart-items/${cartItem.productId}`, {
                 quantity: quantityNumber 
             })
@@ -39,7 +39,6 @@ export default function CartItemDetails({ cartItem, loadCart, handleDeleteCartIt
             updateCart()
         }
     }
-
     function handleUpdateOnKey(e: KeyboardEvent<HTMLSpanElement>) {
         e.stopPropagation()
         if (e.key === 'Enter') {
@@ -61,7 +60,7 @@ export default function CartItemDetails({ cartItem, loadCart, handleDeleteCartIt
                     <span>
                         Quantity:  
                         {isUpdating ? (
-                            <input className="quantity-input" type="text" value={quantity} 
+                            <input tabIndex={0} className="quantity-input" type="text" value={quantity} 
                                 onChange={e => setQuantity(e.target.value)}
                                 onKeyDown={handleUpdateOnKey} />
                         ): (

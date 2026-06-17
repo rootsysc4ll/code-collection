@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useSearchParams } from "react-router"
 import "./Home.css"
 
 import Header from "../../components/Header"
@@ -81,13 +82,21 @@ function ProductContainer({ product, loadCart }: ProductContainerProps) {
 export default function Home({ cart, loadCart }: HomeProps) {
     const [products, setProducts] = useState<ProductType[]>([])
 
+    const [ searchParams ] = useSearchParams()
+    const search = searchParams.get('search')
+
+    async function requestProducts(url: string) {
+        const response = await axios.get(url)
+        setProducts(response.data)
+    }
+    
     useEffect(() => {
-        async function requestProducts() {
-            const response = await axios.get('/api/products')
-            setProducts(response.data)
+        if (search) {
+            requestProducts(`/api/products?search=${search}`)
+        } else {
+            requestProducts('/api/products')
         }
-        requestProducts()
-    }, [])
+    }, [search])
 
     return (<>
         <link rel="icon" href="home-favicon.png" />
