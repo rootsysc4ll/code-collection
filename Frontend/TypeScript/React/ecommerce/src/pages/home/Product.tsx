@@ -46,7 +46,8 @@ export default function Product({ product, loadCart }: Props) {
             <div className="product-price">{formatMoney(product.priceCents)}</div>
 
             <div className="product-quantity-container">
-                <select value={quantity} onChange={e => setQuantity(Number(e.target.value))} >
+                <select value={quantity} onChange={e => setQuantity(Number(e.target.value))} 
+                    data-testid='quantity-selector'>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -67,7 +68,8 @@ export default function Product({ product, loadCart }: Props) {
                 Added
             </div>
 
-            <button className="add-to-cart-button button-primary" onClick={handleAddToCart}>Add to Cart</button>
+            <button className="add-to-cart-button button-primary" data-testid='add-to-cart-button'
+                onClick={handleAddToCart}>Add to Cart</button>
         </div>
     )
 }

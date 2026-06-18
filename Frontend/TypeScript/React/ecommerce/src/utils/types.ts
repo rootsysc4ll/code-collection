@@ -12,6 +12,18 @@ export interface ProductType {
     updatedAt: string
 }
 
+export interface ProductTestType {
+    keywords: string[]
+    id: string
+    image: string
+    name: string
+    rating : {
+        stars: number
+        count: number
+    }
+    priceCents: number
+}
+
 export interface CartItemType {
     id: number
     productId: string
