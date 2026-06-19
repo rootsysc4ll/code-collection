@@ -14,8 +14,18 @@ type Props = {
 }
 
 export default function CartItemDetails({ cartItem, loadCart, handleDeleteCartItem, deliveryOptions }: Props) {
-    const [ isUpdating, setIsUpdating ] = useState<boolean>(false)
-    const [ quantity, setQuantity ]     = useState<string>((cartItem.quantity).toString())
+    const [ isUpdating, setIsUpdating ]     = useState<boolean>(false)
+    const [ quantity, setQuantity ]         = useState<string>((cartItem.quantity).toString())
+    const [ errorOccured, setErrorOccured ] = useState<boolean>(false)
+
+    const errorDisplayTime = 2000
+
+    function displayUpdateError() {
+        setErrorOccured(true)
+        setTimeout(() => {
+            setErrorOccured(false)
+        }, errorDisplayTime);
+    }
 
     async function updateCart() {
         const quantityNumber = Number(quantity)
@@ -26,7 +36,7 @@ export default function CartItemDetails({ cartItem, loadCart, handleDeleteCartIt
             })
             loadCart()
         } else {
-            console.log('enter a valid quantity!')
+            displayUpdateError()
         }
         setIsUpdating(false)
     }
@@ -75,6 +85,9 @@ export default function CartItemDetails({ cartItem, loadCart, handleDeleteCartIt
                         Delete
                     </span>
                 </div>
+                {errorOccured && (
+                    <span className="invalid-input-message">Invalid Input!</span>
+                )}
             </div>
 
             <DeliveryOptions

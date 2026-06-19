@@ -210,6 +210,16 @@
   margin-bottom: 19px;
 }
 
-.quantity-input {
+.checkout-page .quantity-input {
   width: 50px;
+}
+
+.checkout-grid .invalid-input-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.checkout-grid .cart-item-details {
+  display: flex;
+  flex-direction: column;
 }
