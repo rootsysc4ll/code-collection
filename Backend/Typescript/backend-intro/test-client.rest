@@ -1,0 +1,24 @@
+### GET api data
+GET http://localhost:3000/api/data
+
+### POST api data
+POST http://localhost:3000/api/data
+Content-Type: application/json
+
+{
+    "name": "ggaggag",
+    "age": 1111,
+    "registered": true
+}
+
+### PUT api data
+PUT http://localhost:3000/api/data/registered
+Content-Type: application/json
+
+{
+    "id": "783f3857-3486-4683-b961-5a03f7cb2b24",
+    "value": true
+}
+
+### DELETE api data
+DELETE http://localhost:3000/api/data
