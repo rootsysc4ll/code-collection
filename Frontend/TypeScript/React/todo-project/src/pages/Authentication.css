@@ -1,0 +1,138 @@
+#auth-page {
+    background-color: black;
+    color: white;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+#auth-page #auth-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    border: 1px solid blueviolet;
+    padding: 20px 22px;
+    box-shadow: 
+        var(--box-1-x-offset) var(--box-1-y-offset) var(--box-1-color),
+        var(--box-2-x-offset) var(--box-2-y-offset) var(--box-2-color),
+        var(--box-3-x-offset) var(--box-3-y-offset) var(--box-3-color),
+        var(--box-4-x-offset) var(--box-4-y-offset) var(--box-4-color);
+    animation-name: float;
+    animation-duration: 1.4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes float {
+    0% {
+        box-shadow: 
+            var(--box-1-x-offset) var(--box-1-y-offset) var(--box-1-color),
+            var(--box-2-x-offset) var(--box-2-y-offset) var(--box-2-color),
+            var(--box-3-x-offset) var(--box-3-y-offset) var(--box-3-color),
+            var(--box-4-x-offset) var(--box-4-y-offset) var(--box-4-color);
+    }
+    14.29%{
+        box-shadow: 
+            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 1 * var(--float-animation-shift)) var(--box-1-color),
+            var(--box-2-x-offset) var(--box-2-y-offset)                                          var(--box-2-color),
+            var(--box-3-x-offset) var(--box-3-y-offset)                                          var(--box-3-color),
+            var(--box-4-x-offset) var(--box-4-y-offset)                                          var(--box-4-color);
+    }
+    28.58% {
+        box-shadow: 
+            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 2 * var(--float-animation-shift) ) var(--box-1-color),
+            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 1 * var(--float-animation-shift))  var(--box-2-color),
+            var(--box-3-x-offset) var(--box-3-y-offset)                                           var(--box-3-color),
+            var(--box-4-x-offset) var(--box-4-y-offset)                                           var(--box-4-color);
+    }
+    42.87% {
+        box-shadow: 
+            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 1 * var(--float-animation-shift)) var(--box-1-color),
+            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 2 * var(--float-animation-shift)) var(--box-2-color),
+            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 1 * var(--float-animation-shift)) var(--box-3-color),
+            var(--box-4-x-offset) var(--box-4-y-offset)                                          var(--box-4-color);
+    }
+    57.16%{
+        box-shadow: 
+            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 0 * var(--float-animation-shift)) var(--box-1-color),
+            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 1 * var(--float-animation-shift)) var(--box-2-color),
+            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 2 * var(--float-animation-shift)) var(--box-3-color),
+            var(--box-4-x-offset) calc(var(--box-4-y-offset) - 1 * var(--float-animation-shift)) var(--box-4-color);
+    }
+    71.45%{
+        box-shadow: 
+            var(--box-1-x-offset) var(--box-1-y-offset)                                          var(--box-1-color),
+            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 0 * var(--float-animation-shift)) var(--box-2-color),
+            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 1 * var(--float-animation-shift)) var(--box-3-color),
+            var(--box-4-x-offset) calc(var(--box-4-y-offset) - 2 * var(--float-animation-shift)) var(--box-4-color);
+    }
+    85.71%{
+        box-shadow: 
+            var(--box-1-x-offset) var(--box-1-y-offset)                                          var(--box-1-color),
+            var(--box-2-x-offset) var(--box-2-y-offset)                                          var(--box-2-color),
+            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 0 * var(--float-animation-shift)) var(--box-3-color),
+            var(--box-4-x-offset) calc(var(--box-4-y-offset) - 1 * var(--float-animation-shift)) var(--box-4-color);
+    }
+    100%{
+        box-shadow: 
+            var(--box-1-x-offset) var(--box-1-y-offset) var(--box-1-color),
+            var(--box-2-x-offset) var(--box-2-y-offset) var(--box-2-color),
+            var(--box-3-x-offset) var(--box-3-y-offset) var(--box-3-color),
+            var(--box-4-x-offset) var(--box-4-y-offset) var(--box-4-color);
+    }
+}
+
+#auth-page .auth-text {
+    font-size: 20px;
+}
+
+#auth-page #auth-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top: 10px;
+}
+
+#auth-page #auth-input {
+    background-color: rgb(29, 29, 29);
+    border: blueviolet 1px solid;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 10px 8px;
+}
+
+#auth-page #submit-button {
+    width: fit-content;
+}
+
+#auth-page #dividing-line {
+    background-color: blueviolet;
+    height: 1px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#auth-page #auth-method-button {
+    margin-left: 16px;
+}
+
+#auth-page #submit-button, #auth-method-button {
+    background-color: black;
+    border: blueviolet 1px solid;
+    color: white;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px blueviolet;
+}
+
+#auth-page #submit-button:hover, #auth-method-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#auth-page #submit-button:active, #auth-method-button:active {
+    box-shadow: none;
+}

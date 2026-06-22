@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+}
+
+:root {
+    --box-1-x-offset: 20px;
+    --box-2-x-offset: 40px;
+    --box-3-x-offset: 60px;
+    --box-4-x-offset: 80px;
+
+    --box-1-y-offset: 20px;
+    --box-2-y-offset: 40px;
+    --box-3-y-offset: 60px;
+    --box-4-y-offset: 80px;
+
+    --box-1-color: blueviolet;
+    --box-2-color: rgb(96, 29, 157);
+    --box-3-color: rgb(54, 17, 89);
+    --box-4-color: rgb(26, 8, 44);
+
+    --float-animation-shift: 20px;
+}
