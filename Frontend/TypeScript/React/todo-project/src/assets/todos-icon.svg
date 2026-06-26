@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="50mm"
+   height="7.999999mm"
+   viewBox="0 0 50 7.999999"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   sodipodi:docname="todos-icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showguides="true"
+     inkscape:zoom="2.114039"
+     inkscape:cx="108.08694"
+     inkscape:cy="59.365036"
+     inkscape:window-width="1920"
+     inkscape:window-height="1050"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-21.728499,-18.544168)">
+    <path
+       id="rect1-1"
+       style="fill:#000000;stroke-width:0.508274;paint-order:fill markers stroke"
+       d="m 23.554993,18.544168 c -1.011918,0 -1.826494,0.858682 -1.826494,1.925389 v 1.336535 c 0,1.066709 0.814576,1.92539 1.826494,1.92539 h 41.45563 c 1.011919,0 1.826711,-0.858681 1.826711,-1.92539 v -1.336535 c 0,-1.066707 -0.814792,-1.925389 -1.826711,-1.925389 z m 0.211279,0.864515 H 64.79935 c 0.674607,0 1.217869,0.572454 1.217869,1.283593 v 0.891097 c 0,0.711139 -0.543262,1.283593 -1.217869,1.283593 H 23.766272 c -0.674611,0 -1.217661,-0.572454 -1.217661,-1.283593 v -0.891097 c 0,-0.711139 0.54305,-1.283593 1.217661,-1.283593 z" />
+    <rect
+       style="fill:#000000;stroke-width:0.508274;paint-order:fill markers stroke"
+       id="rect1"
+       width="45.108837"
+       height="5.1873136"
+       x="26.619663"
+       y="21.356853"
+       ry="1.925431" />
+    <rect
+       style="fill:#ffffff;stroke-width:0.407387;paint-order:fill markers stroke"
+       id="rect1-3"
+       width="43.468513"
+       height="3.4582093"
+       x="27.439823"
+       y="22.221405"
+       ry="1.2836207" />
+  </g>
+</svg>

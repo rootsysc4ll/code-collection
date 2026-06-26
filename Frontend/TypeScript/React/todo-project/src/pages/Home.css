@@ -1,0 +1,43 @@
+#home-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding-left: calc(var(--nav-width) + var(--default-border-width));
+    padding-top: var(--header-height);
+}
+
+#home-page .todo-date-text {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#home-page .trash-icon {
+    height: 30px;
+}
+
+#home-page nav {
+    position: fixed;
+    background-color: black;
+    width: var(--nav-width);
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-right: var(--default-border-width) solid var(--color-1);
+    display: flex;
+    align-items: center;
+}
+
+#home-page #todos-icon {
+    width: 80px;
+    height: 20px;
+}
+
+#home-page header {
+    position: fixed;
+    background-color: var(--color-4);
+    height: var(--header-height);
+    left: calc(var(--nav-width) + var(--default-border-width));
+    right: 0;
+    top: 0;
+    border-bottom: var(--default-border-width) solid var(--color-1);
+}

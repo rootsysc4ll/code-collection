@@ -6,15 +6,19 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 const __filename = fileURLToPath(import.meta.url)
-console.log(__filename)
 const __dirname = dirname(__filename)
-console.log(__dirname)
 
 app.use(express.static(path.join(__dirname, '../public')))
+app.use(express.json())
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'))
 })
+
+app.post(/.*/, (req, res) => res.status(404).send('Not Found'))
+app.put(/.*/, (req, res) => res.status(404).send('Not Found'))
+app.get(/.*/,  (req, res) => res.status(404).send('Not Found'))
+app.delete(/.*/, (req, res) => res.status(404).send('Not Found'))
 
 app.listen(PORT, () => {
     console.log(`Server opened on PORT ${PORT}`)

@@ -1,7 +1,4 @@
 #auth-page {
-    background-color: black;
-    color: white;
-    margin: 0;
     display: flex;
     height: 100vh;
     margin: auto;
@@ -16,88 +13,106 @@
     border: 1px solid blueviolet;
     padding: 20px 22px;
     box-shadow: 
-        var(--box-1-x-offset) var(--box-1-y-offset) var(--box-1-color),
-        var(--box-2-x-offset) var(--box-2-y-offset) var(--box-2-color),
-        var(--box-3-x-offset) var(--box-3-y-offset) var(--box-3-color),
-        var(--box-4-x-offset) var(--box-4-y-offset) var(--box-4-color);
+        var(--box-1-x-offset) var(--box-1-y-offset) var(--color-1),
+        var(--box-2-x-offset) var(--box-2-y-offset) var(--color-2),
+        var(--box-3-x-offset) var(--box-3-y-offset) var(--color-3),
+        var(--box-4-x-offset) var(--box-4-y-offset) var(--color-4);
     animation-name: float;
-    animation-duration: 1.4s;
-    animation-timing-function: linear;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
 }
 @keyframes float {
     0% {
         box-shadow: 
-            var(--box-1-x-offset) var(--box-1-y-offset) var(--box-1-color),
-            var(--box-2-x-offset) var(--box-2-y-offset) var(--box-2-color),
-            var(--box-3-x-offset) var(--box-3-y-offset) var(--box-3-color),
-            var(--box-4-x-offset) var(--box-4-y-offset) var(--box-4-color);
+            var(--box-1-x-offset) var(--box-1-y-offset) var(--color-1),
+            var(--box-2-x-offset) var(--box-2-y-offset) var(--color-2),
+            var(--box-3-x-offset) var(--box-3-y-offset) var(--color-3),
+            var(--box-4-x-offset) var(--box-4-y-offset) var(--color-4);
     }
     14.29%{
         box-shadow: 
-            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 1 * var(--float-animation-shift)) var(--box-1-color),
-            var(--box-2-x-offset) var(--box-2-y-offset)                                          var(--box-2-color),
-            var(--box-3-x-offset) var(--box-3-y-offset)                                          var(--box-3-color),
-            var(--box-4-x-offset) var(--box-4-y-offset)                                          var(--box-4-color);
+            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 1 * var(--float-animation-shift)) var(--color-1),
+            var(--box-2-x-offset) var(--box-2-y-offset)                                          var(--color-2),
+            var(--box-3-x-offset) var(--box-3-y-offset)                                          var(--color-3),
+            var(--box-4-x-offset) var(--box-4-y-offset)                                          var(--color-4);
     }
     28.58% {
         box-shadow: 
-            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 2 * var(--float-animation-shift) ) var(--box-1-color),
-            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 1 * var(--float-animation-shift))  var(--box-2-color),
-            var(--box-3-x-offset) var(--box-3-y-offset)                                           var(--box-3-color),
-            var(--box-4-x-offset) var(--box-4-y-offset)                                           var(--box-4-color);
+            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 2 * var(--float-animation-shift) ) var(--color-1),
+            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 1 * var(--float-animation-shift))  var(--color-2),
+            var(--box-3-x-offset) var(--box-3-y-offset)                                           var(--color-3),
+            var(--box-4-x-offset) var(--box-4-y-offset)                                           var(--color-4);
     }
     42.87% {
         box-shadow: 
-            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 1 * var(--float-animation-shift)) var(--box-1-color),
-            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 2 * var(--float-animation-shift)) var(--box-2-color),
-            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 1 * var(--float-animation-shift)) var(--box-3-color),
-            var(--box-4-x-offset) var(--box-4-y-offset)                                          var(--box-4-color);
+            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 1 * var(--float-animation-shift)) var(--color-1),
+            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 2 * var(--float-animation-shift)) var(--color-2),
+            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 1 * var(--float-animation-shift)) var(--color-3),
+            var(--box-4-x-offset) var(--box-4-y-offset)                                          var(--color-4);
     }
     57.16%{
         box-shadow: 
-            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 0 * var(--float-animation-shift)) var(--box-1-color),
-            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 1 * var(--float-animation-shift)) var(--box-2-color),
-            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 2 * var(--float-animation-shift)) var(--box-3-color),
-            var(--box-4-x-offset) calc(var(--box-4-y-offset) - 1 * var(--float-animation-shift)) var(--box-4-color);
+            var(--box-1-x-offset) calc(var(--box-1-y-offset) - 0 * var(--float-animation-shift)) var(--color-1),
+            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 1 * var(--float-animation-shift)) var(--color-2),
+            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 2 * var(--float-animation-shift)) var(--color-3),
+            var(--box-4-x-offset) calc(var(--box-4-y-offset) - 1 * var(--float-animation-shift)) var(--color-4);
     }
     71.45%{
         box-shadow: 
-            var(--box-1-x-offset) var(--box-1-y-offset)                                          var(--box-1-color),
-            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 0 * var(--float-animation-shift)) var(--box-2-color),
-            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 1 * var(--float-animation-shift)) var(--box-3-color),
-            var(--box-4-x-offset) calc(var(--box-4-y-offset) - 2 * var(--float-animation-shift)) var(--box-4-color);
+            var(--box-1-x-offset) var(--box-1-y-offset)                                          var(--color-1),
+            var(--box-2-x-offset) calc(var(--box-2-y-offset) - 0 * var(--float-animation-shift)) var(--color-2),
+            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 1 * var(--float-animation-shift)) var(--color-3),
+            var(--box-4-x-offset) calc(var(--box-4-y-offset) - 2 * var(--float-animation-shift)) var(--color-4);
     }
     85.71%{
         box-shadow: 
-            var(--box-1-x-offset) var(--box-1-y-offset)                                          var(--box-1-color),
-            var(--box-2-x-offset) var(--box-2-y-offset)                                          var(--box-2-color),
-            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 0 * var(--float-animation-shift)) var(--box-3-color),
-            var(--box-4-x-offset) calc(var(--box-4-y-offset) - 1 * var(--float-animation-shift)) var(--box-4-color);
+            var(--box-1-x-offset) var(--box-1-y-offset)                                          var(--color-1),
+            var(--box-2-x-offset) var(--box-2-y-offset)                                          var(--color-2),
+            var(--box-3-x-offset) calc(var(--box-3-y-offset) - 0 * var(--float-animation-shift)) var(--color-3),
+            var(--box-4-x-offset) calc(var(--box-4-y-offset) - 1 * var(--float-animation-shift)) var(--color-4);
     }
     100%{
         box-shadow: 
-            var(--box-1-x-offset) var(--box-1-y-offset) var(--box-1-color),
-            var(--box-2-x-offset) var(--box-2-y-offset) var(--box-2-color),
-            var(--box-3-x-offset) var(--box-3-y-offset) var(--box-3-color),
-            var(--box-4-x-offset) var(--box-4-y-offset) var(--box-4-color);
+            var(--box-1-x-offset) var(--box-1-y-offset) var(--color-1),
+            var(--box-2-x-offset) var(--box-2-y-offset) var(--color-2),
+            var(--box-3-x-offset) var(--box-3-y-offset) var(--color-3),
+            var(--box-4-x-offset) var(--box-4-y-offset) var(--color-4);
     }
+}
+
+#auth-page #auth-top-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#auth-page #auth-header {
+    font-size: 32px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #auth-page .auth-text {
     font-size: 20px;
 }
 
+#auth-page .error-message {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ff4646;
+}
+
 #auth-page #auth-form {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #auth-page #auth-input {
     background-color: rgb(29, 29, 29);
     border: blueviolet 1px solid;
+    color: white;
     border-radius: 8px;
     font-size: 16px;
     padding: 10px 8px;
