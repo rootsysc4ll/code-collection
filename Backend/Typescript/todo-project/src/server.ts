@@ -1,6 +1,8 @@
 import express from "express"
 import path, { dirname } from 'path'
 import { fileURLToPath } from "url"
+import authRoutes from "./routes/auth.ts"
+import todosRoutes from "./routes/todos.ts"
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -15,6 +17,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 
+// Routes
+app.use('/auth', authRoutes)
+app.use('/todos', todosRoutes)
+
+// If the link doesn't match any endpoint
 app.post(/.*/, (req, res) => res.status(404).send('Not Found'))
 app.put(/.*/, (req, res) => res.status(404).send('Not Found'))
 app.get(/.*/,  (req, res) => res.status(404).send('Not Found'))

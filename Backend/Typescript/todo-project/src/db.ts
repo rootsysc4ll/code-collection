@@ -19,3 +19,5 @@ db.exec(`
         FOREIGN KEY(user_id) REFERENCES users(id)
     )    
 `)
+
+export default db

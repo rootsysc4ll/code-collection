@@ -17,7 +17,10 @@ function AuthForm({ isLogin, setErrorMessage }: AuthFormProps) {
 
     async function loginUser() {
         try {
-            const response = await axios.get(`/auth/login/${email}/${password}`)
+            const response = await axios.post(`/auth/login`, {
+                email,
+                password
+            })
             navigate(`/home/${response.data}`) // this will go to '/home/username'
         } catch (error) {
             const errorStatus = (error as AxiosError).status
