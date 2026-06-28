@@ -99,7 +99,7 @@
 #auth-page .error-message {
     margin-top: 20px;
     font-weight: bold;
-    color: #ff4646;
+    color: #ff0000;
 }
 
 #auth-page #auth-form {

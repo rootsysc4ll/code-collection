@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router"
+import { Link } from "react-router"
 import axios, { AxiosError } from "axios"
 import { useState } from "react"
 import type { Dispatch, SetStateAction } from "react"
@@ -6,22 +6,22 @@ import "./Authentication.css"
 
 type AuthFormProps = {
     isLogin: boolean
+    setIsLogin: Dispatch<SetStateAction<boolean>>
+    loginUser: (email:string, password:string) => void
     setErrorMessage: Dispatch<SetStateAction<string>>
 }
 
-function AuthForm({ isLogin, setErrorMessage }: AuthFormProps) {
+type AuthenticationProps = {
+    loginUser: (email:string, password:string) => void
+}
+
+function AuthForm({ isLogin, setIsLogin, loginUser, setErrorMessage }: AuthFormProps) {
     const [ email, setEmail ]       = useState<string>('')
     const [ password, setPassword ] = useState<string>('')
 
-    const navigate = useNavigate()
-
-    async function loginUser() {
+    function handleLogin() {
         try {
-            const response = await axios.post(`/auth/login`, {
-                email,
-                password
-            })
-            navigate(`/home/${response.data}`) // this will go to '/home/username'
+            loginUser(email, password)
         } catch (error) {
             const errorStatus = (error as AxiosError).status
             setErrorMessage(`These credentials don't match any user, Error: ${errorStatus}`)
@@ -29,17 +29,21 @@ function AuthForm({ isLogin, setErrorMessage }: AuthFormProps) {
     }
 
     async function registerUser() {
-        await axios.post('/auth/register', {
-            email,
-            password
-        }).catch(error => {
-            setErrorMessage(`Couldn't create user, Error: ${error.status}`)
-        })
+        try {
+            await axios.post('/auth/register', {
+                email,
+                password
+            })
+            setIsLogin(true)
+        } catch (error) {
+            const errorStatus = (error as AxiosError).status
+            setErrorMessage(`Couldn't create user, Error: ${errorStatus}`)
+        }
     }
 
     function handleSubmit() {
         if (isLogin) {
-            loginUser()
+            handleLogin()
         } else {
             registerUser()
         }
@@ -62,7 +66,7 @@ function AuthForm({ isLogin, setErrorMessage }: AuthFormProps) {
     )
 }
 
-export default function Authentication() {
+export default function Authentication({ loginUser }: AuthenticationProps) {
     const [ isLogin, setIsLogin ]           = useState<boolean>(false)
     const [ errorMessage, setErrorMessage ] = useState<string>('')
 
@@ -84,7 +88,9 @@ export default function Authentication() {
                 </div>
 
                 <AuthForm 
-                    isLogin={isLogin} 
+                    isLogin={isLogin}
+                    setIsLogin={setIsLogin}
+                    loginUser={loginUser}
                     setErrorMessage={setErrorMessage}
                 />
 
