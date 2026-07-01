@@ -9,10 +9,12 @@
     --box-3-y-offset: 60px;
     --box-4-y-offset: 80px;
 
-    --color-1: blueviolet;
+    
+    /* --color-1: rgb(138, 43, 226);
     --color-2: rgb(96, 29, 157);
     --color-3: rgb(54, 17, 89);
-    --color-4: rgb(26, 8, 44);
+    --color-4: rgb(26, 8, 44); */
+   
 
     --float-animation-shift: 20px;
 
@@ -23,6 +25,8 @@
     --header-height: 50px;
     
     --default-border-width: 1px;
+
+    --default-margin: 20px;
 }
 
 body {

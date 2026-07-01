@@ -4,3 +4,5 @@ export interface TodoType {
     task: string
     completed: boolean
 }
+
+export type RGBChannelType = [number, number, number]

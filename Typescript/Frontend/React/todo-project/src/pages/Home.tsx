@@ -1,34 +1,79 @@
+import { useState } from "react"
 import "./Home.css"
 
-import trashIcon from "../assets/trash-icon.svg"
-import todosIcon from "../assets/todos-icon.svg"
+import type { TodoType } from "../utils/types"
+import { CompletedIcon, TrashIcon, TodosIcon, EditIcon } from "../assets/componentIcons"
 
-function Todo() {
+type HomeProps = {
+    todos: TodoType[]
+    setTodos:  React.Dispatch<React.SetStateAction<TodoType[]>>
+}
+
+type TodoProps = {
+    todo: TodoType
+    handleTodoUpdate: (newTodo: TodoType) => void
+}
+
+// handleTodoUpdate
+function Todo({ todo }: TodoProps) {
+    const [ detailsIsVisible, setDetailsIsVisible ] = useState<boolean>(false)
+
     return (
         <div className="todo-container">
-            <button className="open-details-button">
-                &gt;
-            </button>
+            <div className="todo-content-container">
+                <button className="details-button regular-button" onClick={() => setDetailsIsVisible(!detailsIsVisible)}>
+                    &gt;
+                </button>
 
-            <span className="todo-name-text">
-                this is the definition of some todo
-            </span>
+                <span className="task-text">
+                    {todo.task}
+                </span>
 
-            <span className="todo-date-text">Todo date</span>
+                <span className="date-text">Todo date</span>
 
-            <button className="delete-todo-button">
-                <img className="trash-icon" src={trashIcon} alt="" />
-            </button>
+                <button className="delete-button regular-button">
+                    <TrashIcon />
+                </button>
+
+                {todo.completed && (
+                    <CompletedIcon />
+                )}
+            </div>
+
+            {detailsIsVisible && (<>
+                <div className="details-container">
+                    <span className="details-content">details</span>
+
+                    <button className="edit-button">
+                        <EditIcon />
+                    </button>
+                </div>
+            </>)}
         </div>
     )
 }
 
-export default function Home() {
+export default function Home({ todos, setTodos }: HomeProps) {
+    function handleTodoUpdate(newTodo: TodoType) {
+        const newTodos = todos.map(todo => {
+            if (todo.id === newTodo.id) {
+                return {
+                    id: todo.id,
+                    userId: todo.userId,
+                    task: newTodo.task,
+                    completed: newTodo.completed
+                }
+            } else return todo
+        })
+
+        setTodos(newTodos)
+    }
+
     return (
         <div id="home-page">
             <nav>
-                <button>
-                    <img id="todos-icon" src={todosIcon} alt="" />
+                <button className="regular-button">
+                    <TodosIcon />
                 </button>
             </nav>
                 
@@ -41,11 +86,15 @@ export default function Home() {
             </span>
 
             <div id="todos-container">
-                {/* 
-                    this need to be generated via .map, specially because of the details, 
-                    that need to be specific for each todo container 
-                */}
-                <Todo />
+                {todos.map(todo => {
+                    return (
+                        <Todo
+                            key={crypto.randomUUID()} 
+                            todo={todo}
+                            handleTodoUpdate={handleTodoUpdate}
+                        />
+                    )
+                })}
             </div>
                 
         </div>

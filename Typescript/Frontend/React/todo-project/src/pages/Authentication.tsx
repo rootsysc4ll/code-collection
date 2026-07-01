@@ -1,8 +1,10 @@
 import { Link } from "react-router"
 import axios, { AxiosError } from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import type { Dispatch, SetStateAction } from "react"
 import "./Authentication.css"
+
+import themeProvider from "../utils/themeProvider"
 
 type AuthFormProps = {
     isLogin: boolean
@@ -70,6 +72,10 @@ export default function Authentication({ loginUser }: AuthenticationProps) {
     const [ isLogin, setIsLogin ]           = useState<boolean>(false)
     const [ errorMessage, setErrorMessage ] = useState<string>('')
 
+    useEffect(() => {
+        themeProvider.defaultTheme()
+    }, [])
+    
     return (
         <div id="auth-page">
             <div id="auth-container">
