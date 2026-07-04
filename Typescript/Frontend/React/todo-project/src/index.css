@@ -10,10 +10,10 @@
     --box-4-y-offset: 80px;
 
     
-    /* --color-1: rgb(138, 43, 226);
+    --color-1: rgb(132, 0, 255);
     --color-2: rgb(96, 29, 157);
     --color-3: rgb(54, 17, 89);
-    --color-4: rgb(26, 8, 44); */
+    --color-4: rgb(26, 8, 44);
    
 
     --float-animation-shift: 20px;
@@ -27,10 +27,20 @@
     --default-border-width: 1px;
 
     --default-margin: 20px;
+
+    --default-font-size: 30px;
+    --default-icon-size: 30px;
+    --default-row-gap: 30px;
+    --default-border-radius: 6px;
+    --default-padding: 15px;
 }
 
 body {
     margin: 0;
     background-color: var(--theme);
     color: var(--color-theme);
+}
+
+button:hover {
+    cursor: pointer;
 }

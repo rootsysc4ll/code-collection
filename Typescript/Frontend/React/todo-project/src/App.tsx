@@ -6,7 +6,7 @@ import './App.css'
 import themeProvider from './utils/themeProvider'
 import type { TodoType } from './utils/types'
 import AuthenticationPage from './pages/Authentication'
-import HomePage from './pages/Home'
+import HomePage from './pages/home/Home'
 
 function App() {
   const [ todos, setTodos ] = useState<TodoType[]>([
@@ -38,7 +38,6 @@ function App() {
 
     setTodos(response.data)
     navigate(`/home`)
-    console.log(todos)
   }
 
   return (

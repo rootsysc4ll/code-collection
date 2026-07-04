@@ -1,0 +1,111 @@
+#home-page #todos-title {
+    font-size: var(--default-font-size);
+    margin-top: var(--default-margin);
+    margin-left: var(--default-margin);
+}
+
+#home-page #todos-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--default-margin);
+    margin-left: var(--default-margin);
+    margin-right: var(--default-margin);
+    row-gap: var(--default-row-gap);
+}
+
+#home-page .icon {
+    width: var(--default-icon-size);
+    height: var(--default-icon-size);
+}
+
+#home-page .regular-button {
+    border: none;
+    width: fit-content;
+}
+
+#home-page .todo-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-6);
+    border-radius: calc(var(--default-border-radius) + 6px);
+    border: 2px solid var(--color-1);
+    overflow: hidden;
+}
+
+#home-page .todo-content-container {
+    display: flex;
+    align-items: center;
+    padding: var(--default-padding);
+}
+
+#home-page .details-button {
+    font-size: 20px;
+    padding: 6px 12px; 
+    border-radius: var(--default-border-radius);
+    background-color: var(--color-4);
+    color: var(--color-5);
+}
+#home-page .rotate {
+    rotate: 90deg;
+    color: white;
+}
+
+#home-page .task-text {
+    flex: 1;
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+#home-page .date-text {
+    margin-right: var(--default-margin);
+    color: gray;
+    font-family: "JetBrains Mono";
+}
+
+#home-page .delete-button {
+    height: fit-content;
+    padding: 8px 12px;
+    border-radius: var(--default-border-radius);
+    background-color: #770000;
+}
+
+#home-page .trash-icon {
+    width: 25px;
+    height: 30px;
+}
+
+#home-page .completed-icon {
+    height: var(--default-font-size);
+}
+
+#home-page .details-container {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid var(--color-1);
+    padding: var(--default-padding);
+    background-color: var(--color-4);
+}
+
+#home-page .details-content {
+    flex: 1;
+    font-size: 18px;
+}
+
+#home-page .edit-button {
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    margin: 5px 0 5px 5px;
+    border: none;
+    border-radius: var(--default-border-radius);
+    background-color: var(--color-5);
+    color: white;
+    font-size: 16px;
+    border: 2px solid var(--color-1);
+}
+
+#home-page .edit-icon {
+    width: 20px;
+    fill: white !important;
+}

@@ -1,8 +1,8 @@
 import type { RGBChannelType } from "./types"
 
 const baseColorRGB: RGBChannelType = [128, 43, 226]
-const variationsQuant = 3
-const channelShifts = [42, 14, 69]
+const variationsQuant = 5
+const channelShifts = [31, 10, 42]
 
 function generateColors(): RGBChannelType[] {
     const accumulator: RGBChannelType[] = []
