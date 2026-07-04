@@ -8,19 +8,21 @@ import type { TodoType } from './utils/types'
 import AuthenticationPage from './pages/Authentication'
 import HomePage from './pages/home/Home'
 
+let isLoadingTodos = false
+
 function App() {
   const [ todos, setTodos ] = useState<TodoType[]>([
     {
       id: 1,
       userId: 1,
-      task: 'you need to make the colors be generated via ts',
+      task: 'you need to make an error popup',
       completed: false
     },
     {
       id: 2,
       userId: 1,
-      task: 'aaaaaaaaaaaaaaaaaaa',
-      completed: false
+      task: 'you need to implement update modal',
+      completed: true
     }
   ])
 
@@ -29,6 +31,16 @@ function App() {
   useEffect(() => {
     themeProvider.defaultTheme()
   }, [])
+
+  async function loadTodos() {
+    if (!isLoadingTodos) {
+      const response = await axios.get('/todos')
+      setTodos(response.data)
+    } else {
+      console.log('Todos are on loading proccess')
+    }
+    isLoadingTodos = false
+  }
 
   async function loginUser(email: string, password: string) {
     const response = await axios.post(`/auth/login`, {
@@ -48,7 +60,7 @@ function App() {
       <Route path='/home' element={ 
         <HomePage 
           todos={todos}
-          setTodos={setTodos}
+          loadTodos={loadTodos}
         />
       } />
 

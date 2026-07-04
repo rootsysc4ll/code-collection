@@ -27,12 +27,12 @@
     --default-border-width: 1px;
 
     --default-margin: 20px;
-
     --default-font-size: 30px;
     --default-icon-size: 30px;
     --default-row-gap: 30px;
     --default-border-radius: 6px;
     --default-padding: 15px;
+    --default-border: 2px solid var(--color-1);
 }
 
 body {

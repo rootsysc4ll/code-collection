@@ -7,11 +7,11 @@ import { CompletedIcon, TrashIcon, EditIcon } from "../../assets/SvgComponents"
 type Props = {
     todo: TodoType
     handleTodoUpdate: (newTodo: TodoType) => void
+    handleTodoDelete: (todoId: number) => void
 }
 
-// handleTodoUpdate
-export default function Todo({ todo }: Props) {
-    const [ detailsIsVisible, setDetailsIsVisible ] = useState<boolean>(false)
+export default function Todo({ todo, handleTodoUpdate, handleTodoDelete }: Props) {
+    const [detailsIsVisible, setDetailsIsVisible] = useState<boolean>(false)
 
     return (
         <div className="todo-container">
@@ -26,12 +26,14 @@ export default function Todo({ todo }: Props) {
 
                 <span className="date-text">Todo date</span>
 
-                <button className="delete-button regular-button">
+                <button className="delete-button regular-button" onClick={() => handleTodoDelete(todo.id)}>
                     <TrashIcon />
                 </button>
 
                 {todo.completed && (
-                    <CompletedIcon />
+                    <div className="completed-container">
+                        <CompletedIcon />
+                    </div>
                 )}
             </div>
 
