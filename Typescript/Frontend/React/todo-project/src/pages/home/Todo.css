@@ -126,12 +126,6 @@
     fill: white !important;
 }
 
-#home-page .special-todo {
-    opacity: 0.5;
-    position: relative;
-    margin-top: var(--default-margin);
-}
-
 #home-page .completed-container {
     position: absolute;
     top: calc(-1 * (var(--default-icon-size) - 10px) / 2);
@@ -147,15 +141,4 @@
     fill: white;
     width: calc(var(--default-icon-size) - 10px);
     height: calc(var(--default-icon-size) - 10px);
-}
-
-#home-page #finish-button {
-    position: absolute;
-    top:   -2px;
-    right: -10px;
-    background-color: var(--color-1);
-    border: none;
-    padding: 6px 12px;
-    border-radius: 2px;
-    font-size: 18px;
 }

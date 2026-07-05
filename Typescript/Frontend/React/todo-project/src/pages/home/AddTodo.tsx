@@ -1,5 +1,6 @@
 import { useState } from "react"
 import type { MouseEvent } from "react"
+import "./AddTodo.css"
 
 type Props = {
     addTodo: (task: string) => void
@@ -16,7 +17,7 @@ export default function AddTodo({ addTodo }: Props) {
     }
 
     return (<div style={{position: 'relative'}}>
-        <div className="todo-container special-todo">
+        <div className="todo-container add-todo">
             <div className="todo-content-container">
                 <button className={`details-button regular-button rotate`}>
                     &gt;

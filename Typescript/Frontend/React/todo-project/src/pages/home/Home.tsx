@@ -6,9 +6,7 @@ import { PlusIcon, ResetIcon } from "../../assets/SvgComponents"
 import type { TodoType } from "../../utils/types"
 import Todo from "./Todo"
 import AddTodo from "./AddTodo"
-
-let isOnDeleteProccess = false
-let isOnUpdateProccess = false
+import ErrorMessage from "./ErrorMessage"
 
 type Props = {
     todos: TodoType[]
@@ -16,57 +14,55 @@ type Props = {
 }
 
 export default function Home({ todos, loadTodos }: Props) {
-    const [isAdding, setIsAdding] = useState<boolean>(false)
+    const [isDeleting, setIsDeleting]     = useState<boolean>(false)
+    const [isUpdating, setIsUpdating]     = useState<boolean>(false)
+    const [isAdding, setIsAdding]         = useState<boolean>(false)
+    const [errorMessage, setErrorMessage] = useState<string>('')
 
-    async function updateTodo(newTodo: TodoType) {
-        try {
-            await axios.put(`/todos/${newTodo.id}`, {
-                id: newTodo.id,
-                userId: newTodo.userId,
-                task: newTodo.completed,
-                completed: newTodo.completed
-            })
-            await loadTodos()
-        } catch (error) {
-            const errorCode = (error as AxiosError).code
-            console.log(`Error code ${errorCode} trying to update todo`)
-            /////////////   
-        } finally {
-            isOnUpdateProccess = false
-        }
+    function displayErrorMessage(message: string) {
+        console.log(message)
+        setErrorMessage(message)
     }
 
-    function handleTodoUpdate(newTodo: TodoType) {
-        if (!isOnUpdateProccess) {
-            isOnUpdateProccess = true
-            updateTodo(newTodo)
+    async function handleTodoUpdate(newTodo: TodoType) {
+        if (!isUpdating) {
+            setIsUpdating(true)
+
+            try {
+                await axios.put(`/todos/${newTodo.id}`, {
+                    id: newTodo.id,
+                    userId: newTodo.userId,
+                    task: newTodo.completed,
+                    completed: newTodo.completed
+                })
+                loadTodos()
+            } catch (error) {
+                const errorCode = (error as AxiosError).code
+                displayErrorMessage(`Error code ${errorCode} trying to update todo`)
+            } finally {
+                setIsUpdating(false)
+            }
         } else {
-            console.log('wait! update process is running')
-            ///////////
-        }
-    }
-
-    async function deleteTodo(id: number) {
-        try {
-            await axios.delete(`/todos/${id}`)
-            await loadTodos()
-        } catch (error) {
-            const errorCode = (error as AxiosError).code
-            console.log(`Error code ${errorCode} trying to delete todo`)
-            /////////////   
-        } finally {
-            isOnDeleteProccess = false
+            displayErrorMessage('wait! update process is running')
         }
     }
 
     // userId
-    function handleTodoDelete(todoId: number) {
-        if (!isOnDeleteProccess) {
-            isOnDeleteProccess = true
-            deleteTodo(todoId)
+    async function handleTodoDelete(todoId: number) {
+        if (!isDeleting) {
+            setIsDeleting(true)
+            
+            try {
+                await axios.delete(`/todos/${todoId}`)
+                loadTodos()
+            } catch (error) {
+                const errorCode = (error as AxiosError).code
+                displayErrorMessage(`Error code ${errorCode} trying to delete todo`)
+            } finally {
+                setIsDeleting(false)
+            }
         } else {
-            console.log('wait! update process is running')
-            ///////////
+            displayErrorMessage('wait! delete process is running')
         }
     }
 
@@ -75,14 +71,12 @@ export default function Home({ todos, loadTodos }: Props) {
         try {
             await axios.post('/todos', {
                 userId: todos[0].userId,
-                task,
+                task
             })
         } catch (error) {
             const errorCode = (error as AxiosError).code
-            console.log(`Error code ${errorCode} trying to delete todo`)
-            /////////////   
+            displayErrorMessage(`Error code ${errorCode} trying to add todo`)
         }
-        setIsAdding(false)
     }
 
     return (
@@ -107,7 +101,7 @@ export default function Home({ todos, loadTodos }: Props) {
             <div id="todos-container">
                 {todos.map(todo => {
                     return (
-                        <Todo
+                        <Todo 
                             key={crypto.randomUUID()}
                             todo={todo}
                             handleTodoUpdate={handleTodoUpdate}
@@ -117,8 +111,13 @@ export default function Home({ todos, loadTodos }: Props) {
                 })}
 
                 {isAdding && (
-                    <AddTodo
-                        addTodo={addTodo}
+                    <AddTodo addTodo={addTodo} />
+                )}
+
+                {errorMessage !== '' && (
+                    <ErrorMessage 
+                        errorMessage={errorMessage} 
+                        setErrorMessage={setErrorMessage}
                     />
                 )}
             </div>

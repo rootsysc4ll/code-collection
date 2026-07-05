@@ -1,0 +1,16 @@
+#home-page .add-todo {
+    opacity: 0.5;
+    position: relative;
+    margin-top: var(--default-margin);
+}
+
+#home-page #finish-button {
+    position: absolute;
+    top:   -2px;
+    right: -10px;
+    background-color: var(--color-1);
+    border: none;
+    padding: 6px 12px;
+    border-radius: var(--default-border-radius);
+    font-size: 18px;
+}
