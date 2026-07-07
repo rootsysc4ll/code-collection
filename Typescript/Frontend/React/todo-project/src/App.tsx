@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate } from 'react-router'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios, { type AxiosResponse } from 'axios'
 import './App.css'
 
 import themeProvider from './utils/themeProvider'
@@ -10,26 +10,43 @@ import HomePage from './pages/home/Home'
 
 function App() {
   const [ todos, setTodos ] = useState<TodoType[]>([])
-  const [ token, setToken ] = useState<string>('')
+  const [ token, setToken ] = useState<string>(() => localStorage.getItem('token') || '')
+
+  const navigate = useNavigate()
+
+  function handleTokenStorage(response: AxiosResponse) {
+    const responseToken = response.data.token
+    if (responseToken) {
+      setToken(responseToken)
+      localStorage.setItem('token', responseToken)
+    }
+  }
+
+  async function loadTodos() {
+    const response = await axios.get('/todos', {
+      headers: { 'Authorization': token }
+    })
+
+    setTodos(response.data)
+  }
 
   async function loginUser(email:string, password:string) {
     const response = await axios.post('/login', {
       email,
       password
     })
+
+    handleTokenStorage(response)
+    navigate('/home')
   }
   
   async function registerUser(email:string, password:string) {
-    const response = await axios.post('/login', {
+    const response = await axios.post('/register', {
       email,
       password
     })
 
-    const data = await response.data
-    if (data.token) {
-      setToken(data.token)
-      localStorage.setItem('token', token)
-    }
+    handleTokenStorage(response)
   }
 
   useEffect(() => {
@@ -43,6 +60,7 @@ function App() {
       } />
       <Route path='/home' element={
         <HomePage
+          token={token}
           todos={todos}
           loadTodos={loadTodos}
         />

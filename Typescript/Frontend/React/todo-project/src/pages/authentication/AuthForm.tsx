@@ -1,5 +1,6 @@
 import { useState } from "react"
 import type { Dispatch, SetStateAction, MouseEvent } from "react"
+import "./AuthForm.css"
 
 type Props = {
     isLogin: boolean
@@ -14,12 +15,10 @@ export default function AuthForm({ isLogin, handleLogin, handleRegister }: Props
 
     function handleSubmit(e: MouseEvent<HTMLButtonElement>) {
         e.currentTarget.disabled = true
+        
+        const result = isLogin ? handleLogin(email, password) : handleRegister(email, password)
 
-        if (isLogin) {
-            handleLogin(email, password).finally(() => e.currentTarget.disabled = false)
-        } else {
-            handleRegister(email, password).finally(() => e.currentTarget.disabled = false)
-        }
+        result.finally(() => e.currentTarget.disabled = false)
     }
 
     return (

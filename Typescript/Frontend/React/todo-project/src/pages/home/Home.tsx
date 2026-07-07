@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios, { AxiosError } from "axios"
 import "./Home.css"
 
@@ -10,10 +10,11 @@ import ErrorMessage from "./ErrorMessage"
 
 type Props = {
     todos: TodoType[]
+    token: string
     loadTodos: () => Promise<void>
 }
 // loadTodos
-export default function Home({ todos }: Props) {
+export default function Home({ todos, token, loadTodos }: Props) {
     const [errorMessage, setErrorMessage] = useState<string>('')
     const [isAdding, setIsAdding] = useState<boolean>(false)
 
@@ -22,12 +23,23 @@ export default function Home({ todos }: Props) {
         setErrorMessage(message)
     }
 
+    async function handleLoadTodos() {
+        try {
+            await loadTodos()
+        } catch (error) {
+            const axiosError = error as AxiosError
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+        } 
+    }
+
     async function completeTodo(todoId: number): Promise<void> {
         try {
-            await axios.put('/todo', {
+            await axios.put('/todos', {
                 todoId,
-                completed: 1 
-            })
+                completed: true,
+            }, { headers: { 'Authorization': token } })
+
+            await handleLoadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
             displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
@@ -36,7 +48,11 @@ export default function Home({ todos }: Props) {
     
     async function deleteTodo(todoId: number): Promise<void> {
         try {
-            await axios.delete(`/todo/${todoId}`)
+            await axios.delete(`/todos/${todoId}`,
+                { headers: { 'Authorization': token } }
+            )
+
+            await handleLoadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
             displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
@@ -45,12 +61,23 @@ export default function Home({ todos }: Props) {
     
     async function addTodo(task: string): Promise<void> {
         try {
-            await axios.post('/todo', { task })
+            await axios.post('/todos', { task }, { headers: { 'Authorization': token } })
+
+            await handleLoadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
             displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
         }
     }
+
+    useEffect(() => {
+        if (token) {
+            loadTodos().catch(error => {
+                const axiosError = error as AxiosError
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+            })
+        }
+    }, [loadTodos, token])
 
     return (
         <div id="home-page">

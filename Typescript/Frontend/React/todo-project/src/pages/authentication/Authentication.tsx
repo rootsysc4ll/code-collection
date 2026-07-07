@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-import type { AxiosError, AxiosResponse } from "axios"
+import type { AxiosError} from "axios"
 import {  useState } from "react"
 import "./Authentication.css"
 
@@ -7,7 +7,7 @@ import AuthForm from "./AuthForm"
 
 type Props = {
     loginUser: (email:string, password:string) => Promise<void>
-    registerUser: (email:string, password:string) => Promise<AxiosResponse>
+    registerUser: (email:string, password:string) => Promise<void>
 }
 
 export default function Authentication({ loginUser, registerUser }: Props) {
@@ -16,19 +16,19 @@ export default function Authentication({ loginUser, registerUser }: Props) {
 
     async function handleLogin(email:string, password:string) {
         try {
-            loginUser(email, password)
+            await loginUser(email, password)
         } catch (error) {
             const axiosError = error as AxiosError
-            setErrorMessage(`Couldn't login user, error code ${axiosError.code} with message '${axiosError.message}'`)
+            setErrorMessage(`Couldn't login user, error code ${axiosError.code} '${axiosError.message}'`)
         }
     }
 
     async function handleRegister(email:string, password:string) {
         try {
-            registerUser(email, password)
+            await registerUser(email, password)
         } catch (error) {
             const axiosError = error as AxiosError
-            setErrorMessage(`Couldn't register user, error code ${axiosError.code} with message '${axiosError.message}'`)
+            setErrorMessage(`Couldn't register user, error code ${axiosError.code} '${axiosError.message}'`)
         }
     }
     
