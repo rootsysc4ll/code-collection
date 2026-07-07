@@ -1,0 +1,40 @@
+import { useState } from "react"
+import type { Dispatch, SetStateAction, MouseEvent } from "react"
+
+type Props = {
+    isLogin: boolean
+    setIsLogin: Dispatch<SetStateAction<boolean>>
+    handleLogin: (email:string, password:string) => Promise<void>
+    handleRegister: (email:string, password:string) => Promise<void>
+}
+
+export default function AuthForm({ isLogin, handleLogin, handleRegister }: Props) {
+    const [ email, setEmail ]       = useState<string>('')
+    const [ password, setPassword ] = useState<string>('')
+
+    function handleSubmit(e: MouseEvent<HTMLButtonElement>) {
+        e.currentTarget.disabled = true
+
+        if (isLogin) {
+            handleLogin(email, password).finally(() => e.currentTarget.disabled = false)
+        } else {
+            handleRegister(email, password).finally(() => e.currentTarget.disabled = false)
+        }
+    }
+
+    return (
+        <div id="auth-form">
+            <input id="auth-input" placeholder="Enter your email" type="text" 
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+            />
+            <input id="auth-input" placeholder="Enter your password" type="password" 
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+            />
+            <button id="submit-button" onClick={handleSubmit}>
+                Submit
+            </button>
+        </div>
+    )
+}

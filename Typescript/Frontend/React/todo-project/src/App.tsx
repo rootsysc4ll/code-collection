@@ -5,66 +5,50 @@ import './App.css'
 
 import themeProvider from './utils/themeProvider'
 import type { TodoType } from './utils/types'
-import AuthenticationPage from './pages/Authentication'
+import AuthenticationPage from './pages/authentication/Authentication'
 import HomePage from './pages/home/Home'
 
-let isLoadingTodos = false
-
 function App() {
-  const [ todos, setTodos ] = useState<TodoType[]>([
-    {
-      id: 1,
-      userId: 1,
-      task: 'you need to make an error popup',
-      completed: false
-    },
-    {
-      id: 2,
-      userId: 1,
-      task: 'you need to implement update modal',
-      completed: true
-    }
-  ])
+  const [ todos, setTodos ] = useState<TodoType[]>([])
+  const [ token, setToken ] = useState<string>('')
 
-  const navigate = useNavigate()
-  
-  useEffect(() => {
-    themeProvider.defaultTheme()
-  }, [])
-
-  async function loadTodos() {
-    if (!isLoadingTodos) {
-      const response = await axios.get('/todos')
-      setTodos(response.data)
-    } else {
-      console.log('Todos are on loading proccess')
-    }
-    isLoadingTodos = false
+  async function loginUser(email:string, password:string) {
+    const response = await axios.post('/login', {
+      email,
+      password
+    })
   }
-
-  async function loginUser(email: string, password: string) {
-    const response = await axios.post(`/auth/login`, {
+  
+  async function registerUser(email:string, password:string) {
+    const response = await axios.post('/login', {
       email,
       password
     })
 
-    setTodos(response.data)
-    navigate(`/home`)
+    const data = await response.data
+    if (data.token) {
+      setToken(data.token)
+      localStorage.setItem('token', token)
+    }
   }
+
+  useEffect(() => {
+    themeProvider.defaultTheme()
+  }, [])
 
   return (
     <Routes>
-      <Route index element={ 
-        <AuthenticationPage loginUser={loginUser} />
-       } />
-      <Route path='/home' element={ 
-        <HomePage 
+      <Route index element={
+        <AuthenticationPage loginUser={loginUser} registerUser={registerUser} />
+      } />
+      <Route path='/home' element={
+        <HomePage
           todos={todos}
           loadTodos={loadTodos}
         />
       } />
 
-      <Route path='*' element={ (<div>Not Found 404</div>) } />
+      <Route path='*' element={(<div>Not Found 404</div>)} />
     </Routes>
   )
 }

@@ -48,18 +48,6 @@
     padding: var(--default-padding);
 }
 
-#home-page .details-button {
-    font-size: 20px;
-    padding: 6px 12px; 
-    border-radius: var(--default-border-radius);
-    background-color: var(--color-4);
-    color: var(--color-5);
-}
-#home-page .rotate {
-    rotate: 90deg;
-    color: white;
-}
-
 #home-page .task-text {
     flex: 1;
     margin-left: 15px;
@@ -90,21 +78,6 @@
 
 #home-page .completed-icon {
     height: var(--default-font-size);
-}
-
-#home-page .details-container {
-    display: flex;
-    align-items: center;
-    border-top: var(--default-border);
-    padding: var(--default-padding);
-    background-color: var(--color-4);
-    border-bottom-left-radius:  calc(var(--default-border-radius) + 5px);
-    border-bottom-right-radius: calc(var(--default-border-radius) + 5px);
-}
-
-#home-page .details-content {
-    flex: 1;
-    font-size: 18px;
 }
 
 #home-page .edit-button {

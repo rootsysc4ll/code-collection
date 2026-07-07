@@ -102,26 +102,6 @@
     color: #ff0000;
 }
 
-#auth-page #auth-form {
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-    margin-top: 20px;
-}
-
-#auth-page #auth-input {
-    background-color: rgb(29, 29, 29);
-    border: blueviolet 1px solid;
-    color: white;
-    border-radius: 8px;
-    font-size: 16px;
-    padding: 10px 8px;
-}
-
-#auth-page #submit-button {
-    width: fit-content;
-}
-
 #auth-page #dividing-line {
     background-color: blueviolet;
     height: 1px;
@@ -145,7 +125,6 @@
 
 #auth-page #submit-button:hover, #auth-method-button:hover {
     opacity: 0.8;
-    cursor: pointer;
 }
 
 #auth-page #submit-button:active, #auth-method-button:active {

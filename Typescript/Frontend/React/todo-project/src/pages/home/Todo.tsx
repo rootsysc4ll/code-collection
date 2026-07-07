@@ -1,32 +1,43 @@
-import { useState } from "react"
+import type { MouseEvent } from "react"
 import "./Todo.css"
 
 import type { TodoType } from "../../utils/types"
-import { CompletedIcon, TrashIcon, EditIcon } from "../../assets/SvgComponents"
+import { CompletedIcon, TrashIcon } from "../../assets/SvgComponents"
 
 type Props = {
     todo: TodoType
-    handleTodoUpdate: (newTodo: TodoType) => void
-    handleTodoDelete: (todoId: number) => void
+    deleteTodo: (todoId: number) => Promise<void>
+    completeTodo: (todoId: number) => Promise<void>
 }
 
-export default function Todo({ todo, handleTodoUpdate, handleTodoDelete }: Props) {
-    const [detailsIsVisible, setDetailsIsVisible] = useState<boolean>(false)
+export default function Todo({ todo, deleteTodo, completeTodo }: Props) {
+    function handleDelete(e: MouseEvent<HTMLButtonElement>, todoId: number) {
+        e.currentTarget.disabled = true
+
+        deleteTodo(todoId)
+            .finally(() => e.currentTarget.disabled = false)
+    }
+
+    function handleComplete(e: MouseEvent<HTMLButtonElement>, todoId: number) {
+        e.currentTarget.disabled = true
+
+        completeTodo(todoId).finally(() => e.currentTarget.disabled = false)
+    }
 
     return (
         <div className="todo-container">
             <div className="todo-content-container">
-                <button className={`details-button regular-button ${detailsIsVisible ? 'rotate' : ''}`} onClick={() => setDetailsIsVisible(!detailsIsVisible)}>
-                    &gt;
-                </button>
-
                 <span className="task-text">
                     {todo.task}
                 </span>
 
                 <span className="date-text">Todo date</span>
 
-                <button className="delete-button regular-button" onClick={() => handleTodoDelete(todo.id)}>
+                <button className="done-button" onClick={e => handleComplete(e, todo.id)}>
+                    Done
+                </button>
+
+                <button className="delete-button regular-button" onClick={e => handleDelete(e, todo.id)}>
                     <TrashIcon />
                 </button>
 
@@ -36,17 +47,6 @@ export default function Todo({ todo, handleTodoUpdate, handleTodoDelete }: Props
                     </div>
                 )}
             </div>
-
-            {detailsIsVisible && (<>
-                <div className="details-container">
-                    <span className="details-content">details</span>
-
-                    <button className="edit-button">
-                        Edit
-                        <EditIcon />
-                    </button>
-                </div>
-            </>)}
         </div>
     )
 }

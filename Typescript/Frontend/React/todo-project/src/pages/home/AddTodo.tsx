@@ -3,26 +3,23 @@ import type { MouseEvent } from "react"
 import "./AddTodo.css"
 
 type Props = {
-    addTodo: (task: string) => void
+    addTodo: (task: string) => Promise<void>
 }
 
 export default function AddTodo({ addTodo }: Props) {
     const [ task, setTask ]       = useState<string>('')
-    // const [ details, setDetails ] = useState<string>('')
     // const [ date, setDate ]       = useState<string>('')
 
-    function handleAddTodo(e: MouseEvent<HTMLButtonElement>) {
+    function handleAddTodo(e: MouseEvent<HTMLButtonElement>, task: string) {
         e.stopPropagation()
-        addTodo(task)
+        e.currentTarget.disabled = true
+
+        addTodo(task).finally(() => e.currentTarget.disabled = false)
     }
 
     return (<div style={{position: 'relative'}}>
         <div className="todo-container add-todo">
             <div className="todo-content-container">
-                <button className={`details-button regular-button rotate`}>
-                    &gt;
-                </button>
-
                 <span className="task-text  indicator-text">
                     <input className="todo-input" type="text" name="" id="" 
                         value={task} 
@@ -36,16 +33,9 @@ export default function AddTodo({ addTodo }: Props) {
                     <input className="todo-input" type="text" name="" id="" />
                 </span>
             </div>
-
-            <div className="details-container">
-                <span className="details-content indicator-text">
-                    <input className="todo-input" type="text" />
-                    --- details
-                </span>
-            </div>
         </div>
 
-        <button id="finish-button" onClick={handleAddTodo}>
+        <button id="finish-button" onClick={e => handleAddTodo(e, task)}>
             Finish
         </button>
     </div>)

@@ -3,6 +3,7 @@ import db from "../db.ts"
 
 const router = express.Router()
 
+// gets all todos
 router.get('/', (req, res) => {
     
 })
