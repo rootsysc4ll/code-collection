@@ -12,15 +12,16 @@ export default function AddTodo({ addTodo }: Props) {
 
     function handleAddTodo(e: MouseEvent<HTMLButtonElement>, task: string) {
         e.stopPropagation()
-        e.currentTarget.disabled = true
 
-        addTodo(task).finally(() => e.currentTarget.disabled = false)
+        const button = e.currentTarget
+        button.disabled = true
+        addTodo(task).finally(() => button.disabled = false)
     }
 
     return (<div style={{position: 'relative'}}>
         <div className="todo-container add-todo">
             <div className="todo-content-container">
-                <span className="task-text  indicator-text">
+                <span className="task-text indicator-text">
                     <input className="todo-input" type="text" name="" id="" 
                         value={task} 
                         onChange={e => setTask(e.target.value)}

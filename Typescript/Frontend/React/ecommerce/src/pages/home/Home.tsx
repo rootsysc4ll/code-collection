@@ -19,7 +19,7 @@ export default function Home({ cart, loadCart }: HomeProps) {
     const search = searchParams.get('search')
 
     async function requestProducts(url: string) {
-        const response = await axios.get(url)
+        const response = await axio\s.get(url)
         setProducts(response.data)
     }
     

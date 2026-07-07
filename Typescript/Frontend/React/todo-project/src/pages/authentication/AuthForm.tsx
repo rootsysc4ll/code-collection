@@ -14,11 +14,13 @@ export default function AuthForm({ isLogin, handleLogin, handleRegister }: Props
     const [ password, setPassword ] = useState<string>('')
 
     function handleSubmit(e: MouseEvent<HTMLButtonElement>) {
-        e.currentTarget.disabled = true
+        const button = e.currentTarget
+        button.disabled = true
         
         const result = isLogin ? handleLogin(email, password) : handleRegister(email, password)
 
-        result.finally(() => e.currentTarget.disabled = false)
+        result
+            .finally(() => button.disabled = false)
     }
 
     return (

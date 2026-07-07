@@ -6,14 +6,14 @@ import { PlusIcon, ResetIcon } from "../../assets/SvgComponents"
 import type { TodoType } from "../../utils/types"
 import Todo from "./Todo"
 import AddTodo from "./AddTodo"
-import ErrorMessage from "./ErrorMessage"
+import ErrorMessage from "../../components/ErrorMessage"
 
 type Props = {
     todos: TodoType[]
     token: string
     loadTodos: () => Promise<void>
 }
-// loadTodos
+
 export default function Home({ todos, token, loadTodos }: Props) {
     const [errorMessage, setErrorMessage] = useState<string>('')
     const [isAdding, setIsAdding] = useState<boolean>(false)
@@ -67,17 +67,16 @@ export default function Home({ todos, token, loadTodos }: Props) {
         } catch (error) {
             const axiosError = error as AxiosError
             displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+            setIsAdding(false)
         }
     }
 
     useEffect(() => {
-        if (token) {
-            loadTodos().catch(error => {
-                const axiosError = error as AxiosError
+        loadTodos().catch(error => {
+            const axiosError = error as AxiosError
             displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
-            })
-        }
-    }, [loadTodos, token])
+        })
+    }, [loadTodos])
 
     return (
         <div id="home-page">

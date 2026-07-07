@@ -12,16 +12,19 @@ type Props = {
 
 export default function Todo({ todo, deleteTodo, completeTodo }: Props) {
     function handleDelete(e: MouseEvent<HTMLButtonElement>, todoId: number) {
-        e.currentTarget.disabled = true
+        const button = e.currentTarget
+        button.disabled = true
 
         deleteTodo(todoId)
-            .finally(() => e.currentTarget.disabled = false)
+            .finally(() => button.disabled = false)
     }
 
     function handleComplete(e: MouseEvent<HTMLButtonElement>, todoId: number) {
-        e.currentTarget.disabled = true
+        const button = e.currentTarget
+        button.disabled = true
 
-        completeTodo(todoId).finally(() => e.currentTarget.disabled = false)
+        completeTodo(todoId)
+            .finally(() => button.disabled = false)
     }
 
     return (

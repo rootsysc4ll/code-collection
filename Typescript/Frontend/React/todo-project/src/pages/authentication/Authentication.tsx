@@ -4,6 +4,7 @@ import {  useState } from "react"
 import "./Authentication.css"
 
 import AuthForm from "./AuthForm"
+import ErrorMessage from "../../components/ErrorMessage"
 
 type Props = {
     loginUser: (email:string, password:string) => Promise<void>
@@ -45,7 +46,8 @@ export default function Authentication({ loginUser, registerUser }: Props) {
                     </>)}
 
                     {errorMessage && (
-                        <span className="auth-text error-message">{errorMessage}</span>
+                        // <span className="auth-text error-message">{errorMessage}</span>
+                        <ErrorMessage errorMessage={errorMessage} setErrorMessage={setErrorMessage} />
                     )}
                 </div>
 

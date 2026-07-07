@@ -27,7 +27,9 @@ function App() {
       headers: { 'Authorization': token }
     })
 
-    setTodos(response.data)
+    if (Array.isArray(response.data)) {
+      setTodos(response.data)
+    }
   }
 
   async function loginUser(email:string, password:string) {
