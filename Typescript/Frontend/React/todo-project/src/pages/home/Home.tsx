@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import axios, { AxiosError } from "axios"
 import "./Home.css"
 
@@ -71,12 +71,12 @@ export default function Home({ todos, token, loadTodos }: Props) {
         }
     }
 
-    useEffect(() => {
-        loadTodos().catch(error => {
-            const axiosError = error as AxiosError
-            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
-        })
-    }, [loadTodos])
+    // useEffect(() => {
+    //     loadTodos().catch(error => {
+    //         const axiosError = error as AxiosError
+    //         displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+    //     })
+    // }, [loadTodos])
 
     return (
         <div id="home-page">

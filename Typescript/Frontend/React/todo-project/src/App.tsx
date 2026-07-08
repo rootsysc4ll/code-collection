@@ -33,18 +33,19 @@ function App() {
   }
 
   async function loginUser(email:string, password:string) {
-    const response = await axios.post('/login', {
-      email,
+    const response = await axios.post('/auth/login', {
+      username:email,
       password
     })
 
     handleTokenStorage(response)
+    await loadTodos()
     navigate('/home')
   }
   
   async function registerUser(email:string, password:string) {
-    const response = await axios.post('/register', {
-      email,
+    const response = await axios.post('/auth/register', {
+      username: email,
       password
     })
 
