@@ -27,9 +27,7 @@ function App() {
       headers: { 'Authorization': token }
     })
 
-    if (Array.isArray(response.data)) {
-      setTodos(response.data)
-    }
+    setTodos(response.data)
   }
 
   async function loginUser(email:string, password:string) {
@@ -39,7 +37,6 @@ function App() {
     })
 
     handleTokenStorage(response)
-    await loadTodos()
     navigate('/home')
   }
   

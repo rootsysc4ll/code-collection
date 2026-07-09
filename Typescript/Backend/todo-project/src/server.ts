@@ -3,6 +3,7 @@ import path, { dirname } from 'path'
 import { fileURLToPath } from "url"
 import authRoutes from "./routes/auth.ts"
 import todoRoutes from "./routes/todo.ts"
+import authMiddleware from "./middleware/auth.ts"
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -19,7 +20,7 @@ app.get('/', (req, res) => {
 
 // Routes
 app.use('/auth', authRoutes)
-app.use('/todos', todoRoutes)
+app.use('/todos', authMiddleware, todoRoutes)
 
 // If the link doesn't match any endpoint
 app.post(/.*/, (req, res) => res.status(404).send('Not Found'))

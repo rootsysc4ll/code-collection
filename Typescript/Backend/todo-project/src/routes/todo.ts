@@ -1,17 +1,21 @@
 import express from "express"
-import type { Request } from "express"
 import db from "../db.ts"
+
+import type { CustomRequestType } from "../utils/types.ts"
 
 const router = express.Router()
 
 // gets all todos
-router.get('/', (req, res) => {
+router.get('/', (req: CustomRequestType, res) => {
     const getTodos = db.prepare('SELECT * FROM todos WHERE user_id = ?')
-    const todos = getTodos.get(req.userId)
+    // cast here was made because the middleware guarantees req.userId exists and is a number
+    const todos = getTodos.all(req.userId as number)
+    console.log(todos)
+    res.json(todos)
 })
 
 router.post('/', (req, res) => {
-
+    
 })
 
 router.put('/:id', (req, res) => {

@@ -1,5 +1,5 @@
 #home-page #todos-title {
-    font-size: var(--default-font-size);
+    font-size: var(--default-big-font-size);
     margin-top: var(--default-margin);
     margin-left: var(--default-margin);
 }
@@ -76,28 +76,25 @@
     height: 30px;
 }
 
-#home-page .completed-icon {
-    height: var(--default-font-size);
-}
-
-#home-page .edit-button {
-    padding: 4px 8px;
-    display: flex;
-    align-items: center;
-    column-gap: 8px;
-    margin: 5px 0 5px 5px;
-    border: none;
-    border-radius: var(--default-border-radius);
+#home-page .done-button {
+    font-family: 'Times New Roman', Times, serif;
+    border: 1px solid var(--color-1);
     background-color: var(--color-5);
+    box-shadow: 2px 2px var(--color-1);
     color: white;
-    font-size: 16px;
-    border: var(--default-border);
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: var(--default-border-radius);
+    margin-right: var(--default-margin);
+}
+#home-page .done-button:active {
+    box-shadow: none;
 }
 
-#home-page .edit-icon {
-    width: 20px;
-    fill: white !important;
+#home-page .completed-icon {
+    height: var(--default-big-font-size);
 }
+
 
 #home-page .completed-container {
     position: absolute;

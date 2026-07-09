@@ -36,7 +36,7 @@ export default function Todo({ todo, deleteTodo, completeTodo }: Props) {
 
                 <span className="date-text">Todo date</span>
 
-                <button className="done-button" onClick={e => handleComplete(e, todo.id)}>
+                <button className="done-button regular-button" onClick={e => handleComplete(e, todo.id)}>
                     Done
                 </button>
 
@@ -44,7 +44,7 @@ export default function Todo({ todo, deleteTodo, completeTodo }: Props) {
                     <TrashIcon />
                 </button>
 
-                {todo.completed && (
+                {todo.completed === true && (
                     <div className="completed-container">
                         <CompletedIcon />
                     </div>

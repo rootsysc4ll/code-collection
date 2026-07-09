@@ -1,4 +1,4 @@
-import {  useState } from "react"
+import { useState, useEffect } from "react"
 import axios, { AxiosError } from "axios"
 import "./Home.css"
 
@@ -71,17 +71,17 @@ export default function Home({ todos, token, loadTodos }: Props) {
         }
     }
 
-    // useEffect(() => {
-    //     loadTodos().catch(error => {
-    //         const axiosError = error as AxiosError
-    //         displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
-    //     })
-    // }, [loadTodos])
+    useEffect(() => {
+        loadTodos().catch(error => {
+            const axiosError = error as AxiosError
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+        })
+    }, [])
 
     return (
         <div id="home-page">
             <nav>
-                <button className="regular-button add-button" onClick={() => setIsAdding(!isAdding)} disabled={isAdding}>
+                <button className="regular-button add-button" onClick={() => setIsAdding(!isAdding)}>
                     <PlusIcon />
                 </button>
                 <button className="regular-button reset-button">
@@ -109,7 +109,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
                     )
                 })}
 
-                {isAdding && (
+                {isAdding === true && (
                     <AddTodo addTodo={addTodo} />
                 )}
             </div>

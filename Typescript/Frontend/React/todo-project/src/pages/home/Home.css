@@ -23,12 +23,17 @@
 }
 
 #home-page .reset-button, .add-button {
-    border-radius: var(--default-border-radius);
-    background-color: var(--color-3);
+    border-radius: var(--default-border-radius); 
+    background-color: var(--color-5);
+    border: 2px solid var(--color-2) !important;
+    box-shadow: 2px 2px var(--color-2);
+}
+#home-page .reset-button:active, .add-button:active {
+    box-shadow: none;
 }
 
 #home-page .reset-icon, .plus-icon {
-    fill: var(--color-5);
+    fill: var(--color-1);
 }
 
 #home-page .reset-icon {
