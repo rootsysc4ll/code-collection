@@ -10,7 +10,6 @@ router.get('/', (req: CustomRequestType, res) => {
     const getTodos = db.prepare('SELECT * FROM todos WHERE user_id = ?')
     // cast here was made because the middleware guarantees req.userId exists and is a number
     const todos = getTodos.all(req.userId as number)
-    console.log(todos)
     res.json(todos)
 })
 
