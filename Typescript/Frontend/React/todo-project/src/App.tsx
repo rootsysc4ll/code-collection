@@ -10,8 +10,8 @@ import HomePage from './pages/home/Home'
 
 function App() {
   const [ todos, setTodos ] = useState<TodoType[]>([])
+  const [ userId, setUserId ] = useState<number>(0)
   const [ token, setToken ] = useState<string>(() => localStorage.getItem('token') || '')
-
   const navigate = useNavigate()
 
   function handleTokenStorage(response: AxiosResponse) {
@@ -37,6 +37,7 @@ function App() {
     })
 
     handleTokenStorage(response)
+    setUserId(response.data.userId)
     navigate('/home')
   }
   
@@ -61,6 +62,7 @@ function App() {
       <Route path='/home' element={
         <HomePage
           token={token}
+          userId={userId}
           todos={todos}
           loadTodos={loadTodos}
         />

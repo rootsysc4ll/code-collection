@@ -10,11 +10,12 @@ import ErrorMessage from "../../components/ErrorMessage"
 
 type Props = {
     todos: TodoType[]
+    userId: number
     token: string
     loadTodos: () => Promise<void>
 }
 
-export default function Home({ todos, token, loadTodos }: Props) {
+export default function Home({ todos, userId, token, loadTodos }: Props) {
     const [errorMessage, setErrorMessage] = useState<string>('')
     const [isAdding, setIsAdding] = useState<boolean>(false)
 
@@ -28,7 +29,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
             await loadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
-            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response}`)
         } 
     }
 
@@ -64,6 +65,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
             await axios.post('/todos', { task }, { headers: { 'Authorization': token } })
 
             await handleLoadTodos()
+            setIsAdding(false)
         } catch (error) {
             const axiosError = error as AxiosError
             displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
@@ -90,7 +92,9 @@ export default function Home({ todos, token, loadTodos }: Props) {
             </nav>
 
             <header>
-                <span id="header-text">UserId={'there should be the userId'}# numberOfTodos={todos.length}</span>
+                <span id="header-text">
+                    UserId={userId === 0 ? "?" : userId} # numberOfTodos={todos.length}
+                </span>
             </header>
 
             <span id="todos-title">

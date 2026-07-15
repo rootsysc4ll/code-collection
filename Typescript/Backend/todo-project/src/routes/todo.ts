@@ -13,8 +13,13 @@ router.get('/', (req: CustomRequestType, res) => {
     res.json(todos)
 })
 
-router.post('/', (req, res) => {
-    
+router.post('/', (req: CustomRequestType, res) => {
+    const { task } = req.body
+
+    const insertTodo = db.prepare("INSERT INTO todos (user_id, task) VALUES (?, ?)")
+    insertTodo.run(req.userId as number, task)
+
+    res.sendStatus(201)
 })
 
 router.put('/:id', (req, res) => {
