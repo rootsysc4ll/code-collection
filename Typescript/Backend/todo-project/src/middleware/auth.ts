@@ -7,11 +7,11 @@ function authMiddleware(req: CustomRequestType, res: Response, next: NextFunctio
     const token = req.headers.authorization
 
     // checks if the token was provided
-    if (!token) {return res.sendStatus(401).send({ message: "No token provided" })}
+    if (!token) {return res.status(401).send({ message: "No token provided" })}
     
     // checks if the token is valid
     jwt.verify(token, process.env.JWT_SECRET as Secret, (err, decoded) => {
-        if (err) {return res.sendStatus(401).send({ message: "Invalid token" })}
+        if (err) {return res.status(401).send({ message: "Invalid token" })}
 
         req.userId = (decoded as JwtPayload).id as number
         next()

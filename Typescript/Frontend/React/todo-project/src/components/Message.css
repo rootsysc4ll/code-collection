@@ -1,0 +1,21 @@
+#error-message {
+    font-size: 18px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: black;
+    padding: 8px 14px;
+    border-radius: var(--default-border-radius);
+}
+
+#positive-message {
+    font-size: 18px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgb(0, 170, 0);
+    color: white;
+    padding: 8px 14px;
+    border-radius: var(--default-border-radius);
+}

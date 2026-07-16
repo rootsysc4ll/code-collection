@@ -2,14 +2,17 @@ import { useState } from "react"
 import type { Dispatch, SetStateAction, MouseEvent } from "react"
 import "./AuthForm.css"
 
+import type { MessageType } from "../../utils/types"
+
 type Props = {
     isLogin: boolean
     setIsLogin: Dispatch<SetStateAction<boolean>>
     handleLogin: (email:string, password:string) => Promise<void>
     handleRegister: (email:string, password:string) => Promise<void>
+    setMessage: Dispatch<SetStateAction<MessageType>>
 }
 
-export default function AuthForm({ isLogin, handleLogin, handleRegister }: Props) {
+export default function AuthForm({ isLogin, handleLogin, handleRegister, setMessage }: Props) {
     const [ email, setEmail ]       = useState<string>('')
     const [ password, setPassword ] = useState<string>('')
 
@@ -20,7 +23,10 @@ export default function AuthForm({ isLogin, handleLogin, handleRegister }: Props
         const result = isLogin ? handleLogin(email, password) : handleRegister(email, password)
 
         result
-            .finally(() => button.disabled = false)
+            .finally(() => {
+                button.disabled = false
+                if (!isLogin) { setMessage({ message: "Registration succeeded!", id:"positive-message"}) }
+            })
     }
 
     return (

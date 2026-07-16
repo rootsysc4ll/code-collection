@@ -7,10 +7,10 @@ import { CompletedIcon, TrashIcon } from "../../assets/SvgComponents"
 type Props = {
     todo: TodoType
     deleteTodo: (todoId: number) => Promise<void>
-    completeTodo: (todoId: number) => Promise<void>
+    updateTodo: (todoId: number) => Promise<void>
 }
 
-export default function Todo({ todo, deleteTodo, completeTodo }: Props) {
+export default function Todo({ todo, deleteTodo, updateTodo }: Props) {
     function handleDelete(e: MouseEvent<HTMLButtonElement>, todoId: number) {
         const button = e.currentTarget
         button.disabled = true
@@ -19,12 +19,15 @@ export default function Todo({ todo, deleteTodo, completeTodo }: Props) {
             .finally(() => button.disabled = false)
     }
 
-    function handleComplete(e: MouseEvent<HTMLButtonElement>, todoId: number) {
+    function handleUpdate(e: MouseEvent<HTMLButtonElement>, todoId: number) {
         const button = e.currentTarget
         button.disabled = true
-
-        completeTodo(todoId)
-            .finally(() => button.disabled = false)
+        
+        updateTodo(todoId)
+            .finally(() => {button.disabled = false
+                console.log("dsgsaggga")
+            })
+        
     }
 
     return (
@@ -36,7 +39,7 @@ export default function Todo({ todo, deleteTodo, completeTodo }: Props) {
 
                 <span className="date-text">Todo date</span>
 
-                <button className="done-button regular-button" onClick={e => handleComplete(e, todo.id)}>
+                <button className="done-button regular-button" onClick={e => handleUpdate(e, todo.id)}>
                     Done
                 </button>
 
@@ -44,7 +47,7 @@ export default function Todo({ todo, deleteTodo, completeTodo }: Props) {
                     <TrashIcon />
                 </button>
 
-                {todo.completed === true && (
+                {todo.completed === 1 && (
                     <div className="completed-container">
                         <CompletedIcon />
                     </div>

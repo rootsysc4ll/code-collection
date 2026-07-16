@@ -3,10 +3,10 @@ import axios, { AxiosError } from "axios"
 import "./Home.css"
 
 import { PlusIcon, ResetIcon } from "../../assets/SvgComponents"
-import type { TodoType } from "../../utils/types"
+import type { TodoType, MessageType } from "../../utils/types"
 import Todo from "./Todo"
 import AddTodo from "./AddTodo"
-import ErrorMessage from "../../components/ErrorMessage"
+import ErrorMessage from "../../components/Message"
 
 type Props = {
     todos: TodoType[]
@@ -16,12 +16,12 @@ type Props = {
 }
 
 export default function Home({ todos, userId, token, loadTodos }: Props) {
-    const [errorMessage, setErrorMessage] = useState<string>('')
+    const [errorMessage, setErrorMessage] = useState<MessageType>({ message: '', id: '' })
     const [isAdding, setIsAdding] = useState<boolean>(false)
 
     function displayErrorMessage(message: string) {
         console.log(message)
-        setErrorMessage(message)
+        setErrorMessage({message, id: "error-message"})
     }
 
     async function handleLoadTodos() {
@@ -33,12 +33,11 @@ export default function Home({ todos, userId, token, loadTodos }: Props) {
         } 
     }
 
-    async function completeTodo(todoId: number): Promise<void> {
+    async function updateTodo(todoId: number): Promise<void> {
         try {
-            await axios.put('/todos', {
-                todoId,
-                completed: true,
-            }, { headers: { 'Authorization': token } })
+            // the only way you can update the todos is to
+            // completing them, so no need to send body info
+            await axios.put(`/todos/${todoId}`, {}, { headers: { 'Authorization': token } })
 
             await handleLoadTodos()
         } catch (error) {
@@ -107,7 +106,7 @@ export default function Home({ todos, userId, token, loadTodos }: Props) {
                         <Todo
                             key={todo.id}
                             todo={todo}
-                            completeTodo={completeTodo}
+                            updateTodo={updateTodo}
                             deleteTodo={deleteTodo}
                         />
                     )
@@ -118,10 +117,10 @@ export default function Home({ todos, userId, token, loadTodos }: Props) {
                 )}
             </div>
 
-            {errorMessage !== '' && (
+            {errorMessage.message !== '' && (
                 <ErrorMessage
-                    errorMessage={errorMessage}
-                    setErrorMessage={setErrorMessage}
+                    message={errorMessage}
+                    setMessage={setErrorMessage}
                 />
             )}
         </div>

@@ -4,7 +4,8 @@ import {  useState } from "react"
 import "./Authentication.css"
 
 import AuthForm from "./AuthForm"
-import ErrorMessage from "../../components/ErrorMessage"
+import Message from "../../components/Message"
+import type { MessageType } from "../../utils/types"
 
 type Props = {
     loginUser: (email:string, password:string) => Promise<void>
@@ -12,15 +13,18 @@ type Props = {
 }
 
 export default function Authentication({ loginUser, registerUser }: Props) {
-    const [ isLogin, setIsLogin ]           = useState<boolean>(false)
-    const [ errorMessage, setErrorMessage ] = useState<string>('')
+    const [ isLogin, setIsLogin ] = useState<boolean>(false)
+    const [ message, setMessage ] = useState<MessageType>({ message: '', id: '' })
 
     async function handleLogin(email:string, password:string) {
         try {
             await loginUser(email, password)
         } catch (error) {
             const axiosError = error as AxiosError
-            setErrorMessage(`Couldn't login user, error code ${axiosError.code} '${axiosError.message}'`)
+            setMessage({
+                message: `Couldn't login user, error code ${axiosError.code} '${axiosError.message}'`,
+                id: "error-message"
+            })
         }
     }
 
@@ -29,7 +33,10 @@ export default function Authentication({ loginUser, registerUser }: Props) {
             await registerUser(email, password)
         } catch (error) {
             const axiosError = error as AxiosError
-            setErrorMessage(`Couldn't register user, error code ${axiosError.code} '${axiosError.message}'`)
+            setMessage({
+                message: `Couldn't register user, error code ${axiosError.code} '${axiosError.message}'`,
+                id: "error-message"
+            })
         }
     }
     
@@ -45,9 +52,8 @@ export default function Authentication({ loginUser, registerUser }: Props) {
                         <span className="auth-text">Create an account!</span>
                     </>)}
 
-                    {errorMessage && (
-                        // <span className="auth-text error-message">{errorMessage}</span>
-                        <ErrorMessage errorMessage={errorMessage} setErrorMessage={setErrorMessage} />
+                    {message.message && (
+                        <Message message={message} setMessage={setMessage} />
                     )}
                 </div>
 
@@ -56,6 +62,7 @@ export default function Authentication({ loginUser, registerUser }: Props) {
                     setIsLogin={setIsLogin}
                     handleLogin={handleLogin}
                     handleRegister={handleRegister}
+                    setMessage={setMessage}
                 />
 
                 <div id="dividing-line" />
