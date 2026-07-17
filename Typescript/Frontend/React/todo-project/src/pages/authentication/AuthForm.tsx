@@ -12,7 +12,8 @@ type Props = {
     setMessage: Dispatch<SetStateAction<MessageType>>
 }
 
-export default function AuthForm({ isLogin, handleLogin, handleRegister, setMessage }: Props) {
+//setMessage
+export default function AuthForm({ isLogin, handleLogin, handleRegister }: Props) {
     const [ email, setEmail ]       = useState<string>('')
     const [ password, setPassword ] = useState<string>('')
 
@@ -25,7 +26,7 @@ export default function AuthForm({ isLogin, handleLogin, handleRegister, setMess
         result
             .finally(() => {
                 button.disabled = false
-                if (!isLogin) { setMessage({ message: "Registration succeeded!", id:"positive-message"}) }
+                //if (!isLogin) { setMessage({ message: "Registration succeeded!", id:"positive-message"}) }
             })
     }
 

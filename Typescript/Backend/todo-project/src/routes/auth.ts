@@ -13,6 +13,13 @@ router.post('/register', (req, res) => {
     const hashedPassword = bcrypt.hashSync(password, hashSalt)
     
     try {
+        const searchForUser = db.prepare("SELECT * FROM users WHERE username = ?")
+        const searchResult = searchForUser.get(username)
+
+        if (searchResult) {
+            return res.status(400).send({ message: 'User already exists' })
+        }
+
         // sql query
         const insertUser = db.prepare('INSERT INTO users (username, password) VALUES (?, ?)')
         const result = insertUser.run(username, hashedPassword)
@@ -27,7 +34,7 @@ router.post('/register', (req, res) => {
         res.json({ token })
     } catch (err) {
         console.log(err)
-        res.sendStatus(504)
+        res.sendStatus(500)
     }
 })
 
@@ -46,7 +53,7 @@ router.post('/login', (req, res) => {
         const passwordIsValid = bcrypt.compareSync(password, user.password)
         if (!passwordIsValid) return res.status(401).send({ message: 'Invalid Password' })
 
-        // login successful, regenerate token
+        // login successful, creating another token
         const token = jwt.sign({ id: userId }, process.env.JWT_SECRET as Secret, { expiresIn: '24h' })
         res.json({ token, userId })
     } catch (err) {

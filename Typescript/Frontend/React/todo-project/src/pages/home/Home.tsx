@@ -10,12 +10,12 @@ import ErrorMessage from "../../components/Message"
 
 type Props = {
     todos: TodoType[]
-    userId: number
     token: string
     loadTodos: () => Promise<void>
 }
 
-export default function Home({ todos, userId, token, loadTodos }: Props) {
+export default function Home({ todos, token, loadTodos }: Props) {
+    // const [ userId, setUserId ] = useState<number>(0)
     const [errorMessage, setErrorMessage] = useState<MessageType>({ message: '', id: '' })
     const [isAdding, setIsAdding] = useState<boolean>(false)
 
@@ -92,7 +92,7 @@ export default function Home({ todos, userId, token, loadTodos }: Props) {
 
             <header>
                 <span id="header-text">
-                    UserId={userId === 0 ? "?" : userId} # numberOfTodos={todos.length}
+                    UserId={'dsgsasa'} # numberOfTodos={todos.length}
                 </span>
             </header>
 
