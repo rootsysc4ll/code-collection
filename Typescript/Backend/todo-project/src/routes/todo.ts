@@ -36,9 +36,19 @@ router.put('/:todoId', (req, res) => {
 
 router.delete('/:todoId', (req: CustomRequestType, res) => {
     const { todoId } = req.params as { todoId: string }
+    const userId = req.userId as number
     
     const deleteTodo = db.prepare("DELETE FROM todos WHERE id = ? AND user_id = ?")
-    deleteTodo.run(todoId, req.userId as number)
+    deleteTodo.run(todoId, userId)
+
+    res.status(200).json({ message: "Deleted" })
+})
+
+router.delete("/", (req: CustomRequestType, res) => {
+    const userId = req.userId as number
+
+    const resetTodos = db.prepare("DELETE FROM todos WHERE user_id = ?")
+    resetTodos.run(userId)
 
     res.status(200).json({ message: "Deleted" })
 })

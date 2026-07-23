@@ -74,6 +74,18 @@ export default function Home({ todos, token, loadTodos }: Props) {
         }
     }
 
+    async function resetTodos() {
+        try {
+            await axios.delete(`/todos`,
+                { headers: { 'Authorization': token } }
+            )
+            await handleLoadTodos()
+        } catch (error) {
+            const axiosError = error as AxiosError
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+        }
+    }
+
     useEffect(() => {
         loadTodos().catch(error => {
             const axiosError = error as AxiosError
@@ -87,7 +99,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
                 <button className="regular-button add-button" onClick={() => setIsAdding(!isAdding)}>
                     <PlusIcon />
                 </button>
-                <button className="regular-button reset-button">
+                <button className="regular-button reset-button" onClick={() => resetTodos()}>
                     <ResetIcon />
                 </button>
             </nav>
