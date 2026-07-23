@@ -31,11 +31,16 @@ router.put('/:todoId', (req, res) => {
     // completing them, so no need to handle body info
     updateTodo.run(1, todoId)
     
-    res.sendStatus(204)
+    res.status(204).json({ message: "Updated" })
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:todoId', (req: CustomRequestType, res) => {
+    const { todoId } = req.params as { todoId: string }
+    
+    const deleteTodo = db.prepare("DELETE FROM todos WHERE id = ? AND user_id = ?")
+    deleteTodo.run(todoId, req.userId as number)
 
+    res.status(200).json({ message: "Deleted" })
 })
 
 export default router

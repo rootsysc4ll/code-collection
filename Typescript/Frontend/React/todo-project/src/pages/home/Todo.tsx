@@ -24,9 +24,7 @@ export default function Todo({ todo, deleteTodo, updateTodo }: Props) {
         button.disabled = true
         
         updateTodo(todoId)
-            .finally(() => {button.disabled = false
-                console.log("dsgsaggga")
-            })
+            .finally(() => button.disabled = false)
         
     }
 

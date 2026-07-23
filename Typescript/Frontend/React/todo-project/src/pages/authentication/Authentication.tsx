@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-import type { AxiosError} from "axios"
+import type { AxiosError, AxiosResponse} from "axios"
 import {  useState } from "react"
 import "./Authentication.css"
 
@@ -9,7 +9,7 @@ import type { MessageType } from "../../utils/types"
 
 type Props = {
     loginUser: (email:string, password:string) => Promise<void>
-    registerUser: (email:string, password:string) => Promise<void>
+    registerUser: (email:string, password:string) => Promise<AxiosResponse>
 }
 
 export default function Authentication({ loginUser, registerUser }: Props) {
@@ -28,15 +28,29 @@ export default function Authentication({ loginUser, registerUser }: Props) {
         }
     }
 
-    async function handleRegister(email:string, password:string) {
+    async function handleRegister(email:string, password:string): Promise<AxiosResponse> {
+        //let response = registerUser(email, password)
+        //response
+        //    .then(() => {
+        //        setMessage({ message: "Successfully registered", id: "positive-message" })    
+        //    })
+        //    .catch(err => {
+        //        const axiosError = err as AxiosError
+        //        setMessage({ message: `Couldn't login user, error code ${axiosError.code} '${axiosError.message}'`, id: "error-message" })
+        //    })
+        //return response
+
         try {
-            await registerUser(email, password)
-        } catch (error) {
-            const axiosError = error as AxiosError
+            const response = await registerUser(email, password)
+            setMessage({ message: "Successfully registered", id: "positive-message" })
+            return response
+        } catch (err) {
+            const axiosError = err as AxiosError
             setMessage({
                 message: `Couldn't register user, error code ${axiosError.code} '${axiosError.message}'`,
                 id: "error-message"
             })
+            throw err
         }
     }
     

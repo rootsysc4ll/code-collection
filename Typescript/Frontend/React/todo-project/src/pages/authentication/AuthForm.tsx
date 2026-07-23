@@ -1,5 +1,6 @@
 import { useState } from "react"
 import type { Dispatch, SetStateAction, MouseEvent } from "react"
+import type { AxiosResponse } from "axios"
 import "./AuthForm.css"
 
 import type { MessageType } from "../../utils/types"
@@ -8,7 +9,7 @@ type Props = {
     isLogin: boolean
     setIsLogin: Dispatch<SetStateAction<boolean>>
     handleLogin: (email:string, password:string) => Promise<void>
-    handleRegister: (email:string, password:string) => Promise<void>
+    handleRegister: (email:string, password:string) => Promise<AxiosResponse>
     setMessage: Dispatch<SetStateAction<MessageType>>
 }
 
@@ -23,11 +24,7 @@ export default function AuthForm({ isLogin, handleLogin, handleRegister }: Props
         
         const result = isLogin ? handleLogin(email, password) : handleRegister(email, password)
 
-        result
-            .finally(() => {
-                button.disabled = false
-                //if (!isLogin) { setMessage({ message: "Registration succeeded!", id:"positive-message"}) }
-            })
+        result.finally(() => button.disabled = false)
     }
 
     return (

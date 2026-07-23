@@ -36,7 +36,7 @@ function App() {
     })
 
     handleTokenStorage(response)
-    navigate('/home')
+    navigate(`/home/${response.data.userId}`)
   }
   
   async function registerUser(email:string, password:string) {
@@ -46,6 +46,8 @@ function App() {
     })
 
     handleTokenStorage(response)
+
+    return response
   }
 
   useEffect(() => {
@@ -57,7 +59,7 @@ function App() {
       <Route index element={
         <AuthenticationPage loginUser={loginUser} registerUser={registerUser} />
       } />
-      <Route path='/home' element={
+      <Route path='/home/:userId' element={
         <HomePage
           token={token}
           todos={todos}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import axios, { AxiosError } from "axios"
+import { useParams } from "react-router"
 import "./Home.css"
 
 import { PlusIcon, ResetIcon } from "../../assets/SvgComponents"
@@ -15,9 +16,10 @@ type Props = {
 }
 
 export default function Home({ todos, token, loadTodos }: Props) {
-    // const [ userId, setUserId ] = useState<number>(0)
     const [errorMessage, setErrorMessage] = useState<MessageType>({ message: '', id: '' })
     const [isAdding, setIsAdding] = useState<boolean>(false)
+
+    const { userId } = useParams()
 
     function displayErrorMessage(message: string) {
         console.log(message)
@@ -92,7 +94,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
 
             <header>
                 <span id="header-text">
-                    UserId={'dsgsasa'} # numberOfTodos={todos.length}
+                    UserId={userId} # numberOfTodos={todos.length}
                 </span>
             </header>
 
