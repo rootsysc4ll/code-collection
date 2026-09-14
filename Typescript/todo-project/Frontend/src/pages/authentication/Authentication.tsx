@@ -1,4 +1,3 @@
-import { Link } from "react-router"
 import type { AxiosError, AxiosResponse} from "axios"
 import {  useState } from "react"
 import "./Authentication.css"
@@ -29,17 +28,6 @@ export default function Authentication({ loginUser, registerUser }: Props) {
     }
 
     async function handleRegister(email:string, password:string): Promise<AxiosResponse> {
-        //let response = registerUser(email, password)
-        //response
-        //    .then(() => {
-        //        setMessage({ message: "Successfully registered", id: "positive-message" })    
-        //    })
-        //    .catch(err => {
-        //        const axiosError = err as AxiosError
-        //        setMessage({ message: `Couldn't login user, error code ${axiosError.code} '${axiosError.message}'`, id: "error-message" })
-        //    })
-        //return response
-
         try {
             const response = await registerUser(email, password)
             setMessage({ message: "Successfully registered", id: "positive-message" })
@@ -89,9 +77,6 @@ export default function Authentication({ loginUser, registerUser }: Props) {
                         <span className="auth-text">Already have an account?</span>
                         <button id="auth-method-button" onClick={() => setIsLogin(true)}>Login</button>
                     </>)}
-                    <button>
-                        <Link to={'/home'}>Skip</Link>
-                    </button>
                 </div>
             </div>
         </div>

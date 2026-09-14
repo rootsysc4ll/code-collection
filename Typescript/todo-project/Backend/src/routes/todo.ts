@@ -23,13 +23,13 @@ router.post('/', (req: CustomRequestType, res) => {
     res.status(201).json({ message: "Created" })
 })
 
-router.put('/:todoId', (req, res) => {
-    const { todoId } = req.params
+router.put('/:todoId', (req: CustomRequestType, res) => {
+    const { todoId } = req.params as { todoId: string }
 
-    const updateTodo = db.prepare("UPDATE todos SET completed = ? WHERE id = ?")
+    const updateTodo = db.prepare("UPDATE todos SET completed = ? WHERE id = ? AND user_id = ?")
     // the only way you can update the todos is to
     // completing them, so no need to handle body info
-    updateTodo.run(1, todoId)
+    updateTodo.run(1, todoId, req.userId as number)
     
     res.status(204).json({ message: "Updated" })
 })

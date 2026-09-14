@@ -2,9 +2,13 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "module": "nodenext",
+    "module": "preserve",
     "target": "esnext",
-    "types": ["node", "express", "jsonwebtoken"],
+    "types": [
+      "node",
+      "express",
+      "jsonwebtoken"
+    ],
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -19,7 +23,9 @@
     "skipLibCheck": true,
     "noEmit": true,
     "emitDeclarationOnly": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true
   },
   "include": ["src/**/*.ts", "src/middleware/*.ts", "src/routes/*.ts"],
   "exclude": ["node_modules"]

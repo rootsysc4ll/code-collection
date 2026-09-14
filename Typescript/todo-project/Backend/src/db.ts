@@ -1,23 +1,30 @@
 import { DatabaseSync } from "node:sqlite"
+import fs from "fs"
 
-const db = new DatabaseSync(':memory')
+const dbPath = process.env.DB_PATH as string
+const dbExists = fs.existsSync(dbPath)
+const db = new DatabaseSync(dbPath)
 
-db.exec(`
-    CREATE TABLE users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE,
-    password TEXT
-)    
-`)
+if (!dbExists) {
+    db.exec(`
+        CREATE TABLE users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE,
+            password TEXT
+        )    
+    `)
 
-db.exec(`
-    CREATE TABLE todos (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER,
-        task TEXT,
-        completed BOOLEAN DEFAULT 0,
-        FOREIGN KEY(user_id) REFERENCES users(id)
-    )    
-`)
+    db.exec(`
+        CREATE TABLE todos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            task TEXT,
+            completed BOOLEAN DEFAULT 0,
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        )    
+    `)
+} else {
+    console.log("Database already exists, default behaviour is opening it")
+}
 
 export default db

@@ -1,6 +1,8 @@
 /node_modules/
 
-:memory
+database.db
 .env
 package-lock.json
 todo-client.rest
+node_modules/
+dist/
