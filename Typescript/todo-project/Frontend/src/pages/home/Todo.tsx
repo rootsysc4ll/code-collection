@@ -38,7 +38,7 @@ export default function Todo({ todo, deleteTodo, updateTodo }: Props) {
                 <span className="date-text">Todo date</span>
 
                 <button className="done-button regular-button" onClick={e => handleUpdate(e, todo.id)}>
-                    Done
+                    {todo.completed ? <>Cancel</> : <>Done</>}
                 </button>
 
                 <button className="delete-button regular-button" onClick={e => handleDelete(e, todo.id)}>

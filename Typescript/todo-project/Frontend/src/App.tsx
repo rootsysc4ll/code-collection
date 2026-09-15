@@ -37,7 +37,7 @@ function App() {
     })
 
     handleTokenStorage(response)
-    navigate(`/home`)
+    navigate(`/home/${response.data.userId}`)
   }
   
   async function registerUser(email: string, password: string) {

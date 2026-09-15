@@ -20,20 +20,26 @@ router.post('/', (req: CustomRequestType, res) => {
     const insertTodo = db.prepare("INSERT INTO todos (user_id, task) VALUES (?, ?)")
     insertTodo.run(req.userId as number, task)
 
-    res.status(201).json("Created")
+    res.status(201).send("Created")
 })
 
+// update todo
 router.put('/:todoId', (req: CustomRequestType, res) => {
     const { todoId } = req.params as { todoId: string }
+    const userId = req.userId as number
+
+    const getCompleteState = db.prepare("SELECT completed FROM todos WHERE user_id = ? AND id = ?")
+    const completed = getCompleteState.get(userId, todoId)!.completed as number
 
     const updateTodo = db.prepare("UPDATE todos SET completed = ? WHERE id = ? AND user_id = ?")
     // the only way you can update the todos is to
     // completing them, so no need to handle body info
-    updateTodo.run(1, todoId, req.userId as number)
+    updateTodo.run(Math.abs(completed - 1), todoId, userId)
     
-    res.status(204).json("Updated")
+    res.status(204).send("Updated")
 })
 
+// delete todo
 router.delete('/:todoId', (req: CustomRequestType, res) => {
     const { todoId } = req.params as { todoId: string }
     const userId = req.userId as number
@@ -41,16 +47,17 @@ router.delete('/:todoId', (req: CustomRequestType, res) => {
     const deleteTodo = db.prepare("DELETE FROM todos WHERE id = ? AND user_id = ?")
     deleteTodo.run(todoId, userId)
 
-    res.status(200).json("Deleted")
+    res.status(200).send("Deleted")
 })
 
+// delete all todos
 router.delete("/", (req: CustomRequestType, res) => {
     const userId = req.userId as number
 
     const resetTodos = db.prepare("DELETE FROM todos WHERE user_id = ?")
     resetTodos.run(userId)
 
-    res.status(200).json("Deleted all")
+    res.status(200).send("Deleted all")
 })
 
 export default router

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import type { MouseEvent } from "react"
+import type { MouseEvent, KeyboardEvent } from "react"
 import "./AddTodo.css"
 
 type Props = {
@@ -8,14 +8,26 @@ type Props = {
 
 export default function AddTodo({ addTodo }: Props) {
     const [ task, setTask ]       = useState<string>('')
-    // const [ date, setDate ]       = useState<string>('')
 
-    function handleAddTodo(e: MouseEvent<HTMLButtonElement>, task: string) {
-        e.stopPropagation()
-
+    function startToAddTodo(e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLInputElement>) {
         const button = e.currentTarget
         button.disabled = true
-        addTodo(task).finally(() => button.disabled = false)
+        addTodo(task)
+            .finally(() => button.disabled = false)
+    }
+    
+    function handleAddTodo(e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLInputElement>, task: string) {
+        e.stopPropagation()
+
+        const keydownCond = e.type === 'keydown'
+        const clickCond   = e.type === 'click'
+        if (keydownCond) {
+            const keypress = e as KeyboardEvent<HTMLInputElement>
+
+            if (keypress.key === 'Enter') { startToAddTodo(e) }
+        } else if (clickCond) {
+            startToAddTodo(e)
+        }
     }
 
     return (<div style={{position: 'relative'}}>
@@ -25,6 +37,7 @@ export default function AddTodo({ addTodo }: Props) {
                     <input className="todo-input" type="text" name="" id="" 
                         value={task} 
                         onChange={e => setTask(e.target.value)}
+                        onKeyDown={e => handleAddTodo(e, task)}
                     />
                     --- task name
                 </span>
