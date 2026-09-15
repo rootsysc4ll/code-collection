@@ -27,14 +27,6 @@ export default function Home({ token }: Props) {
         setErrorMessage({message, id: "error-message"})
     }
 
-    // async function handleLoadTodos() {
-    //     try {
-    //         await loadTodos()
-    //     } catch (error) {
-    //         const axiosError = error as AxiosError
-    //         displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
-    //     } 
-    // }
     async function loadTodos() {
         const response = await axios.get('/todos', {
         headers: { 'Authorization': token }

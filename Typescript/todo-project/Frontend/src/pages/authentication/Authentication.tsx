@@ -8,6 +8,7 @@ import type { MessageType } from "../../utils/types"
 
 import { loginUser, registerUser } from "../../utils/authFunctions"
 import { useNavigate } from "react-router"
+
 type Props = {
     token: string
 }
