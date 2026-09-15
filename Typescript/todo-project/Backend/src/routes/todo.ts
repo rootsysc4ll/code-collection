@@ -10,7 +10,7 @@ router.get('/', (req: CustomRequestType, res) => {
     const getTodos = db.prepare('SELECT * FROM todos WHERE user_id = ?')
     // cast here was made because the middleware guarantees req.userId exists and is a number
     const todos = getTodos.all(req.userId as number)
-    res.json(todos)
+    res.json({ todos, userId: req.userId as number })
 })
 
 // creates a todo
@@ -20,7 +20,7 @@ router.post('/', (req: CustomRequestType, res) => {
     const insertTodo = db.prepare("INSERT INTO todos (user_id, task) VALUES (?, ?)")
     insertTodo.run(req.userId as number, task)
 
-    res.status(201).json({ message: "Created" })
+    res.status(201).json("Created")
 })
 
 router.put('/:todoId', (req: CustomRequestType, res) => {
@@ -31,7 +31,7 @@ router.put('/:todoId', (req: CustomRequestType, res) => {
     // completing them, so no need to handle body info
     updateTodo.run(1, todoId, req.userId as number)
     
-    res.status(204).json({ message: "Updated" })
+    res.status(204).json("Updated")
 })
 
 router.delete('/:todoId', (req: CustomRequestType, res) => {
@@ -41,7 +41,7 @@ router.delete('/:todoId', (req: CustomRequestType, res) => {
     const deleteTodo = db.prepare("DELETE FROM todos WHERE id = ? AND user_id = ?")
     deleteTodo.run(todoId, userId)
 
-    res.status(200).json({ message: "Deleted" })
+    res.status(200).json("Deleted")
 })
 
 router.delete("/", (req: CustomRequestType, res) => {
@@ -50,7 +50,7 @@ router.delete("/", (req: CustomRequestType, res) => {
     const resetTodos = db.prepare("DELETE FROM todos WHERE user_id = ?")
     resetTodos.run(userId)
 
-    res.status(200).json({ message: "Deleted" })
+    res.status(200).json("Deleted all")
 })
 
 export default router

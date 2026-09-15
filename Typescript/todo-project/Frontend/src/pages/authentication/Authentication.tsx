@@ -1,4 +1,4 @@
-import type { AxiosError, AxiosResponse} from "axios"
+import type { AxiosError } from "axios"
 import {  useState } from "react"
 import "./Authentication.css"
 
@@ -8,7 +8,7 @@ import type { MessageType } from "../../utils/types"
 
 type Props = {
     loginUser: (email:string, password:string) => Promise<void>
-    registerUser: (email:string, password:string) => Promise<AxiosResponse>
+    registerUser: (email:string, password:string) => Promise<void>
 }
 
 export default function Authentication({ loginUser, registerUser }: Props) {
@@ -18,27 +18,26 @@ export default function Authentication({ loginUser, registerUser }: Props) {
     async function handleLogin(email:string, password:string) {
         try {
             await loginUser(email, password)
+            setMessage({ message: "Successfully logged", id: "positive-message" })
         } catch (error) {
             const axiosError = error as AxiosError
             setMessage({
-                message: `Couldn't login user, error code ${axiosError.code} '${axiosError.message}'`,
+                message: `Couldn't login user, "${axiosError.response?.data}"`,
                 id: "error-message"
             })
         }
     }
 
-    async function handleRegister(email:string, password:string): Promise<AxiosResponse> {
+    async function handleRegister(email:string, password:string) {
         try {
-            const response = await registerUser(email, password)
+            await registerUser(email, password)
             setMessage({ message: "Successfully registered", id: "positive-message" })
-            return response
         } catch (err) {
             const axiosError = err as AxiosError
             setMessage({
-                message: `Couldn't register user, error code ${axiosError.code} '${axiosError.message}'`,
+                message: `Couldn't register user, "${axiosError.response?.data}"`,
                 id: "error-message"
             })
-            throw err
         }
     }
     

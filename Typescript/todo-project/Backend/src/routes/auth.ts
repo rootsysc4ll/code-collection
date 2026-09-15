@@ -5,8 +5,8 @@ import db from "../db.ts"
 
 import type { AuthenticationBodyType, UserDBType } from "../utils/types.ts"
 
-const hashSalt = 8
 const router = express.Router()
+const hashSalt = 8
 
 router.post('/register', (req, res) => {
     const { username, password } = req.body as AuthenticationBodyType
@@ -16,9 +16,7 @@ router.post('/register', (req, res) => {
         const searchForUser = db.prepare("SELECT * FROM users WHERE username = ?")
         const searchResult = searchForUser.get(username)
 
-        if (searchResult) {
-            return res.status(400).send({ message: 'User already exists' })
-        }
+        if (searchResult) { return res.status(400).send('User already exists') }
 
         // sql query
         const insertUser = db.prepare('INSERT INTO users (username, password) VALUES (?, ?)')
@@ -44,14 +42,14 @@ router.post('/login', (req, res) => {
     try {
         const getUser = db.prepare('SELECT * FROM users WHERE username = ?')
         const user = getUser.get(username) as unknown as UserDBType
-        const userId = user.id
-
+        
         // checks if user is registered
-        if (!user) {return res.status(404).send({ message: 'User not Found' })}
+        if (!user) {    return res.status(404).send('User not Found')   }
+        const userId = user.id
 
         // checks if password is valid
         const passwordIsValid = bcrypt.compareSync(password, user.password)
-        if (!passwordIsValid) return res.status(401).send({ message: 'Invalid Password' })
+        if (!passwordIsValid) return res.status(401).send('Invalid Password')
 
         // login successful, creating another token
         const token = jwt.sign({ id: userId }, process.env.JWT_SECRET as Secret, { expiresIn: '24h' })

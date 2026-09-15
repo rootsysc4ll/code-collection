@@ -31,7 +31,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
             await loadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
-            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response}`)
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
         } 
     }
 
@@ -44,7 +44,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
             await handleLoadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
-            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
         }
     }
     
@@ -57,7 +57,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
             await handleLoadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
-            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
         }
     }
     
@@ -69,7 +69,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
             setIsAdding(false)
         } catch (error) {
             const axiosError = error as AxiosError
-            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
             setIsAdding(false)
         }
     }
@@ -82,7 +82,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
             await handleLoadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
-            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
         }
     }
 

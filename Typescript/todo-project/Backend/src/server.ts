@@ -1,6 +1,4 @@
-import express from "express"
-import path, { dirname } from 'path'
-import { fileURLToPath } from "url"
+import express, { type RequestHandler } from "express"
 import authRoutes from "./routes/auth.ts"
 import todoRoutes from "./routes/todo.ts"
 import authMiddleware from "./middleware/auth.ts"
@@ -8,25 +6,18 @@ import authMiddleware from "./middleware/auth.ts"
 const app = express()
 const PORT = process.env.PORT || 3000
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-app.use(express.static(path.join(__dirname, '../public')))
 app.use(express.json())
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'))
-})
 
 // Routes
 app.use('/auth', authRoutes)
 app.use('/todos', authMiddleware, todoRoutes)
 
 // If the link doesn't match any endpoint
-app.post(/.*/, (req, res) => res.status(404).send('Not Found'))
-app.put(/.*/, (req, res) => res.status(404).send('Not Found'))
-app.get(/.*/,  (req, res) => res.status(404).send('Not Found'))
-app.delete(/.*/, (req, res) => res.status(404).send('Not Found'))
+const returnNotFound: RequestHandler = (req, res) => res.status(404).send('404 Not Found')
+app.post(/.*/, returnNotFound)
+app.put(/.*/, returnNotFound)
+app.get(/.*/,  returnNotFound)
+app.delete(/.*/, returnNotFound)
 
 app.listen(PORT, () => {
     console.log(`Server opened on PORT ${PORT}`)

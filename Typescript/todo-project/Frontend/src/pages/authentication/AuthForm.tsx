@@ -1,6 +1,5 @@
 import { useState } from "react"
 import type { Dispatch, SetStateAction, MouseEvent } from "react"
-import type { AxiosResponse } from "axios"
 import "./AuthForm.css"
 
 import type { MessageType } from "../../utils/types"
@@ -9,7 +8,7 @@ type Props = {
     isLogin: boolean
     setIsLogin: Dispatch<SetStateAction<boolean>>
     handleLogin: (email:string, password:string) => Promise<void>
-    handleRegister: (email:string, password:string) => Promise<AxiosResponse>
+    handleRegister: (email:string, password:string) => Promise<void>
     setMessage: Dispatch<SetStateAction<MessageType>>
 }
 

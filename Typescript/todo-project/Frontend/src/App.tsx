@@ -9,8 +9,8 @@ import AuthenticationPage from './pages/authentication/Authentication'
 import HomePage from './pages/home/Home'
 
 function App() {
-  const [ todos, setTodos ] = useState<TodoType[]>([])
-  const [ token, setToken ] = useState<string>(() => localStorage.getItem('token') || '')
+  const [ todos, setTodos ]   = useState<TodoType[]>([])
+  const [ token, setToken ]   = useState<string>(() => localStorage.getItem('token') || '')
   const navigate = useNavigate()
 
   function handleTokenStorage(response: AxiosResponse) {
@@ -26,28 +26,25 @@ function App() {
       headers: { 'Authorization': token }
     })
 
-    setTodos(response.data)
+    setTodos(response.data.todos)
+    navigate(`/home/${response.data.userId}`)
   }
 
-  async function loginUser(email:string, password:string) {
+  async function loginUser(email: string, password: string) {
     const response = await axios.post('/auth/login', {
       username:email,
       password
     })
 
     handleTokenStorage(response)
-    navigate(`/home/${response.data.userId}`)
+    navigate(`/home`)
   }
   
-  async function registerUser(email:string, password:string) {
-    const response = await axios.post('/auth/register', {
+  async function registerUser(email: string, password: string) {
+    await axios.post('/auth/register', {
       username: email,
       password
     })
-
-    handleTokenStorage(response)
-
-    return response
   }
 
   useEffect(() => {
