@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios, { AxiosError } from "axios"
-import { useParams } from "react-router"
+import { useParams, useNavigate } from "react-router"
 import "./Home.css"
 
 import { PlusIcon, ResetIcon } from "../../assets/SvgComponents"
@@ -10,15 +10,16 @@ import AddTodo from "./AddTodo"
 import ErrorMessage from "../../components/Message"
 
 type Props = {
-    todos: TodoType[]
     token: string
-    loadTodos: () => Promise<void>
 }
 
-export default function Home({ todos, token, loadTodos }: Props) {
+export default function Home({ token }: Props) {
+    const [ todos, setTodos ]   = useState<TodoType[]>([])
+    
     const [errorMessage, setErrorMessage] = useState<MessageType>({ message: '', id: '' })
     const [isAdding, setIsAdding] = useState<boolean>(false)
 
+    const navigate = useNavigate()
     const { userId } = useParams()
 
     function displayErrorMessage(message: string) {
@@ -26,13 +27,21 @@ export default function Home({ todos, token, loadTodos }: Props) {
         setErrorMessage({message, id: "error-message"})
     }
 
-    async function handleLoadTodos() {
-        try {
-            await loadTodos()
-        } catch (error) {
-            const axiosError = error as AxiosError
-            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
-        } 
+    // async function handleLoadTodos() {
+    //     try {
+    //         await loadTodos()
+    //     } catch (error) {
+    //         const axiosError = error as AxiosError
+    //         displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
+    //     } 
+    // }
+    async function loadTodos() {
+        const response = await axios.get('/todos', {
+        headers: { 'Authorization': token }
+        })
+
+        setTodos(response.data.todos)
+        navigate(`/home/${response.data.userId}`)
     }
 
     async function updateTodo(todoId: number): Promise<void> {
@@ -41,7 +50,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
             // completing them, so no need to send body info
             await axios.put(`/todos/${todoId}`, {}, { headers: { 'Authorization': token } })
 
-            await handleLoadTodos()
+            await loadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
             displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
@@ -54,7 +63,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
                 { headers: { 'Authorization': token } }
             )
 
-            await handleLoadTodos()
+            await loadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
             displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
@@ -65,7 +74,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
         try {
             await axios.post('/todos', { task }, { headers: { 'Authorization': token } })
 
-            await handleLoadTodos()
+            await loadTodos()
             setIsAdding(false)
         } catch (error) {
             const axiosError = error as AxiosError
@@ -79,7 +88,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
             await axios.delete(`/todos`,
                 { headers: { 'Authorization': token } }
             )
-            await handleLoadTodos()
+            await loadTodos()
         } catch (error) {
             const axiosError = error as AxiosError
             displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
@@ -89,7 +98,7 @@ export default function Home({ todos, token, loadTodos }: Props) {
     useEffect(() => {
         loadTodos().catch(error => {
             const axiosError = error as AxiosError
-            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.message}`)
+            displayErrorMessage(`Error occured with code ${axiosError.code}, ${axiosError.response?.data}`)
         })
     }, [])
 

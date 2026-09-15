@@ -1,51 +1,15 @@
-import { Routes, Route, useNavigate } from 'react-router'
-import { useEffect, useState } from 'react'
-import axios, { type AxiosResponse } from 'axios'
+import { Routes, Route } from 'react-router'
+import { useEffect } from 'react'
 import './App.css'
 
-import themeProvider from './utils/themeProvider'
-import type { TodoType } from './utils/types'
 import AuthenticationPage from './pages/authentication/Authentication'
 import HomePage from './pages/home/Home'
 
+import themeProvider from './utils/themeProvider'
+
 function App() {
-  const [ todos, setTodos ]   = useState<TodoType[]>([])
-  const [ token, setToken ]   = useState<string>(() => localStorage.getItem('token') || '')
-  const navigate = useNavigate()
+  let token = localStorage.getItem('token') || ''
 
-  function handleTokenStorage(response: AxiosResponse) {
-    const responseToken = response.data.token
-    if (responseToken) {
-      setToken(responseToken)
-      localStorage.setItem('token', responseToken)
-    }
-  }
-
-  async function loadTodos() {
-    const response = await axios.get('/todos', {
-      headers: { 'Authorization': token }
-    })
-
-    setTodos(response.data.todos)
-    navigate(`/home/${response.data.userId}`)
-  }
-
-  async function loginUser(email: string, password: string) {
-    const response = await axios.post('/auth/login', {
-      username:email,
-      password
-    })
-
-    handleTokenStorage(response)
-    navigate(`/home/${response.data.userId}`)
-  }
-  
-  async function registerUser(email: string, password: string) {
-    await axios.post('/auth/register', {
-      username: email,
-      password
-    })
-  }
 
   useEffect(() => {
     themeProvider.defaultTheme()
@@ -54,14 +18,13 @@ function App() {
   return (
     <Routes>
       <Route index element={
-        <AuthenticationPage loginUser={loginUser} registerUser={registerUser} />
+        <AuthenticationPage token={token} />
       } />
       <Route path='/home/:userId' element={
-        <HomePage
-          token={token}
-          todos={todos}
-          loadTodos={loadTodos}
-        />
+        <HomePage token={token} />
+      } />
+      <Route path='/home/' element={
+        <HomePage token={token} />
       } />
 
       <Route path='*' element={(<div>Not Found 404</div>)} />

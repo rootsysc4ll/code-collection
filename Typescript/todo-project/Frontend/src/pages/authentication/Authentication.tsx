@@ -6,19 +6,25 @@ import AuthForm from "./AuthForm"
 import Message from "../../components/Message"
 import type { MessageType } from "../../utils/types"
 
+import { loginUser, registerUser } from "../../utils/authFunctions"
+import { useNavigate } from "react-router"
 type Props = {
-    loginUser: (email:string, password:string) => Promise<void>
-    registerUser: (email:string, password:string) => Promise<void>
+    token: string
 }
 
-export default function Authentication({ loginUser, registerUser }: Props) {
+export default function Authentication({ token }: Props) {
     const [ isLogin, setIsLogin ] = useState<boolean>(false)
     const [ message, setMessage ] = useState<MessageType>({ message: '', id: '' })
 
+    const navigate = useNavigate()
+    
     async function handleLogin(email:string, password:string) {
         try {
-            await loginUser(email, password)
+            const { userId, authToken } =  await loginUser(email, password)
+
             setMessage({ message: "Successfully logged", id: "positive-message" })
+            token = authToken
+            navigate(`/home/${userId}`)
         } catch (error) {
             const axiosError = error as AxiosError
             setMessage({
